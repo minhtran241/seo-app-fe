@@ -193,10 +193,95 @@ const GET_BLOG_POST: DocumentNode = gql`
   }
 `;
 
+const GET_CATEGORIES_PRODUCTS: DocumentNode = gql`
+  query {
+    categories {
+      data {
+        attributes {
+          name
+          products {
+            data {
+              attributes {
+                name
+                slug
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+`;
+
+const GET_PRODUCTS_DETAILS: DocumentNode = gql`
+  query ($slug: String!) {
+    products(filters: { slug: { eq: $slug } }) {
+      data {
+        attributes {
+          name
+          thumbnail {
+            data {
+              attributes {
+                url
+              }
+            }
+          }
+          source
+          contents(sort: "order:asc") {
+            name
+            description
+            media {
+              data {
+                attributes {
+                  url
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+`;
+
+const GET_SOLUTION_DETAILS: DocumentNode = gql`
+  query ($slug: String!) {
+    solutions(filters: { slug: { eq: $slug } }) {
+      data {
+        attributes {
+          name
+          thumbnail {
+            data {
+              attributes {
+                url
+              }
+            }
+          }
+          source
+          contents(sort: "order:asc") {
+            name
+            description
+            media {
+              data {
+                attributes {
+                  url
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+`;
+
 export {
   GET_HOME_PAGE,
   GET_HOME_BLOGS,
   GET_ABOUT_US_PAGE,
   GET_BLOG_POST,
   GET_BLOG_POSTS,
+  GET_CATEGORIES_PRODUCTS,
+  GET_PRODUCTS_DETAILS,
+  GET_SOLUTION_DETAILS,
 };

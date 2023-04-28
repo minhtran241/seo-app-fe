@@ -4,7 +4,6 @@ import { getStrapiMedia } from '@/app/api/urlBuilder';
 
 const Detail = ({ data }) => {
   const { name, description, details, media, roundedImage } = data;
-  console.log(roundedImage);
   return (
     <>
       <section className="py-16 md:py-20 lg:py-28">
