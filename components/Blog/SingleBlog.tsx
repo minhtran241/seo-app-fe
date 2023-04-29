@@ -10,17 +10,20 @@ const SingleBlog = ({ blog }) => {
   return (
     <>
       <div
-        className="wow fadeInUp relative overflow-hidden rounded-md border border-primary bg-white shadow-one dark:bg-dark"
+        className="wow fadeInUp relative overflow-hidden"
         data-wow-delay=".1s"
       >
-        <Link href="/" className="relative block h-[220px] w-full rounded-md">
+        <Link
+          href={`/blog/${slug}`}
+          className="relative block h-[220px] w-full border border-primary"
+        >
           <Image src={getStrapiMedia(thumbnail)} alt="image" fill />
         </Link>
-        <div className="p-6 sm:p-8 md:py-8 md:px-6 lg:p-8 xl:py-8 xl:px-5 2xl:p-8">
+        <div className="py-3 sm:py-8 md:py-8 xl:py-8">
           <p>
             <Link
               href={`/blog/${slug}`}
-              className="mb-4 block text-xl font-bold text-black hover:text-primary dark:text-white dark:hover:text-primary sm:text-2xl"
+              className="mb-2 block text-lg font-bold text-black hover:text-primary dark:text-white dark:hover:text-primary sm:text-xl"
             >
               {title}
             </Link>

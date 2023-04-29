@@ -32,4 +32,3 @@ export default function RootLayout({
 }
 
 import { Providers } from './providers';
-import { getProducts } from '@/components/Header/menuData';

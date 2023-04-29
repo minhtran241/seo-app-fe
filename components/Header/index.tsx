@@ -1,9 +1,10 @@
-'use client';
 import Image from 'next/image';
 import Link from 'next/link';
 import { useEffect, useState } from 'react';
 import ThemeToggler from './ThemeToggler';
 import { menuData, getProducts } from './menuData';
+import apolloClient from '@/app/api/apollo-client';
+import { GET_CATEGORIES_PRODUCTS } from '@/app/api/graphql/queries';
 
 const Header = () => {
   const [navbarOpen, setNavbarOpen] = useState(false);
@@ -22,7 +23,20 @@ const Header = () => {
   };
   useEffect(() => {
     window.addEventListener('scroll', handleStickyNavbar);
-  });
+    // const fetchData = async () => {
+    //   const { data } = await apolloClient().query({
+    //     query: GET_CATEGORIES_PRODUCTS,
+    //   });
+    //   return data;
+    // };
+    apolloClient()
+      .query({
+        query: GET_CATEGORIES_PRODUCTS,
+      })
+      .then((data) => {
+        console.log(data);
+      });
+  }, []);
 
   // submenu handler
   const [openIndex, setOpenIndex] = useState(-1);
@@ -74,7 +88,7 @@ const Header = () => {
                   onClick={navbarToggleHandler}
                   id="navbarToggler"
                   aria-label="Mobile Menu"
-                  className="absolute right-4 top-1/2 block translate-y-[-50%] rounded-lg px-3 py-[6px] ring-primary focus:ring-2 lg:hidden"
+                  className="absolute right-4 top-1/2 block translate-y-[-50%] rounded-lg px-3 py-[6px] focus:ring-2 lg:hidden"
                 >
                   <span
                     className={`relative my-1.5 block h-0.5 w-[30px] bg-black transition-all duration-300 dark:bg-white ${
@@ -106,7 +120,7 @@ const Header = () => {
                         {menuItem.path ? (
                           <Link
                             href={menuItem.path}
-                            className={`flex py-2 text-base text-dark group-hover:opacity-70 dark:text-white lg:mr-0 lg:inline-flex lg:py-6 lg:px-0`}
+                            className={`text- flex py-2 text-base group-hover:opacity-70 dark:text-white lg:mr-0 lg:inline-flex lg:py-6 lg:px-0`}
                           >
                             {menuItem.title}
                           </Link>
@@ -114,7 +128,7 @@ const Header = () => {
                           <>
                             <a
                               onClick={() => handleSubmenu(index)}
-                              className="flex cursor-pointer items-center justify-between py-2 text-base text-dark group-hover:opacity-70 dark:text-white lg:mr-0 lg:inline-flex lg:py-6 lg:px-0"
+                              className="flex cursor-pointer items-center justify-between py-2 text-base group-hover:opacity-70 dark:text-white dark:text-white lg:mr-0 lg:inline-flex lg:py-6 lg:px-0"
                             >
                               {menuItem.title}
                               <span className="pl-3">
@@ -185,16 +199,10 @@ const Header = () => {
               </div>
               <div className="flex items-center justify-end pr-16 lg:pr-0">
                 <Link
-                  href="/signin"
-                  className="hidden py-3 px-7 text-base font-bold text-dark hover:opacity-70 dark:text-white md:block"
-                >
-                  Sign In
-                </Link>
-                <Link
                   href="/signup"
                   className="ease-in-up hidden rounded-md bg-primary py-3 px-8 text-base font-bold text-white transition duration-300 hover:bg-opacity-90 hover:shadow-signUp md:block md:px-9 lg:px-6 xl:px-9"
                 >
-                  Sign Up
+                  Get Started
                 </Link>
                 <div>
                   <ThemeToggler />

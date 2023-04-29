@@ -20,7 +20,7 @@ const AboutSectionTwo = ({ data }) => {
     </p>
   );
   return (
-    <section className="py-16 md:py-20 lg:py-28">
+    <section className="lg:py-15 py-5 md:py-5">
       <div className="container">
         {title && (
           <SectionTitle title={title} paragraph={description} left={true} />

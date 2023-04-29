@@ -199,11 +199,20 @@ const GET_CATEGORIES_PRODUCTS: DocumentNode = gql`
       data {
         attributes {
           name
+          description
           products {
             data {
               attributes {
                 name
+                description
                 slug
+                thumbnail {
+                  data {
+                    attributes {
+                      url
+                    }
+                  }
+                }
               }
             }
           }

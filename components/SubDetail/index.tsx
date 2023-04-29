@@ -7,7 +7,7 @@ const SubDetail = ({ data }) => {
   return (
     <>
       {reversed ? (
-        <section className="bg-primary/[.03] py-16 md:py-20 lg:py-28">
+        <section className="lg:py-15 bg-primary/[.03] py-5 md:py-5">
           <div className="container mx-auto">
             <div className="-mx-4 flex flex-wrap items-center">
               <div className="w-full px-4 lg:w-1/2">
@@ -25,7 +25,7 @@ const SubDetail = ({ data }) => {
                     />
                   ) : (
                     <Image
-                      className="rounded-md border border-primary"
+                      className="border border-primary"
                       src={getStrapiMedia(media)}
                       alt="about image"
                       width={545}
@@ -36,7 +36,7 @@ const SubDetail = ({ data }) => {
               </div>
               <div className="w-full px-4 lg:w-1/2">
                 <div className="mb-8">
-                  <h1 className="text-3xl font-semibold text-primary lg:text-4xl">
+                  <h1 className="text-2xl font-semibold text-primary lg:text-3xl">
                     {name}
                   </h1>
                 </div>
@@ -58,14 +58,14 @@ const SubDetail = ({ data }) => {
             <div className="-mx-4 flex flex-wrap items-center">
               <div className="w-full px-4 lg:w-1/2">
                 <div className="mb-8">
-                  <h1 className="text-3xl font-semibold text-primary lg:text-4xl">
+                  <h1 className="text-2xl font-semibold text-primary lg:text-3xl">
                     {name}
                   </h1>
                 </div>
 
                 <div className="mb-4 md:-mx-4 md:flex md:items-start">
                   <div className="md:mx-4 md:mt-0">
-                    <div className="mt-3 text-black dark:text-body-color">
+                    <div className="mt-3 text-white">
                       {parse(description)}
                     </div>
                   </div>
@@ -86,7 +86,7 @@ const SubDetail = ({ data }) => {
                     />
                   ) : (
                     <Image
-                      className="rounded-md border border-primary"
+                      className="border border-primary"
                       src={getStrapiMedia(media)}
                       alt="about image"
                       width={545}

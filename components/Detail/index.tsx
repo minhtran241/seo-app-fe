@@ -6,12 +6,12 @@ const Detail = ({ data }) => {
   const { name, description, details, media, roundedImage } = data;
   return (
     <>
-      <section className="py-16 md:py-20 lg:py-28">
+      <section className="lg:py-15 py-5 md:py-5">
         <div className="container mx-auto">
           <div className="-mx-4 flex flex-wrap items-center">
             <div className="w-full px-4 lg:w-1/2">
               <div className="mb-8">
-                <h1 className="text-3xl font-semibold text-primary lg:text-4xl">
+                <h1 className="text-2xl font-semibold text-primary lg:text-3xl">
                   {name}
                 </h1>
                 {description && (
@@ -25,10 +25,10 @@ const Detail = ({ data }) => {
                 return (
                   <div className="mb-4 md:-mx-4 md:flex md:items-start" key={i}>
                     <div className="md:mx-4 md:mt-0">
-                      <h1 className="mb-2 text-2xl font-semibold dark:text-white">
+                      <h1 className="mb-2 text-xl font-semibold dark:text-white">
                         {item.name}
                       </h1>
-                      <div className="mt-3 text-body-color">
+                      <div className="mt-3 text-white">
                         {parse(item.description)}
                       </div>
                     </div>
@@ -50,7 +50,7 @@ const Detail = ({ data }) => {
                   />
                 ) : (
                   <Image
-                    className="rounded-md border border-primary bg-primary"
+                    className="border border-primary bg-primary"
                     src={getStrapiMedia(media)}
                     alt="about image"
                     fill
