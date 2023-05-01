@@ -43,9 +43,7 @@ const SubDetail = ({ data }) => {
 
                 <div className="mb-4 md:-mx-4 md:flex md:items-start">
                   <div className="md:mx-4 md:mt-0">
-                    <div className="mt-3 text-black dark:text-body-color">
-                      {parse(description)}
-                    </div>
+                    <div className="mt-3 text-black">{parse(description)}</div>
                   </div>
                 </div>
               </div>
@@ -65,9 +63,7 @@ const SubDetail = ({ data }) => {
 
                 <div className="mb-4 md:-mx-4 md:flex md:items-start">
                   <div className="md:mx-4 md:mt-0">
-                    <div className="mt-3 text-white">
-                      {parse(description)}
-                    </div>
+                    <div className="mt-3 text-white">{parse(description)}</div>
                   </div>
                 </div>
               </div>

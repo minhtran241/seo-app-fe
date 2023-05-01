@@ -1,7 +1,6 @@
 import { getStrapiMedia } from '@/app/api/urlBuilder';
 import Image from 'next/image';
 import SectionTitle from '../Common/SectionTitle';
-import { UniqueTypeNamesRule } from 'graphql';
 
 const checkIcon = (
   <svg width="16" height="13" viewBox="0 0 16 13" className="fill-current">
@@ -35,7 +34,7 @@ const AboutSectionTwo = ({ data }) => {
                 return (
                   <div className="mb-9" key={i}>
                     <List text={property?.name} />
-                    <div className="sm:text-md text-body-color sm:text-sm">
+                    <div className="sm:text-md text-body-color">
                       {property?.description}
                     </div>
                   </div>

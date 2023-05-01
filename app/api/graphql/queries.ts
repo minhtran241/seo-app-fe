@@ -284,6 +284,52 @@ const GET_SOLUTION_DETAILS: DocumentNode = gql`
   }
 `;
 
+const GET_HEADER: DocumentNode = gql`
+  query {
+    header {
+      data {
+        attributes {
+          logo {
+            data {
+              attributes {
+                url
+              }
+            }
+          }
+          navs(sort: "order") {
+            name
+            path
+          }
+          categories {
+            data {
+              attributes {
+                name
+                slug
+                products {
+                  data {
+                    attributes {
+                      name
+                      slug
+                    }
+                  }
+                }
+                solutions {
+                  data {
+                    attributes {
+                      name
+                      slug
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+`;
+
 export {
   GET_HOME_PAGE,
   GET_HOME_BLOGS,
@@ -293,4 +339,5 @@ export {
   GET_CATEGORIES_PRODUCTS,
   GET_PRODUCTS_DETAILS,
   GET_SOLUTION_DETAILS,
+  GET_HEADER,
 };
