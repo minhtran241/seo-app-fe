@@ -37,9 +37,7 @@ const Header = () => {
       .query({
         query: GET_HEADER,
       })
-      .then((data) =>
-        setHeaderAttributes(data?.data?.header?.data?.attributes)
-      );
+      .then(({ data }) => setHeaderAttributes(data?.header?.data?.attributes));
   }, []);
 
   // submenu handler
@@ -51,8 +49,6 @@ const Header = () => {
       setOpenIndex(index);
     }
   };
-
-  console.log(headerAttributes);
 
   if (headerAttributes) {
     return (

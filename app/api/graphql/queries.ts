@@ -330,6 +330,37 @@ const GET_HEADER: DocumentNode = gql`
   }
 `;
 
+const GET_FOOTER: DocumentNode = gql`
+  query {
+    footer {
+      data {
+        attributes {
+          logo {
+            data {
+              attributes {
+                url
+              }
+            }
+          }
+          text
+          links(sort: "order") {
+            name
+            path
+          }
+          terms(sort: "order") {
+            name
+            path
+          }
+          support(sort: "order") {
+            name
+            path
+          }
+        }
+      }
+    }
+  }
+`;
+
 export {
   GET_HOME_PAGE,
   GET_HOME_BLOGS,
@@ -340,4 +371,5 @@ export {
   GET_PRODUCTS_DETAILS,
   GET_SOLUTION_DETAILS,
   GET_HEADER,
+  GET_FOOTER,
 };
