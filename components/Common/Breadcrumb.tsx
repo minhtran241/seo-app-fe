@@ -9,15 +9,15 @@ const Breadcrumb = ({
 }) => {
   return (
     <>
-      <section className="relative z-10 overflow-hidden bg-primary pt-28 lg:pt-[150px]">
+      <section className="relative overflow-hidden bg-primary pt-14 lg:pt-[50px]">
         <div className="container">
           <div className="-mx-4 flex flex-wrap items-center">
             <div className="w-full px-4 md:w-8/12 lg:w-7/12">
               <div className="mb-8 max-w-[570px] md:mb-0 lg:mb-12">
-                <h1 className="mb-5 text-2xl font-bold uppercase text-black sm:text-3xl">
+                <h1 className="mb-5 text-2xl font-bold uppercase text-white dark:text-black sm:text-3xl">
                   {pageName}
                 </h1>
-                <p className="text-base font-medium leading-relaxed text-black">
+                <p className="text-base font-medium leading-relaxed text-white dark:text-black">
                   {description}
                 </p>
               </div>
@@ -28,13 +28,13 @@ const Breadcrumb = ({
                   <li className="flex items-center">
                     <Link
                       href="/"
-                      className="pr-1 text-base font-medium text-white"
+                      className="pr-1 text-base font-medium text-white dark:text-black"
                     >
                       Home
                     </Link>
-                    <span className="mr-3 block h-2 w-2 rotate-45 border-t-2 border-r-2 border-white"></span>
+                    <span className="mr-3 block h-2 w-2 rotate-45 border-t-2 border-r-2 border-white dark:border-black"></span>
                   </li>
-                  <li className="text-base font-medium text-white">
+                  <li className="text-base font-medium text-white dark:text-black">
                     {pageName}
                   </li>
                 </ul>

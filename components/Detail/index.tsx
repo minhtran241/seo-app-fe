@@ -28,7 +28,7 @@ const Detail = ({ data }) => {
                       <h1 className="mb-2 text-xl font-semibold dark:text-white">
                         {item.name}
                       </h1>
-                      <div className="mt-3 text-white">
+                      <div className="mt-3 text-black dark:text-white">
                         {parse(item.description)}
                       </div>
                     </div>

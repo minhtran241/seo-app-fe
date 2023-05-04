@@ -7,7 +7,7 @@ const SubDetail = ({ data }) => {
   return (
     <>
       {reversed ? (
-        <section className="lg:py-15 bg-primary/[.03] py-5 md:py-5">
+        <section className="lg:py-17 bg-primary/[.03] py-7 md:py-7">
           <div className="container mx-auto">
             <div className="-mx-4 flex flex-wrap items-center">
               <div className="w-full px-4 lg:w-1/2">
@@ -43,7 +43,9 @@ const SubDetail = ({ data }) => {
 
                 <div className="mb-4 md:-mx-4 md:flex md:items-start">
                   <div className="md:mx-4 md:mt-0">
-                    <div className="mt-3 text-black">{parse(description)}</div>
+                    <div className="mt-3 text-black dark:text-white">
+                      {parse(description)}
+                    </div>
                   </div>
                 </div>
               </div>
@@ -51,7 +53,7 @@ const SubDetail = ({ data }) => {
           </div>
         </section>
       ) : (
-        <section className="py-16 md:py-20 lg:py-28">
+        <section className="lg:py-17  py-7 md:py-7">
           <div className="container mx-auto">
             <div className="-mx-4 flex flex-wrap items-center">
               <div className="w-full px-4 lg:w-1/2">
@@ -63,7 +65,9 @@ const SubDetail = ({ data }) => {
 
                 <div className="mb-4 md:-mx-4 md:flex md:items-start">
                   <div className="md:mx-4 md:mt-0">
-                    <div className="mt-3 text-white">{parse(description)}</div>
+                    <div className="mt-3 text-black dark:text-white">
+                      {parse(description)}
+                    </div>
                   </div>
                 </div>
               </div>

@@ -8,10 +8,12 @@ const Hero = ({ data }) => {
       <section className="bg-primary text-white">
         <div className="container mx-auto flex flex-col justify-center p-14 sm:py-12 lg:flex-row lg:justify-between lg:py-24">
           <div className="flex flex-col justify-center p-6 text-center lg:max-w-lg lg:text-left xl:max-w-lg">
-            <h1 className="text-5xl font-bold leading-none sm:text-6xl">
+            <h1 className="text-5xl font-bold leading-none text-white dark:text-black sm:text-6xl">
               {data?.title}
             </h1>
-            <p className="mt-6 mb-8 text-lg sm:mb-12">{data?.description}</p>
+            <p className="mt-6 mb-8 text-lg text-white dark:text-black sm:mb-12">
+              {data?.description}
+            </p>
             {/* <div className="flex flex-col space-y-4 sm:flex-row sm:items-center sm:justify-center sm:space-y-0 sm:space-x-4 lg:justify-start">
               <a
                 rel="noopener noreferrer"

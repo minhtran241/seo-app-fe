@@ -45,13 +45,13 @@ const Timeline = ({ data }) => {
                             />
                           </svg>
                         </div>
-                        <div className="shadow-black/5 dark:shadow-dark/10 mb-7 ml-6 block max-w-md rounded-lg bg-white p-6 shadow-md dark:bg-black">
+                        <div className="mb-7 ml-6 block max-w-md rounded-lg bg-white p-6 shadow-md shadow-black/5 dark:bg-black dark:shadow-dark/10">
                           <div className="mb-2 flex justify-between">
                             <p className="text-xl font-medium text-primary">
                               {milestone.name}
                             </p>
                           </div>
-                          <div className="sm:text-md font-medium text-white sm:text-sm">
+                          <div className="sm:text-md font-medium text-black dark:text-white sm:text-sm">
                             {parse(milestone.description)}
                           </div>
                         </div>
