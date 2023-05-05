@@ -2,14 +2,16 @@ import Link from 'next/link';
 
 const Breadcrumb = ({
   pageName,
-  description,
+  description = null,
+  source = null,
 }: {
   pageName: string;
   description: string;
+  source: string;
 }) => {
   return (
     <>
-      <section className="relative overflow-hidden bg-primary pt-14 lg:pt-[50px]">
+      <section className="relative overflow-hidden bg-primary pt-14 sm:pb-14 lg:pb-0 lg:pt-[50px]">
         <div className="container">
           <div className="-mx-4 flex flex-wrap items-center">
             <div className="w-full px-4 md:w-8/12 lg:w-7/12">
@@ -17,9 +19,33 @@ const Breadcrumb = ({
                 <h1 className="mb-5 text-2xl font-bold uppercase text-white dark:text-black sm:text-3xl">
                   {pageName}
                 </h1>
-                <p className="text-base font-medium leading-relaxed text-white dark:text-black">
-                  {description}
-                </p>
+                {description && (
+                  <p className="mb-2 text-base font-medium leading-relaxed text-white dark:text-black">
+                    {description}
+                  </p>
+                )}
+                {source && (
+                  <Link
+                    className="flex text-base font-medium leading-relaxed text-white underline dark:text-black"
+                    href={source}
+                  >
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      fill="none"
+                      viewBox="0 0 24 24"
+                      strokeWidth={1.5}
+                      stroke="currentColor"
+                      className="h-6 w-6 pr-2"
+                    >
+                      <path
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        d="M13.19 8.688a4.5 4.5 0 011.242 7.244l-4.5 4.5a4.5 4.5 0 01-6.364-6.364l1.757-1.757m13.35-.622l1.757-1.757a4.5 4.5 0 00-6.364-6.364l-4.5 4.5a4.5 4.5 0 001.242 7.244"
+                      />
+                    </svg>
+                    {source}
+                  </Link>
+                )}
               </div>
             </div>
             <div className="w-full px-4 md:w-4/12 lg:w-5/12">

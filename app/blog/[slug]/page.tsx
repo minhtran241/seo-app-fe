@@ -1,4 +1,4 @@
-import apolloClient from '@/app/api/apollo-client';
+import { apolloClient } from '@/app/api/apollo-client';
 import { GET_BLOG_POST } from '@/app/api/graphql/queries';
 import SharePost from '@/components/Blog/SharePost';
 import TagButton from '@/components/Blog/TagButton';
@@ -12,7 +12,7 @@ type Props = {
 };
 
 const getBlog = async (slug: string) => {
-  const { data } = await apolloClient().query({
+  const { data } = await apolloClient.query({
     query: GET_BLOG_POST,
     variables: { slug: slug },
   });
@@ -30,7 +30,9 @@ const BlogDetailsPage = async ({ params }: Props) => {
   }
   return (
     <>
-      <section className="pt-[150px] pb-[120px]">
+      <title>{`PAMA Blog | ${blogAttrs?.title}`}</title>
+      <meta name="description" content={blogAttrs?.description} />
+      <section className="pt-[80px] pb-[120px]">
         <div className="container">
           <div className="-mx-4 flex flex-wrap justify-center">
             <div className="w-full px-4 lg:w-8/12">
@@ -61,7 +63,7 @@ const BlogDetailsPage = async ({ params }: Props) => {
                     </div>
                     <div className="mb-5 flex items-center">
                       <p className="mr-5 flex items-center text-base font-medium text-body-color">
-                        <span className="mr-3 ">
+                        <span className="mr-3">
                           <svg
                             xmlns="http://www.w3.org/2000/svg"
                             fill="none"

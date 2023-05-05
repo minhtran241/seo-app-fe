@@ -5,6 +5,10 @@ const GET_HOME_PAGE: DocumentNode = gql`
     home {
       data {
         attributes {
+          Metadata {
+            title
+            description
+          }
           Hero {
             media {
               data {
@@ -91,6 +95,10 @@ const GET_ABOUT_US_PAGE: DocumentNode = gql`
     aboutUs {
       data {
         attributes {
+          Metadata {
+            title
+            description
+          }
           title
           description
           Cover {
@@ -228,6 +236,7 @@ const GET_PRODUCTS_DETAILS: DocumentNode = gql`
       data {
         attributes {
           name
+          description
           thumbnail {
             data {
               attributes {
@@ -259,6 +268,7 @@ const GET_SOLUTION_DETAILS: DocumentNode = gql`
       data {
         attributes {
           name
+          description
           thumbnail {
             data {
               attributes {
@@ -361,6 +371,98 @@ const GET_FOOTER: DocumentNode = gql`
   }
 `;
 
+const GET_SOLUTIONS_RELATED_CONTENTS: DocumentNode = gql`
+  query ($slug: String!) {
+    solutions(filters: { slug: { eq: $slug } }) {
+      data {
+        attributes {
+          products(pagination: { limit: 6 }) {
+            data {
+              attributes {
+                name
+                slug
+                thumbnail {
+                  data {
+                    attributes {
+                      url
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+`;
+
+const GET_PRODUCTS_RELATED_CONTENT: DocumentNode = gql`
+  query ($slug: String!) {
+    products(filters: { slug: { eq: $slug } }) {
+      data {
+        attributes {
+          solutions(pagination: { limit: 6 }) {
+            data {
+              attributes {
+                name
+                slug
+                thumbnail {
+                  data {
+                    attributes {
+                      url
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+`;
+
+const GET_POPULAR_PRODUCTS: DocumentNode = gql`
+  query {
+    products(filters: { popular: { eq: true } }, pagination: { limit: 6 }) {
+      data {
+        attributes {
+          name
+          slug
+          thumbnail {
+            data {
+              attributes {
+                url
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+`;
+
+const GET_POPULAR_SOLUTIONS: DocumentNode = gql`
+  query {
+    solutions(filters: { popular: { eq: true } }, pagination: { limit: 6 }) {
+      data {
+        attributes {
+          name
+          slug
+          thumbnail {
+            data {
+              attributes {
+                url
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+`;
+
 export {
   GET_HOME_PAGE,
   GET_HOME_BLOGS,
@@ -372,4 +474,8 @@ export {
   GET_SOLUTION_DETAILS,
   GET_HEADER,
   GET_FOOTER,
+  GET_SOLUTIONS_RELATED_CONTENTS,
+  GET_PRODUCTS_RELATED_CONTENT,
+  GET_POPULAR_PRODUCTS,
+  GET_POPULAR_SOLUTIONS,
 };

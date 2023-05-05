@@ -1,9 +1,9 @@
-import apolloClient from '@/app/api/apollo-client';
+import { apolloClient } from '@/app/api/apollo-client';
 import { GET_CATEGORIES_PRODUCTS } from '@/app/api/graphql/queries';
 import { Menu } from '@/types/menu';
 
 const getProducts = async () => {
-  const { data } = await apolloClient().query({
+  const { data } = await apolloClient.query({
     query: GET_CATEGORIES_PRODUCTS,
   });
   return data?.categories?.data;

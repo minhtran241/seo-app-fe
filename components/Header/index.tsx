@@ -2,24 +2,23 @@ import Image from 'next/image';
 import Link from 'next/link';
 import { useEffect, useState } from 'react';
 import ThemeToggler from './ThemeToggler';
-import { menuData, getProducts } from './menuData';
-import apolloClient from '@/app/api/apollo-client';
+import { apolloClient } from '@/app/api/apollo-client';
 import { GET_CATEGORIES_PRODUCTS, GET_HEADER } from '@/app/api/graphql/queries';
 import { getStrapiMedia } from '@/app/api/urlBuilder';
-import { Button, Dropdown, Navbar } from 'flowbite-react';
+import { Dropdown, Navbar } from 'flowbite-react';
 
 const Header = () => {
   const [categories, setCategories] = useState([]);
   const [headerAttributes, setHeaderAttributes] = useState();
   useEffect(() => {
-    apolloClient()
+    apolloClient
       .query({
         query: GET_CATEGORIES_PRODUCTS,
       })
       .then((data) => {
         setCategories(data?.data?.categories?.data);
       });
-    apolloClient()
+    apolloClient
       .query({
         query: GET_HEADER,
       })
@@ -28,7 +27,7 @@ const Header = () => {
   if (headerAttributes) {
     return (
       <Navbar rounded={false} className=" bg-white dark:bg-black">
-        <Navbar.Brand to="/">
+        <Navbar.Brand to="">
           <Image
             src={getStrapiMedia(headerAttributes?.logo)}
             alt="logo"
@@ -125,9 +124,10 @@ const Header = () => {
               {nav.name}
             </Navbar.Link>
           ))}
-
-          <ThemeToggler />
         </Navbar.Collapse>
+        <div className="p-4 sm:p-4 md:p-0 lg:p-0">
+          <ThemeToggler />
+        </div>
       </Navbar>
     );
   }
