@@ -6,7 +6,7 @@ const Detail = ({ data }) => {
   const { name, description, details, media, roundedImage } = data;
   return (
     <>
-      <section className="lg:py-15 py-5 md:py-5">
+      <section className="lg:py-15 bg-white py-5 dark:bg-primary/5 md:py-5">
         <div className="container mx-auto">
           <div className="-mx-4 flex flex-wrap items-center">
             <div className="w-full px-4 lg:w-1/2">

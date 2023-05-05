@@ -26,7 +26,7 @@ const GET_HOME_PAGE: DocumentNode = gql`
           }
           Categories {
             title
-            categories {
+            categories(sort: "order:asc") {
               data {
                 attributes {
                   name
@@ -175,9 +175,13 @@ const GET_BLOG_POST: DocumentNode = gql`
   query ($slug: String!) {
     blogPosts(filters: { slug: { eq: $slug } }) {
       data {
+        id
         attributes {
           title
           slug
+          translator
+          source
+          views
           author {
             data {
               attributes {
@@ -353,17 +357,14 @@ const GET_FOOTER: DocumentNode = gql`
             }
           }
           text
-          links(sort: "order") {
+          facebookLink
+          gmailLink
+          sections {
             name
-            path
-          }
-          terms(sort: "order") {
-            name
-            path
-          }
-          support(sort: "order") {
-            name
-            path
+            Navs(sort: "order:asc") {
+              name
+              path
+            }
           }
         }
       }
@@ -463,6 +464,18 @@ const GET_POPULAR_SOLUTIONS: DocumentNode = gql`
   }
 `;
 
+const UPDATE_BLOG_POST_VIEWS: DocumentNode = gql`
+  mutation ($id: ID!, $views: Int) {
+    updateBlogPost(id: $id, data: { views: $views }) {
+      data {
+        attributes {
+          views
+        }
+      }
+    }
+  }
+`;
+
 export {
   GET_HOME_PAGE,
   GET_HOME_BLOGS,
@@ -478,4 +491,5 @@ export {
   GET_PRODUCTS_RELATED_CONTENT,
   GET_POPULAR_PRODUCTS,
   GET_POPULAR_SOLUTIONS,
+  UPDATE_BLOG_POST_VIEWS,
 };

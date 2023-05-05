@@ -4,7 +4,10 @@ import SingleBlog from './SingleBlog';
 const Blog = ({ data }) => {
   const blogData = data;
   return (
-    <section id="blog" className="lg:py-15 bg-primary/[.03] py-5 md:py-5">
+    <section
+      id="blog"
+      className="lg:py-15 bg-primary/[.03] py-5 dark:bg-primary/10 md:py-5"
+    >
       <div className="container">
         <SectionTitle title="Pama Blog" paragraph={null} center />
 

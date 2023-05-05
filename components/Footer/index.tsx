@@ -4,6 +4,7 @@ import { getStrapiMedia } from '@/app/api/urlBuilder';
 import Image from 'next/image';
 import Link from 'next/link';
 import { useEffect, useState } from 'react';
+import { FaFacebookSquare, FaEnvelope } from 'react-icons/fa';
 
 const Footer = () => {
   const [footerAttributes, setFooterAttributes] = useState();
@@ -39,68 +40,49 @@ const Footer = () => {
                   <p className="mb-4 text-base font-medium leading-relaxed text-white dark:text-black">
                     {footerAttributes?.text}
                   </p>
+                  <div className="mb-4 flex text-base font-medium leading-relaxed text-white dark:text-black">
+                    <Link
+                      href={footerAttributes?.facebookLink}
+                      target="_blank"
+                      className="mr-3 hover:text-white/70 dark:hover:text-black/70"
+                    >
+                      <FaFacebookSquare />
+                    </Link>
+                    <Link
+                      href={footerAttributes?.gmailLink}
+                      target="_blank"
+                      className="hover:text-white/70 dark:hover:text-black/70"
+                    >
+                      <FaEnvelope />
+                    </Link>
+                  </div>
                 </div>
               </div>
 
-              <div className="w-full px-4 sm:w-1/2 md:w-1/2 lg:w-2/12 xl:w-2/12">
-                <div className="mb-6 lg:mb-8">
-                  <h2 className="mb-2 text-lg font-bold text-white dark:text-black">
-                    Useful Links
-                  </h2>
-                  <ul>
-                    {footerAttributes?.links?.map((link, i) => (
-                      <li key={i}>
-                        <a
-                          href={link?.path}
-                          className="mb-1 inline-block text-sm font-medium text-white hover:text-white/70 dark:text-black dark:hover:text-black/70"
-                        >
-                          {link?.name}
-                        </a>
-                      </li>
-                    ))}
-                  </ul>
+              {footerAttributes?.sections.map(({ name, Navs }, i) => (
+                <div
+                  className="w-full px-4 sm:w-1/2 md:w-1/2 lg:w-2/12 xl:w-2/12"
+                  key={i}
+                >
+                  <div className="mb-6 lg:mb-8">
+                    <h2 className="mb-2 text-lg font-bold text-white dark:text-black">
+                      {name}
+                    </h2>
+                    <ul>
+                      {Navs?.map(({ name, path }, i) => (
+                        <li key={i}>
+                          <a
+                            href={path}
+                            className="mb-1 inline-block text-sm font-medium text-white hover:text-white/70 dark:text-black dark:hover:text-black/70"
+                          >
+                            {name}
+                          </a>
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
                 </div>
-              </div>
-
-              <div className="w-full px-4 sm:w-1/2 md:w-1/2 lg:w-2/12 xl:w-2/12">
-                <div className="mb-6 lg:mb-8">
-                  <h2 className="mb-2 text-lg font-bold text-white dark:text-black">
-                    Terms & Conditions
-                  </h2>
-                  <ul>
-                    {footerAttributes?.terms?.map((term, i) => (
-                      <li key={i}>
-                        <a
-                          href={term?.path}
-                          className="mb-1 inline-block text-sm font-medium text-white hover:text-white/70 dark:text-black dark:hover:text-black/70"
-                        >
-                          {term?.name}
-                        </a>
-                      </li>
-                    ))}
-                  </ul>
-                </div>
-              </div>
-
-              <div className="w-full px-4 md:w-1/2 lg:w-4/12 xl:w-3/12">
-                <div className="mb-6 lg:mb-8">
-                  <h2 className="mb-2 text-lg font-bold text-white dark:text-black">
-                    Contact & Support
-                  </h2>
-                  <ul>
-                    {footerAttributes?.support?.map((support, i) => (
-                      <li key={i}>
-                        <a
-                          href={support?.path}
-                          className="mb-1 inline-block text-sm font-medium text-white hover:text-white/70 dark:text-black dark:hover:text-black/70"
-                        >
-                          {support?.name}
-                        </a>
-                      </li>
-                    ))}
-                  </ul>
-                </div>
-              </div>
+              ))}
             </div>
           </div>
           <div className="border-t border-white py-4 dark:border-black">

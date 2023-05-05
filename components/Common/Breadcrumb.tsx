@@ -1,4 +1,5 @@
 import Link from 'next/link';
+import { FiLink2 } from 'react-icons/fi';
 
 const Breadcrumb = ({
   pageName,
@@ -29,21 +30,7 @@ const Breadcrumb = ({
                     className="flex text-base font-medium leading-relaxed text-white underline dark:text-black"
                     href={source}
                   >
-                    <svg
-                      xmlns="http://www.w3.org/2000/svg"
-                      fill="none"
-                      viewBox="0 0 24 24"
-                      strokeWidth={1.5}
-                      stroke="currentColor"
-                      className="h-6 w-6 pr-2"
-                    >
-                      <path
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                        d="M13.19 8.688a4.5 4.5 0 011.242 7.244l-4.5 4.5a4.5 4.5 0 01-6.364-6.364l1.757-1.757m13.35-.622l1.757-1.757a4.5 4.5 0 00-6.364-6.364l-4.5 4.5a4.5 4.5 0 001.242 7.244"
-                      />
-                    </svg>
-                    {source}
+                    <FiLink2 className="h-[25px] w-[25px] pr-2" /> {source}
                   </Link>
                 )}
               </div>

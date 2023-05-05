@@ -6,7 +6,10 @@ const Features = ({ data }) => {
   const { title, categories } = data;
   return (
     <>
-      <section id="features" className="bg-primary/[.03] py-8 md:py-8 lg:py-16">
+      <section
+        id="features"
+        className="bg-primary/[.03] py-8 dark:bg-primary/10 md:py-8 lg:py-16"
+      >
         <div className="container">
           {/* <SectionTitle title={title} paragraph={null} center /> */}
 
