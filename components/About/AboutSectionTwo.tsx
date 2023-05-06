@@ -17,7 +17,7 @@ const AboutSectionTwo = ({ data }) => {
     <section className="lg:py-15 bg-white py-5 dark:bg-primary/5">
       <div className="container">
         {title && (
-          <SectionTitle title={title} paragraph={description} left={true} />
+          <SectionTitle title={title} paragraph={description} center={false} />
         )}
         <div className="-mx-4 flex flex-wrap items-center">
           <div className="w-full px-4 lg:w-1/2">

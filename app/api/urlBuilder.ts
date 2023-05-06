@@ -5,8 +5,8 @@ const getStrapiURL = (path = '') => {
 };
 
 const getStrapiMedia = (media) => {
-  const { url } = media.data.attributes;
-  const imageUrl = url.startsWith('/') ? getStrapiURL(url) : url;
+  const url = media?.data?.attributes?.url;
+  const imageUrl = url?.startsWith('/') ? getStrapiURL(url) : url;
   return imageUrl;
 };
 

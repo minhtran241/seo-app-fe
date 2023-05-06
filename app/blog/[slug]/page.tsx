@@ -20,7 +20,7 @@ const getBlog = async (slug: string) => {
     variables: { slug: slug },
   });
   return {
-    id: data.blogPosts.data[0].id,
+    id: data?.blogPosts?.data[0]?.id,
     ...data?.blogPosts?.data[0]?.attributes,
   };
 };

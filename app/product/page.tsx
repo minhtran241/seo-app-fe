@@ -1,6 +1,3 @@
-import SingleBlog from '@/components/Blog/SingleBlog';
-import blogData from '@/components/Blog/blogData';
-import Breadcrumb from '@/components/Common/Breadcrumb';
 import { apolloClient } from '../api/apollo-client';
 import { GET_CATEGORIES_PRODUCTS } from '../api/graphql/queries';
 import Link from 'next/link';
