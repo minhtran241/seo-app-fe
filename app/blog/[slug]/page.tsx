@@ -104,21 +104,24 @@ const BlogDetailsPage = async ({ params }: Props) => {
                 <div>
                   {blogAttrs.description && (
                     <p className="mb-10 text-base font-medium leading-relaxed text-black dark:text-white  sm:text-lg sm:leading-relaxed lg:text-base lg:leading-relaxed xl:text-lg xl:leading-relaxed">
-                      {blogAttrs.description}
+                      {blogAttrs?.description}
                     </p>
                   )}
-                  <div className="mb-10 w-full overflow-hidden rounded">
-                    <div className="relative aspect-[97/60] w-full sm:aspect-[97/44]">
-                      <Image
-                        src={getStrapiMedia(blogAttrs.thumbnail)}
-                        alt="image"
-                        fill
-                        className="object-cover object-center"
-                      />
+                  {blogAttrs?.thumbnail?.data?.attributes && (
+                    <div className="mb-10 w-full overflow-hidden rounded">
+                      <div className="relative aspect-[97/60] w-full sm:aspect-[97/44]">
+                        <Image
+                          src={getStrapiMedia(blogAttrs?.thumbnail)}
+                          alt="image"
+                          fill
+                          className="object-cover object-center"
+                        />
+                      </div>
                     </div>
-                  </div>
+                  )}
+
                   <div className="mb-8 text-base leading-relaxed text-black dark:text-white sm:text-lg sm:leading-relaxed lg:text-base lg:leading-relaxed xl:text-lg xl:leading-relaxed">
-                    {parse(blogAttrs.content)}
+                    {parse(blogAttrs?.content)}
                   </div>
 
                   <div className="items-center justify-between sm:flex">

@@ -36,28 +36,30 @@ const Detail = ({ data }) => {
                 );
               })}
             </div>
-            <div className="w-full px-4 lg:w-1/2">
-              <div
-                className="wow fadeInUp relative mb-12 aspect-[25/24] max-w-[500px] text-center lg:m-0"
-                data-wow-delay=".15s"
-              >
-                {roundedImage ? (
-                  <Image
-                    className="rounded-full border border-primary bg-primary"
-                    src={getStrapiMedia(media)}
-                    alt="about image"
-                    fill
-                  />
-                ) : (
-                  <Image
-                    className="border border-primary bg-primary"
-                    src={getStrapiMedia(media)}
-                    alt="about image"
-                    fill
-                  />
-                )}
+            {media && (
+              <div className="w-full px-4 lg:w-1/2">
+                <div
+                  className="wow fadeInUp relative mb-12 aspect-[25/24] max-w-[500px] text-center lg:m-0"
+                  data-wow-delay=".15s"
+                >
+                  {roundedImage ? (
+                    <Image
+                      className="rounded-full border border-primary bg-primary"
+                      src={getStrapiMedia(media)}
+                      alt="about image"
+                      fill
+                    />
+                  ) : (
+                    <Image
+                      className="border border-primary bg-primary"
+                      src={getStrapiMedia(media)}
+                      alt="about image"
+                      fill
+                    />
+                  )}
+                </div>
               </div>
-            </div>
+            )}
           </div>
         </div>
       </section>

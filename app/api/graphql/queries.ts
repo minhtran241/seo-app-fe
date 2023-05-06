@@ -19,10 +19,6 @@ const GET_HOME_PAGE: DocumentNode = gql`
             }
             title
             description
-            button {
-              title
-              link
-            }
           }
           Categories {
             title

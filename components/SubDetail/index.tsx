@@ -10,30 +10,32 @@ const SubDetail = ({ data }) => {
         <section className="lg:py-17 bg-primary/[.03] py-7 dark:bg-primary/10 md:py-7">
           <div className="container mx-auto">
             <div className="-mx-4 flex flex-wrap items-center">
-              <div className="w-full px-4 lg:w-1/2">
-                <div
-                  className="wow fadeInUp relative mb-12 max-w-[500px] text-center lg:m-0"
-                  data-wow-delay=".15s"
-                >
-                  {roundedImage ? (
-                    <Image
-                      className="rounded-full border border-primary"
-                      src={getStrapiMedia(media)}
-                      alt="about image"
-                      width={545}
-                      height={400}
-                    />
-                  ) : (
-                    <Image
-                      className="border border-primary"
-                      src={getStrapiMedia(media)}
-                      alt="about image"
-                      width={545}
-                      height={400}
-                    />
-                  )}
+              {media && (
+                <div className="w-full px-4 lg:w-1/2">
+                  <div
+                    className="wow fadeInUp relative mb-12 max-w-[500px] text-center lg:m-0"
+                    data-wow-delay=".15s"
+                  >
+                    {roundedImage ? (
+                      <Image
+                        className="rounded-full border border-primary"
+                        src={getStrapiMedia(media)}
+                        alt="about image"
+                        width={545}
+                        height={400}
+                      />
+                    ) : (
+                      <Image
+                        className="border border-primary"
+                        src={getStrapiMedia(media)}
+                        alt="about image"
+                        width={545}
+                        height={400}
+                      />
+                    )}
+                  </div>
                 </div>
-              </div>
+              )}
               <div className="w-full px-4 lg:w-1/2">
                 <div className="mb-8">
                   <h1 className="text-2xl font-semibold text-primary lg:text-3xl">
@@ -71,30 +73,32 @@ const SubDetail = ({ data }) => {
                   </div>
                 </div>
               </div>
-              <div className="w-full px-4 lg:w-1/2">
-                <div
-                  className="wow fadeInUp relative mb-12 max-w-[500px] text-center lg:m-0"
-                  data-wow-delay=".15s"
-                >
-                  {roundedImage ? (
-                    <Image
-                      className="rounded-full border border-primary"
-                      src={getStrapiMedia(media)}
-                      alt="about image"
-                      width={545}
-                      height={400}
-                    />
-                  ) : (
-                    <Image
-                      className="border border-primary"
-                      src={getStrapiMedia(media)}
-                      alt="about image"
-                      width={545}
-                      height={400}
-                    />
-                  )}
+              {media && (
+                <div className="w-full px-4 lg:w-1/2">
+                  <div
+                    className="wow fadeInUp relative mb-12 max-w-[500px] text-center lg:m-0"
+                    data-wow-delay=".15s"
+                  >
+                    {roundedImage ? (
+                      <Image
+                        className="rounded-full border border-primary"
+                        src={getStrapiMedia(media)}
+                        alt="about image"
+                        width={545}
+                        height={400}
+                      />
+                    ) : (
+                      <Image
+                        className="border border-primary"
+                        src={getStrapiMedia(media)}
+                        alt="about image"
+                        width={545}
+                        height={400}
+                      />
+                    )}
+                  </div>
                 </div>
-              </div>
+              )}
             </div>
           </div>
         </section>

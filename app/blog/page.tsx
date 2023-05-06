@@ -1,19 +1,10 @@
 import SingleBlog from '@/components/Blog/SingleBlog';
-import blogData from '@/components/Blog/blogData';
 import Breadcrumb from '@/components/Common/Breadcrumb';
-import { apolloClient } from '../api/apollo-client';
-import { GET_BLOG_POSTS } from '../api/graphql/queries';
-
-const getBlogs = async () => {
-  const { data } = await apolloClient.query({
-    query: GET_BLOG_POSTS,
-  });
-
-  return data?.blogPosts?.data;
-};
+import { blogsDataCache, preload } from '@/utils/blog/getBlogsData';
 
 const Blog = async () => {
-  const blogData = await getBlogs();
+  preload();
+  const blogData = await blogsDataCache();
   return (
     <>
       <title>PAMA | Blog</title>
@@ -21,6 +12,7 @@ const Blog = async () => {
       <Breadcrumb
         pageName="PAMA Blog"
         description="Lorem ipsum dolor sit amet, consectetur adipiscing elit. In varius eros eget sapien consectetur ultrices. Ut quis dapibus libero."
+        source={null}
       />
 
       <section className="pt-[120px] pb-[120px]">

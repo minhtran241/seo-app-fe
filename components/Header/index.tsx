@@ -1,28 +1,26 @@
 import Image from 'next/image';
 import Link from 'next/link';
-import { useEffect, useState } from 'react';
 import ThemeToggler from './ThemeToggler';
-import { apolloClient } from '@/app/api/apollo-client';
-import { GET_CATEGORIES_PRODUCTS, GET_HEADER } from '@/app/api/graphql/queries';
 import { getStrapiMedia } from '@/app/api/urlBuilder';
 import { Dropdown, Navbar } from 'flowbite-react';
+import { getHeaderDataCache, preload } from '@/utils/header';
+import { useEffect, useState } from 'react';
+import { Header } from '@/types/header';
 
 const Header = () => {
-  const [categories, setCategories] = useState([]);
-  const [headerAttributes, setHeaderAttributes] = useState();
+  let [headerAttributes, setHeaderAttributes] = useState<Header>();
   useEffect(() => {
-    apolloClient
-      .query({
-        query: GET_CATEGORIES_PRODUCTS,
-      })
-      .then((data) => {
-        setCategories(data?.data?.categories?.data);
+    if (window.localStorage.getItem('headerAttributes') != null) {
+      setHeaderAttributes(
+        JSON.parse(window.localStorage.getItem('headerAttributes'))
+      );
+    } else {
+      preload();
+      getHeaderDataCache().then((data) => {
+        setHeaderAttributes(data);
+        window.localStorage.setItem('headerAttributes', JSON.stringify(data));
       });
-    apolloClient
-      .query({
-        query: GET_HEADER,
-      })
-      .then(({ data }) => setHeaderAttributes(data?.header?.data?.attributes));
+    }
   }, []);
   if (headerAttributes) {
     return (

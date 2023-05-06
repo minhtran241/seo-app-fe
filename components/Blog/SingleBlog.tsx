@@ -3,9 +3,9 @@ import { Blog } from '@/types/blog';
 import Image from 'next/image';
 import Link from 'next/link';
 
-const SingleBlog = ({ blog }) => {
+const SingleBlog = ({ blog }: { blog: Blog }) => {
   const { title, slug, description, thumbnail, publishedAt, author } = blog;
-  const authorName: string = author.data.attributes.fullname;
+  const authorName: string = author?.data?.attributes?.fullname;
 
   return (
     <>
@@ -13,12 +13,14 @@ const SingleBlog = ({ blog }) => {
         className="wow fadeInUp relative overflow-hidden"
         data-wow-delay=".1s"
       >
-        <Link
-          href={`/blog/${slug}`}
-          className="relative block h-[220px] w-full border border-primary"
-        >
-          <Image src={getStrapiMedia(thumbnail)} alt="image" fill />
-        </Link>
+        {thumbnail?.data?.attributes && (
+          <Link
+            href={`/blog/${slug}`}
+            className="relative block h-[220px] w-full border border-primary"
+          >
+            <Image src={getStrapiMedia(thumbnail)} alt="image" fill />
+          </Link>
+        )}
         <div className="py-3 sm:py-8 md:py-8 xl:py-8">
           <p>
             <Link

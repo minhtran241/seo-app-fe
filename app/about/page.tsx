@@ -4,9 +4,12 @@ import { use } from 'react';
 import Timeline from '@/components/Timeline';
 import Detail from '@/components/Detail';
 import Head from 'next/head';
+import { preload } from '@/utils/about/getAboutData';
+import { aboutDataCache } from '@/utils/about/getAboutData';
 
-const AboutPage = () => {
-  const aboutUsData = use(getAboutData());
+const AboutPage = async () => {
+  preload();
+  const aboutUsData = await aboutDataCache();
   const { name, description, details, media } = aboutUsData?.Development;
   return (
     <>
@@ -15,6 +18,7 @@ const AboutPage = () => {
       <Breadcrumb
         pageName={aboutUsData?.title}
         description={aboutUsData?.description}
+        source={null}
       />
       {/* <Cover data={aboutUsData?.Cover} /> */}
       <Timeline data={aboutUsData?.Formation} />

@@ -31,15 +31,17 @@ const Hero = ({ data }) => {
               </a>
             </div> */}
           </div>
-          <div className="xl:h-112 2xl:h-128 mt-8 flex h-72 items-center justify-center p-6 sm:h-80 lg:mt-0 lg:h-96">
-            <Image
-              src={getStrapiMedia(data?.media)}
-              alt=""
-              className="xl:h-112 2xl:h-128 h-72 object-contain sm:h-80 lg:h-96"
-              height={320}
-              width={640}
-            />
-          </div>
+          {data?.media?.data?.attributes && (
+            <div className="xl:h-112 2xl:h-128 mt-8 flex h-72 items-center justify-center p-6 sm:h-80 lg:mt-0 lg:h-96">
+              <Image
+                src={getStrapiMedia(data?.media)}
+                alt=""
+                className="xl:h-112 2xl:h-128 h-72 object-contain sm:h-80 lg:h-96"
+                height={320}
+                width={640}
+              />
+            </div>
+          )}
         </div>
       </section>
     </>

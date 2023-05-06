@@ -10,20 +10,22 @@ const Timeline = ({ data }) => {
       <section className="bg-primary/[.03] py-16 dark:bg-primary/10 md:py-20 lg:py-28">
         <div className="container">
           <div className="-mx-4 flex flex-wrap items-center">
-            <div className="h-full w-full px-4 pb-8 lg:w-1/2">
-              <div
-                className="wow fadeInUp relative mx-auto max-w-[500px] border lg:m-0"
-                data-wow-delay=".15s"
-              >
-                <Image
-                  src={getStrapiMedia(historyImage)}
-                  alt="Timeline Image"
-                  width={500}
-                  height={1000}
-                  className="border !border-primary"
-                />
+            {historyImage?.data?.attributes && (
+              <div className="h-full w-full px-4 pb-8 lg:w-1/2">
+                <div
+                  className="wow fadeInUp relative mx-auto max-w-[500px] border lg:m-0"
+                  data-wow-delay=".15s"
+                >
+                  <Image
+                    src={getStrapiMedia(historyImage)}
+                    alt="Timeline Image"
+                    width={500}
+                    height={1000}
+                    className="border !border-primary"
+                  />
+                </div>
               </div>
-            </div>
+            )}
             <div className="w-full px-4 lg:w-1/2">
               <div className="wow fadeInUp max-w-[470px]" data-wow-delay=".2s">
                 <ol className="border-l-2 border-body-color">
