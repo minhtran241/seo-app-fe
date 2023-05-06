@@ -5,7 +5,11 @@ const nextConfig = {
   },
   images: {
     loader: 'default',
-    domains: ['localhost'],
+    domains: ['localhost', '188.166.209.113'],
+  },
+  i18n: {
+    locales: ['en', 'vi'],
+    defaultLocale: 'en',
   },
 };
 
