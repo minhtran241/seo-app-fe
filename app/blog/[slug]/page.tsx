@@ -9,12 +9,26 @@ import { getStrapiMedia } from '@/app/api/urlBuilder';
 import parse from 'html-react-parser';
 import { notFound } from 'next/navigation';
 import { FaCalendar, FaEye } from 'react-icons/fa';
+import { useMutation } from '@apollo/client';
 
 type Props = {
   params: { slug: string };
 };
 
-const getBlog = async (slug: string) => {
+type SingleBlog = {
+  id: string;
+  title: string;
+  description: string;
+  thumbnail: any;
+  views: number;
+  author: any;
+  publishedAt: string;
+  content: string;
+  translator: string;
+  source: string;
+};
+
+const getBlog = async (slug: string): Promise<SingleBlog> => {
   const { data } = await apolloClient.query({
     query: GET_BLOG_POST,
     variables: { slug: slug },
@@ -25,24 +39,27 @@ const getBlog = async (slug: string) => {
   };
 };
 
-const updateBlogViews = async (id: string, views: number) => {
-  const { data } = await apolloClient.mutate({
+const updateBlogViews = async (id: string, views: number): Promise<void> => {
+  await apolloClient.mutate({
     mutation: UPDATE_BLOG_POST_VIEWS,
     variables: { id: id, views: views },
   });
-  const blogViews = data?.updateBlogPost?.data?.attributes?.views;
-  return blogViews;
+  // const blogViews: number = data?.updateBlogPost?.data?.attributes?.views || 0;
+  // return blogViews;
 };
 
 const BlogDetailsPage = async ({ params }: Props) => {
   const { slug } = params;
   const blogAttrs = await getBlog(slug);
-  const blogViews = await updateBlogViews(blogAttrs?.id, blogAttrs?.views + 1);
 
   if (!blogAttrs) {
     notFound();
     return null;
   }
+  // await apolloClient.mutate({
+  //   mutation: UPDATE_BLOG_POST_VIEWS,
+  //   variables: { id: blogAttrs?.id, views: blogAttrs?.views + 1 },
+  // });
 
   return (
     <>
@@ -82,13 +99,13 @@ const BlogDetailsPage = async ({ params }: Props) => {
                         <span className="mr-2">
                           <FaCalendar />
                         </span>
-                        {new Date(blogAttrs.publishedAt).toLocaleDateString()}
+                        {new Date(blogAttrs?.publishedAt).toLocaleDateString()}
                       </p>
                       <p className="flex items-center text-base font-medium text-dark">
                         <span className="mr-2">
                           <FaEye />
                         </span>
-                        {blogViews}
+                        {blogAttrs?.views}
                       </p>
                     </div>
                   </div>
@@ -102,7 +119,7 @@ const BlogDetailsPage = async ({ params }: Props) => {
                   </div> */}
                 </div>
                 <div>
-                  {blogAttrs.description && (
+                  {blogAttrs?.description && (
                     <p className="mb-10 text-base font-medium leading-relaxed text-black dark:text-white  sm:text-lg sm:leading-relaxed lg:text-base lg:leading-relaxed xl:text-lg xl:leading-relaxed">
                       {blogAttrs?.description}
                     </p>
@@ -112,7 +129,7 @@ const BlogDetailsPage = async ({ params }: Props) => {
                       <div className="relative aspect-[97/60] w-full sm:aspect-[97/44]">
                         <Image
                           src={getStrapiMedia(blogAttrs?.thumbnail)}
-                          alt="image"
+                          alt="Blog Thumbnail"
                           fill
                           className="object-cover object-center"
                         />
@@ -121,7 +138,7 @@ const BlogDetailsPage = async ({ params }: Props) => {
                   )}
 
                   <div className="mb-8 text-base leading-relaxed text-black dark:text-white sm:text-lg sm:leading-relaxed lg:text-base lg:leading-relaxed xl:text-lg xl:leading-relaxed">
-                    {parse(blogAttrs?.content)}
+                    {parse(blogAttrs?.content || '')}
                   </div>
 
                   <div className="items-center justify-between sm:flex">
