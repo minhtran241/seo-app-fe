@@ -9,21 +9,9 @@ import { FaFacebookSquare, FaEnvelope } from 'react-icons/fa';
 const Footer = () => {
   const [footerAttributes, setFooterAttributes] = useState<Footer>();
   useEffect(() => {
-    // if (window.localStorage.getItem('footerAttributes') != null) {
-    //   setFooterAttributes(
-    //     JSON.parse(window.localStorage.getItem('footerAttributes'))
-    //   );
-    // } else {
-    //   preload();
-    //   getFooterDataCache().then((data) => {
-    //     setFooterAttributes(data);
-    //     window.localStorage.setItem('footerAttributes', JSON.stringify(data));
-    //   });
-    // }
     preload();
     getFooterDataCache().then((data) => {
       setFooterAttributes(data);
-      // window.localStorage.setItem('footerAttributes', JSON.stringify(data));
     });
   }, []);
   if (footerAttributes) {

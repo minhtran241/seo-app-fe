@@ -8,23 +8,11 @@ import { useEffect, useState } from 'react';
 import { Header } from '@/types/header';
 
 const Header = () => {
-  let [headerAttributes, setHeaderAttributes] = useState<Header>();
+  const [headerAttributes, setHeaderAttributes] = useState<Header>();
   useEffect(() => {
-    // if (window.localStorage.getItem('headerAttributes') != null) {
-    //   setHeaderAttributes(
-    //     JSON.parse(window.localStorage.getItem('headerAttributes'))
-    //   );
-    // } else {
-    //   preload();
-    //   getHeaderDataCache().then((data) => {
-    //     setHeaderAttributes(data);
-    //     window.localStorage.setItem('headerAttributes', JSON.stringify(data));
-    //   });
-    // }
     preload();
     getHeaderDataCache().then((data) => {
       setHeaderAttributes(data);
-      // window.localStorage.setItem('headerAttributes', JSON.stringify(data));
     });
   }, []);
   if (headerAttributes) {
