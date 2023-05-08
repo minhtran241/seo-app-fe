@@ -5,7 +5,7 @@ const nextConfig = {
   },
   images: {
     loader: 'default',
-    domains: ['localhost', '188.166.209.113'],
+    domains: ['localhost', '188.166.209.113', 'cms.pama.com.vn'],
   },
   i18n: {
     locales: ['en', 'vi'],
