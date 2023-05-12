@@ -13,6 +13,16 @@ export async function generateStaticParams() {
   return languages.map((lng) => ({ lng }));
 }
 
+export const metadata = {
+  icons: {
+    icon: {
+      url: 'favicon.ico',
+      type: 'image/png',
+    },
+    shortcut: { url: 'favicon.ico', type: 'image/png' },
+  },
+};
+
 export default function RootLayout({
   children,
   params: { lng },
