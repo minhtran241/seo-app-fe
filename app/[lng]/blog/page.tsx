@@ -6,15 +6,57 @@ import {
   blogsDataCache,
   preload,
 } from '@/utils/blog/getBlogsData';
+import { getStrapiMedia } from '../api/urlBuilder';
 
 const Blog = async ({ params: { lng } }: Props) => {
   preload(lng);
-  const { metadata, title, description } = (await blogPageDataCache(lng)) || {};
+  const { Seo, title, description } = (await blogPageDataCache(lng)) || {};
   const blogData = await blogsDataCache(lng);
+  const {
+    metaTitle,
+    metaDescription,
+    metaImage,
+    keywords,
+    metaViewport,
+    metaRobots,
+    canonicalURL,
+    metaSocial,
+  } = Seo || {};
   return (
     <>
-      <title>{metadata?.title}</title>
-      <meta name="description" content={metadata?.description} />
+      <title>{metaTitle}</title>
+      <meta name="description" content={metaDescription} key="description" />
+      <meta name="keywords" content={keywords} />
+      <meta
+        property="og:image"
+        content={getStrapiMedia(metaImage)}
+        key="og:image"
+      />
+      <meta property="og:title" content={metaTitle} key="og:title" />
+      <meta
+        property="og:description"
+        content={metaDescription}
+        key="og:description"
+      />
+      <meta name="viewport" content={metaViewport} />
+      <link rel="canonical" href={canonicalURL} />
+      <meta name="robots" content={metaRobots}></meta>
+      {metaSocial?.map((soc) => (
+        <>
+          <meta
+            name={`${soc?.socialNetwork?.toLowerCase()}:title`}
+            content={soc?.title}
+          />
+          <meta
+            name={`${soc?.socialNetwork?.toLowerCase()}:description`}
+            content={soc?.description}
+          />
+          <meta
+            name={`${soc?.socialNetwork?.toLowerCase()}:image`}
+            content={getStrapiMedia(soc?.image)}
+          ></meta>
+        </>
+      ))}
       <Breadcrumb pageName={title} description={description} source={null} />
 
       <section className="bg-white pt-[120px] pb-[120px] dark:bg-gray-900">

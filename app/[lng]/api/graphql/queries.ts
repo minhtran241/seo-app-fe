@@ -5,9 +5,32 @@ const GET_HOME_PAGE: DocumentNode = gql`
     home(locale: $locale) {
       data {
         attributes {
-          Metadata {
-            title
-            description
+          Seo {
+            metaTitle
+            metaDescription
+            metaImage {
+              data {
+                attributes {
+                  url
+                }
+              }
+            }
+            keywords
+            metaViewport
+            metaRobots
+            canonicalURL
+            metaSocial {
+              socialNetwork
+              title
+              description
+              image {
+                data {
+                  attributes {
+                    url
+                  }
+                }
+              }
+            }
           }
           Hero {
             media {
@@ -108,9 +131,32 @@ const GET_ABOUT_US_PAGE: DocumentNode = gql`
     aboutUs(locale: $locale) {
       data {
         attributes {
-          Metadata {
-            title
-            description
+          Seo {
+            metaTitle
+            metaDescription
+            metaImage {
+              data {
+                attributes {
+                  url
+                }
+              }
+            }
+            keywords
+            metaViewport
+            metaRobots
+            canonicalURL
+            metaSocial {
+              socialNetwork
+              title
+              description
+              image {
+                data {
+                  attributes {
+                    url
+                  }
+                }
+              }
+            }
           }
           title
           description
@@ -206,6 +252,33 @@ const GET_BLOG_POST: DocumentNode = gql`
       data {
         id
         attributes {
+          Seo {
+            metaTitle
+            metaDescription
+            metaImage {
+              data {
+                attributes {
+                  url
+                }
+              }
+            }
+            keywords
+            metaViewport
+            metaRobots
+            canonicalURL
+            metaSocial {
+              socialNetwork
+              title
+              description
+              image {
+                data {
+                  attributes {
+                    url
+                  }
+                }
+              }
+            }
+          }
           title
           slug
           translator
@@ -268,6 +341,33 @@ const GET_PRODUCTS_DETAILS: DocumentNode = gql`
     products(filters: { slug: { eq: $slug } }, locale: $locale) {
       data {
         attributes {
+          Seo {
+            metaTitle
+            metaDescription
+            metaImage {
+              data {
+                attributes {
+                  url
+                }
+              }
+            }
+            keywords
+            metaViewport
+            metaRobots
+            canonicalURL
+            metaSocial {
+              socialNetwork
+              title
+              description
+              image {
+                data {
+                  attributes {
+                    url
+                  }
+                }
+              }
+            }
+          }
           name
           description
           thumbnail {
@@ -300,6 +400,33 @@ const GET_SOLUTION_DETAILS: DocumentNode = gql`
     solutions(filters: { slug: { eq: $slug } }, locale: $locale) {
       data {
         attributes {
+          Seo {
+            metaTitle
+            metaDescription
+            metaImage {
+              data {
+                attributes {
+                  url
+                }
+              }
+            }
+            keywords
+            metaViewport
+            metaRobots
+            canonicalURL
+            metaSocial {
+              socialNetwork
+              title
+              description
+              image {
+                data {
+                  attributes {
+                    url
+                  }
+                }
+              }
+            }
+          }
           name
           description
           thumbnail {
@@ -516,9 +643,32 @@ const GET_BLOG_PAGE: DocumentNode = gql`
     blogPage(locale: $locale) {
       data {
         attributes {
-          metadata {
-            title
-            description
+          Seo {
+            metaTitle
+            metaDescription
+            metaImage {
+              data {
+                attributes {
+                  url
+                }
+              }
+            }
+            keywords
+            metaViewport
+            metaRobots
+            canonicalURL
+            metaSocial {
+              socialNetwork
+              title
+              description
+              image {
+                data {
+                  attributes {
+                    url
+                  }
+                }
+              }
+            }
           }
           title
           description
@@ -543,5 +693,5 @@ export {
   GET_POPULAR_PRODUCTS,
   GET_POPULAR_SOLUTIONS,
   UPDATE_BLOG_POST_VIEWS,
-	GET_BLOG_PAGE
+  GET_BLOG_PAGE,
 };

@@ -15,8 +15,12 @@ export function middleware(request: NextRequest): NextResponse {
   let lng: string;
   if (request.cookies.has(cookieName))
     lng = acceptLanguage.get(request.cookies.get(cookieName).value);
-  if (!lng) lng = acceptLanguage.get(request.headers.get('Accept-Language'));
-  if (!lng) lng = fallbackLng;
+  lng =
+    lng ||
+    acceptLanguage.get(request.headers.get('Accept-Language')) ||
+    fallbackLng;
+  // if (!lng) lng = acceptLanguage.get(request.headers.get('Accept-Language'));
+  // if (!lng) lng = fallbackLng;
 
   if (
     !languages.some((loc) => request.nextUrl.pathname.startsWith(`/${loc}`)) &&

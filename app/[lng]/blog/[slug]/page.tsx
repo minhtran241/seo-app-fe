@@ -3,7 +3,7 @@ import Image from 'next/image';
 import parse from 'html-react-parser';
 import { notFound } from 'next/navigation';
 import { FaCalendar, FaEye } from 'react-icons/fa';
-import { useMutation } from '@apollo/client';
+// import { useMutation } from '@apollo/client';
 import { apolloClient } from '../../api/apollo-client';
 import {
   GET_BLOG_POST,
@@ -14,6 +14,7 @@ import { SingleProps } from '@/types/lng';
 
 type SingleBlog = {
   id: string;
+  Seo: any;
   title: string;
   description: string;
   thumbnail: any;
@@ -57,11 +58,52 @@ const BlogDetailsPage = async ({ params }: SingleProps) => {
   //   mutation: UPDATE_BLOG_POST_VIEWS,
   //   variables: { id: blogAttrs?.id, views: blogAttrs?.views + 1 },
   // });
+  const {
+    metaTitle,
+    metaDescription,
+    metaImage,
+    keywords,
+    metaViewport,
+    metaRobots,
+    canonicalURL,
+    metaSocial,
+  } = blogAttrs?.Seo || {};
 
   return (
     <>
-      <title>{`PAMA Blog | ${blogAttrs?.title}`}</title>
-      <meta name="description" content={blogAttrs?.description} />
+      <title>{metaTitle}</title>
+      <meta name="description" content={metaDescription} key="description" />
+      <meta name="keywords" content={keywords} />
+      <meta
+        property="og:image"
+        content={getStrapiMedia(metaImage)}
+        key="og:image"
+      />
+      <meta property="og:title" content={metaTitle} key="og:title" />
+      <meta
+        property="og:description"
+        content={metaDescription}
+        key="og:description"
+      />
+      <meta name="viewport" content={metaViewport} />
+      <link rel="canonical" href={canonicalURL} />
+      <meta name="robots" content={metaRobots}></meta>
+      {metaSocial?.map((soc) => (
+        <>
+          <meta
+            name={`${soc?.socialNetwork?.toLowerCase()}:title`}
+            content={soc?.title}
+          />
+          <meta
+            name={`${soc?.socialNetwork?.toLowerCase()}:description`}
+            content={soc?.description}
+          />
+          <meta
+            name={`${soc?.socialNetwork?.toLowerCase()}:image`}
+            content={getStrapiMedia(soc?.image)}
+          ></meta>
+        </>
+      ))}
       <section className="bg-white pt-[80px] pb-[120px] dark:bg-gray-900">
         <div className="container">
           <div className="-mx-4 flex flex-wrap justify-center">
