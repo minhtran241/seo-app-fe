@@ -1,8 +1,8 @@
 import { DocumentNode, gql } from '@apollo/client';
 
 const GET_HOME_PAGE: DocumentNode = gql`
-  query {
-    home {
+  query ($locale: I18NLocaleCode) {
+    home(locale: $locale) {
       data {
         attributes {
           Metadata {
@@ -18,6 +18,7 @@ const GET_HOME_PAGE: DocumentNode = gql`
               }
             }
             title
+            tag
             description
           }
           Categories {
@@ -28,6 +29,13 @@ const GET_HOME_PAGE: DocumentNode = gql`
                   name
                   description
                   slug
+                  media {
+                    data {
+                      attributes {
+                        url
+                      }
+                    }
+                  }
                 }
               }
             }
@@ -47,36 +55,45 @@ const GET_HOME_PAGE: DocumentNode = gql`
               description
             }
           }
-        }
-      }
-    }
-  }
-`;
-
-const GET_HOME_BLOGS: DocumentNode = gql`
-  query {
-    blogPosts(
-      filters: { published: { eq: true } }
-      sort: "createdAt:desc"
-      pagination: { limit: 3 }
-    ) {
-      data {
-        attributes {
-          title
-          slug
-          description
-          thumbnail {
-            data {
-              attributes {
-                url
+          Brands {
+            title
+            description
+            brands {
+              name
+              href
+              media {
+                data {
+                  attributes {
+                    url
+                  }
+                }
               }
             }
           }
-          publishedAt
-          author {
-            data {
-              attributes {
-                fullname
+          Blogs {
+            title
+            blogs {
+              data {
+                attributes {
+                  title
+                  description
+                  slug
+                  thumbnail {
+                    data {
+                      attributes {
+                        url
+                      }
+                    }
+                  }
+                  author {
+                    data {
+                      attributes {
+                        fullname
+                      }
+                    }
+                  }
+                  publishedAt
+                }
               }
             }
           }
@@ -87,8 +104,8 @@ const GET_HOME_BLOGS: DocumentNode = gql`
 `;
 
 const GET_ABOUT_US_PAGE: DocumentNode = gql`
-  query {
-    aboutUs {
+  query ($locale: I18NLocaleCode) {
+    aboutUs(locale: $locale) {
       data {
         attributes {
           Metadata {
@@ -105,6 +122,7 @@ const GET_ABOUT_US_PAGE: DocumentNode = gql`
             }
           }
           Formation {
+            title
             History(sort: "order:asc") {
               name
               description
@@ -117,13 +135,24 @@ const GET_ABOUT_US_PAGE: DocumentNode = gql`
               }
             }
           }
-          Development {
-            name
+          Features {
+            title
             description
-            details(sort: "order:asc") {
+            features {
               name
               description
+              media {
+                data {
+                  attributes {
+                    url
+                  }
+                }
+              }
             }
+          }
+          Team {
+            name
+            description
             media {
               data {
                 attributes {
@@ -139,8 +168,12 @@ const GET_ABOUT_US_PAGE: DocumentNode = gql`
 `;
 
 const GET_BLOG_POSTS: DocumentNode = gql`
-  query {
-    blogPosts(filters: { published: { eq: true } }, sort: "publishedAt:desc") {
+  query ($locale: I18NLocaleCode) {
+    blogPosts(
+      filters: { published: { eq: true } }
+      locale: $locale
+      sort: "publishedAt:desc"
+    ) {
       data {
         attributes {
           title
@@ -168,8 +201,8 @@ const GET_BLOG_POSTS: DocumentNode = gql`
 `;
 
 const GET_BLOG_POST: DocumentNode = gql`
-  query ($slug: String!) {
-    blogPosts(filters: { slug: { eq: $slug } }) {
+  query ($locale: I18NLocaleCode, $slug: String!) {
+    blogPosts(filters: { slug: { eq: $slug } }, locale: $locale) {
       data {
         id
         attributes {
@@ -202,8 +235,8 @@ const GET_BLOG_POST: DocumentNode = gql`
 `;
 
 const GET_CATEGORIES_PRODUCTS: DocumentNode = gql`
-  query {
-    categories {
+  query ($locale: I18NLocaleCode) {
+    categories(locale: $locale) {
       data {
         attributes {
           name
@@ -231,8 +264,8 @@ const GET_CATEGORIES_PRODUCTS: DocumentNode = gql`
 `;
 
 const GET_PRODUCTS_DETAILS: DocumentNode = gql`
-  query ($slug: String!) {
-    products(filters: { slug: { eq: $slug } }) {
+  query ($locale: I18NLocaleCode, $slug: String!) {
+    products(filters: { slug: { eq: $slug } }, locale: $locale) {
       data {
         attributes {
           name
@@ -263,8 +296,8 @@ const GET_PRODUCTS_DETAILS: DocumentNode = gql`
 `;
 
 const GET_SOLUTION_DETAILS: DocumentNode = gql`
-  query ($slug: String!) {
-    solutions(filters: { slug: { eq: $slug } }) {
+  query ($locale: I18NLocaleCode, $slug: String!) {
+    solutions(filters: { slug: { eq: $slug } }, locale: $locale) {
       data {
         attributes {
           name
@@ -295,8 +328,8 @@ const GET_SOLUTION_DETAILS: DocumentNode = gql`
 `;
 
 const GET_HEADER: DocumentNode = gql`
-  query {
-    header {
+  query ($locale: I18NLocaleCode) {
+    header(locale: $locale) {
       data {
         attributes {
           logo {
@@ -341,8 +374,8 @@ const GET_HEADER: DocumentNode = gql`
 `;
 
 const GET_FOOTER: DocumentNode = gql`
-  query {
-    footer {
+  query ($locale: I18NLocaleCode) {
+    footer(locale: $locale) {
       data {
         attributes {
           logo {
@@ -353,8 +386,6 @@ const GET_FOOTER: DocumentNode = gql`
             }
           }
           text
-          facebookLink
-          gmailLink
           sections {
             name
             Navs(sort: "order:asc") {
@@ -369,8 +400,8 @@ const GET_FOOTER: DocumentNode = gql`
 `;
 
 const GET_SOLUTIONS_RELATED_CONTENTS: DocumentNode = gql`
-  query ($slug: String!) {
-    solutions(filters: { slug: { eq: $slug } }) {
+  query ($locale: I18NLocaleCode, $slug: String!) {
+    solutions(filters: { slug: { eq: $slug } }, locale: $locale) {
       data {
         attributes {
           products(pagination: { limit: 6 }) {
@@ -395,8 +426,8 @@ const GET_SOLUTIONS_RELATED_CONTENTS: DocumentNode = gql`
 `;
 
 const GET_PRODUCTS_RELATED_CONTENT: DocumentNode = gql`
-  query ($slug: String!) {
-    products(filters: { slug: { eq: $slug } }) {
+  query ($locale: I18NLocaleCode, $slug: String!) {
+    products(filters: { slug: { eq: $slug } }, locale: $locale) {
       data {
         attributes {
           solutions(pagination: { limit: 6 }) {
@@ -421,8 +452,12 @@ const GET_PRODUCTS_RELATED_CONTENT: DocumentNode = gql`
 `;
 
 const GET_POPULAR_PRODUCTS: DocumentNode = gql`
-  query {
-    products(filters: { popular: { eq: true } }, pagination: { limit: 6 }) {
+  query ($locale: I18NLocaleCode) {
+    products(
+      filters: { popular: { eq: true } }
+      pagination: { limit: 6 }
+      locale: $locale
+    ) {
       data {
         attributes {
           name
@@ -441,8 +476,12 @@ const GET_POPULAR_PRODUCTS: DocumentNode = gql`
 `;
 
 const GET_POPULAR_SOLUTIONS: DocumentNode = gql`
-  query {
-    solutions(filters: { popular: { eq: true } }, pagination: { limit: 6 }) {
+  query ($locale: I18NLocaleCode) {
+    solutions(
+      filters: { popular: { eq: true } }
+      pagination: { limit: 6 }
+      locale: $locale
+    ) {
       data {
         attributes {
           name
@@ -472,9 +511,25 @@ const UPDATE_BLOG_POST_VIEWS: DocumentNode = gql`
   }
 `;
 
+const GET_BLOG_PAGE: DocumentNode = gql`
+  query ($locale: I18NLocaleCode) {
+    blogPage(locale: $locale) {
+      data {
+        attributes {
+          metadata {
+            title
+            description
+          }
+          title
+          description
+        }
+      }
+    }
+  }
+`;
+
 export {
   GET_HOME_PAGE,
-  GET_HOME_BLOGS,
   GET_ABOUT_US_PAGE,
   GET_BLOG_POST,
   GET_BLOG_POSTS,
@@ -488,4 +543,5 @@ export {
   GET_POPULAR_PRODUCTS,
   GET_POPULAR_SOLUTIONS,
   UPDATE_BLOG_POST_VIEWS,
+	GET_BLOG_PAGE
 };

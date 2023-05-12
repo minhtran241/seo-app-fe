@@ -1,7 +1,8 @@
 import Breadcrumb from '@/components/Common/Breadcrumb';
 import Contact from '@/components/Contact';
+import { Props } from '@/types/lng';
 
-const ContactPage = () => {
+const ContactPage = ({ params: { lng } }: Props) => {
   return (
     <>
       <title>PAMA | Contact</title>

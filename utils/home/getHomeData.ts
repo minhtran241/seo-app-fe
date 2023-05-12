@@ -1,15 +1,10 @@
-import { getHomeData, getHomeBlogs } from '@/app/api/home/data';
+import { getHomeData } from '@/app/[lng]/api/home/data';
 import { cache } from 'react';
 // import 'server-only';
 
-export const preload = () => {
-  void homeDataCache;
-  void blogsCache;
+export const preload = (lng: string) => {
+  void homeDataCache(lng);
 };
-export const homeDataCache = cache(async () => {
-  return await getHomeData();
-});
-
-export const blogsCache = cache(async () => {
-  return await getHomeBlogs();
+export const homeDataCache = cache(async (lng: string) => {
+  return await getHomeData(lng);
 });

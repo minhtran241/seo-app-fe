@@ -3,7 +3,7 @@ const SectionTitle = ({
   paragraph,
   width = '750px',
   center,
-  mb = '70px',
+  mb = '30px',
 }: {
   title: string;
   paragraph: string;
@@ -20,7 +20,7 @@ const SectionTitle = ({
         data-wow-delay=".1s"
         style={{ maxWidth: width, marginBottom: mb }}
       >
-        <h2 className="mb-2 text-lg font-bold !leading-tight text-black dark:text-white sm:text-xl md:text-[30px]">
+        <h2 className="mb-2 text-lg font-bold italic !leading-tight text-primary-title-dark dark:text-primary-title sm:text-xl md:text-[30px]">
           {title}
         </h2>
         {paragraph && (

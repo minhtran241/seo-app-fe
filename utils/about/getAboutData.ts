@@ -1,10 +1,10 @@
-import { getAboutData } from '@/app/api/about/data';
+import { getAboutData } from '@/app/[lng]/api/about/data';
 import { cache } from 'react';
 // import 'server-only';
 
-export const preload = () => {
-  void aboutDataCache;
+export const preload = (lng: string) => {
+  void aboutDataCache(lng);
 };
-export const aboutDataCache = cache(async () => {
-  return await getAboutData();
+export const aboutDataCache = cache(async (lng: string) => {
+  return await getAboutData(lng);
 });

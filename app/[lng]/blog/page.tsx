@@ -1,21 +1,23 @@
 import SingleBlog from '@/components/Blog/SingleBlog';
 import Breadcrumb from '@/components/Common/Breadcrumb';
-import { blogsDataCache, preload } from '@/utils/blog/getBlogsData';
+import { Props } from '@/types/lng';
+import {
+  blogPageDataCache,
+  blogsDataCache,
+  preload,
+} from '@/utils/blog/getBlogsData';
 
-const Blog = async () => {
-  preload();
-  const blogData = await blogsDataCache();
+const Blog = async ({ params: { lng } }: Props) => {
+  preload(lng);
+  const { metadata, title, description } = (await blogPageDataCache(lng)) || {};
+  const blogData = await blogsDataCache(lng);
   return (
     <>
-      <title>PAMA | Blog</title>
-      <meta name="description" content="PAMA Blogs" />
-      <Breadcrumb
-        pageName="PAMA Blog"
-        description="Lorem ipsum dolor sit amet, consectetur adipiscing elit. In varius eros eget sapien consectetur ultrices. Ut quis dapibus libero."
-        source={null}
-      />
+      <title>{metadata?.title}</title>
+      <meta name="description" content={metadata?.description} />
+      <Breadcrumb pageName={title} description={description} source={null} />
 
-      <section className="pt-[120px] pb-[120px]">
+      <section className="bg-white pt-[120px] pb-[120px] dark:bg-gray-900">
         <div className="container">
           <div className="-mx-4 flex flex-wrap justify-center">
             {blogData.map((blog, i) => (

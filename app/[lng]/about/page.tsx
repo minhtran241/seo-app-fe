@@ -1,18 +1,16 @@
 import Breadcrumb from '@/components/Common/Breadcrumb';
-import { getAboutData } from '../api/about/data';
-import { use } from 'react';
 import Timeline from '@/components/Timeline';
-import Detail from '@/components/Detail';
-import Head from 'next/head';
 import { preload } from '@/utils/about/getAboutData';
 import { aboutDataCache } from '@/utils/about/getAboutData';
 import Image from 'next/image';
+import { Props } from '@/types/lng';
 import { getStrapiMedia } from '../api/urlBuilder';
+import Features from '@/components/Features';
+import Detail from '@/components/Detail';
 
-const AboutPage = async () => {
-  preload();
-  const aboutUsData = await aboutDataCache();
-  const { name, description, details, media } = aboutUsData?.Development;
+const AboutPage = async ({ params: { lng } }: Props) => {
+  preload(lng);
+  const aboutUsData = await aboutDataCache(lng);
   return (
     <>
       <title>{aboutUsData?.Metadata?.title}</title>
@@ -23,22 +21,21 @@ const AboutPage = async () => {
         source={null}
       />
       {aboutUsData?.Cover?.data?.attributes && (
-        <section className="lg:py-17 py-7 md:py-7">
+        <section className="lg:py-17 bg-white py-7 dark:bg-gray-800 md:py-7">
           <div className="w-full px-4">
             <Image
               src={getStrapiMedia(aboutUsData?.Cover)}
               alt="About Us Cover"
               width={1500}
               height={300}
-              className="mx-auto border border-primary object-cover object-center"
+              className="mx-auto rounded object-cover object-center"
             />
           </div>
         </section>
       )}
+      <Features data={aboutUsData?.Features} />
       <Timeline data={aboutUsData?.Formation} />
-      <Detail
-        data={{ name, description, details, media, roundedImage: false }}
-      />
+      <Detail data={{ roundedImage: true, ...aboutUsData?.Team }} />
     </>
   );
 };

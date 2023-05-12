@@ -1,13 +1,13 @@
 import Image from 'next/image';
 import parse from 'html-react-parser';
-import { getStrapiMedia } from '@/app/api/urlBuilder';
+import { getStrapiMedia } from '@/app/[lng]/api/urlBuilder';
 
 const SubDetail = ({ data }) => {
   const { name, description, media, roundedImage, reversed } = data;
   return (
     <>
       {reversed ? (
-        <section className="lg:py-17 bg-primary/[.03] py-7 dark:bg-primary/10 md:py-7">
+        <section className="lg:py-15 bg-primary/[.03] py-5 dark:bg-primary/10 md:py-5">
           <div className="container mx-auto">
             <div className="-mx-4 flex flex-wrap items-center">
               {media && (
@@ -26,7 +26,7 @@ const SubDetail = ({ data }) => {
                       />
                     ) : (
                       <Image
-                        className="border border-primary"
+                        className="rounded border border-primary"
                         src={getStrapiMedia(media)}
                         alt="about image"
                         width={545}
@@ -38,7 +38,7 @@ const SubDetail = ({ data }) => {
               )}
               <div className="w-full px-4 lg:w-1/2">
                 <div className="mb-8">
-                  <h1 className="text-2xl font-semibold text-primary lg:text-3xl">
+                  <h1 className="text-2xl font-semibold text-primary-title-dark dark:text-primary-title lg:text-3xl">
                     {name}
                   </h1>
                 </div>
@@ -60,7 +60,7 @@ const SubDetail = ({ data }) => {
             <div className="-mx-4 flex flex-wrap items-center">
               <div className="w-full px-4 lg:w-1/2">
                 <div className="mb-8">
-                  <h1 className="text-2xl font-semibold text-primary lg:text-3xl">
+                  <h1 className="text-2xl font-semibold text-primary-title-dark dark:text-primary-title lg:text-3xl">
                     {name}
                   </h1>
                 </div>
@@ -89,7 +89,7 @@ const SubDetail = ({ data }) => {
                       />
                     ) : (
                       <Image
-                        className="border border-primary"
+                        className="rounded border border-primary"
                         src={getStrapiMedia(media)}
                         alt="about image"
                         width={545}

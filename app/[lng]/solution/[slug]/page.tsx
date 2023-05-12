@@ -1,92 +1,82 @@
-import { apolloClient } from '@/app/api/apollo-client';
+import { apolloClient } from '../../api/apollo-client';
 import {
-  GET_POPULAR_PRODUCTS,
-  GET_PRODUCTS_DETAILS,
-  GET_PRODUCTS_RELATED_CONTENT,
-} from '@/app/api/graphql/queries';
-import { getStrapiMedia } from '@/app/api/urlBuilder';
-import RelatedPost from '@/components/Blog/RelatedPost';
+  GET_POPULAR_SOLUTIONS,
+  GET_SOLUTIONS_RELATED_CONTENTS,
+  GET_SOLUTION_DETAILS,
+} from '../../api/graphql/queries';
 import Breadcrumb from '@/components/Common/Breadcrumb';
-import Image from 'next/image';
 import SubDetail from '@/components/SubDetail';
-// import { notFound } from 'next/navigation';
+import { notFound } from 'next/navigation';
+import RelatedPost from '@/components/Blog/RelatedPost';
+import { getStrapiMedia } from '../../api/urlBuilder';
+import Image from 'next/image';
+import { SingleProps } from '@/types/lng';
 
-type Props = {
-  params: { slug: string };
-};
-
-type Product = {
-  name: string;
-  description: string;
-  thumbnail: any;
-  source: string;
-  contents: any;
-};
-
-const getProduct = async (slug: string): Promise<Product> => {
+const getSolution = async (lng: string, slug: string) => {
   const { data } = await apolloClient.query({
-    query: GET_PRODUCTS_DETAILS,
-    variables: { slug: slug },
+    query: GET_SOLUTION_DETAILS,
+    variables: { locale: lng, slug },
   });
-  const productAttrs: Product = data?.products?.data[0]?.attributes;
-  return productAttrs;
+  const solutionAttrs = data?.solutions?.data[0]?.attributes;
+  return solutionAttrs;
 };
 
-const getRelatedSolutions = async (slug: string): Promise<[any]> => {
+const getRelatedProducts = async (lng: string, slug: string) => {
   const { data } = await apolloClient.query({
-    query: GET_PRODUCTS_RELATED_CONTENT,
-    variables: { slug },
+    query: GET_SOLUTIONS_RELATED_CONTENTS,
+    variables: { locale: lng, slug },
   });
-  const relatedSolutions: any =
-    data?.products?.data[0]?.attributes?.solutions?.data;
-  return relatedSolutions;
+  const relatedProducts = data?.solutions?.data[0]?.attributes?.products?.data;
+  return relatedProducts;
 };
 
-const getPopularProducts = async () => {
+const getPopularSolutions = async (lng: string) => {
   const { data } = await apolloClient.query({
-    query: GET_POPULAR_PRODUCTS,
+    query: GET_POPULAR_SOLUTIONS,
+    variables: { locale: lng },
   });
-  const popularProducts = data?.products?.data;
-  return popularProducts;
+  const popularSolutions = data?.solutions?.data;
+  return popularSolutions;
 };
 
-const ProductDetailsPage = async ({ params }: Props) => {
-  const { slug } = params;
-  const productAttrs = await getProduct(slug);
-  const relatedSolutions = await getRelatedSolutions(slug);
-  const popularProducts = await getPopularProducts();
+const SolutionDetailsPage = async ({ params }: SingleProps) => {
+  const { lng, slug } = params;
+  const solutionAttrs = await getSolution(lng, slug);
+  const relatedProducts = await getRelatedProducts(lng, slug);
+  const popularSolutions = await getPopularSolutions(lng);
 
-  // if (!productAttrs) {
-  //   notFound();
-  //   return null;
-  // }
-  const { name, description, thumbnail, source, contents } = productAttrs || {};
+  if (!solutionAttrs) {
+    notFound();
+    return null;
+  }
+  const { name, description, thumbnail, source, contents } = solutionAttrs;
   return (
     <>
-      <title>{`PAMA Product | ${name}`}</title>
+      <title>{`PAMA Solution | ${name}`}</title>
       <meta name="description" content={description} />
       <Breadcrumb pageName={name} description={description} source={source} />
-      <section className="overflow-hidden pt-[35px] pb-[60px]">
+      <section className="overflow-hidden bg-white pt-[35px] pb-[60px] dark:bg-gray-900">
         <div className="container">
           <div className="-mx-4 flex flex-wrap">
             <div className="w-full px-4 lg:w-9/12">
-              <section className="lg:py-17 py-7 md:py-7">
+              <section className="lg:py-17  py-7 md:py-7">
                 <Image
                   src={getStrapiMedia(thumbnail)}
                   alt="Thumbnail"
                   width={1000}
                   height={700}
+                  className="rounded"
                 />
               </section>
-              {contents?.map((content, i) => {
+              {contents.map((content, i) => {
                 if (i % 2 == 0) {
                   return (
                     <SubDetail
                       key={i}
                       data={{
-                        name: content?.name,
-                        description: content?.description,
-                        media: content?.media,
+                        name: content.name,
+                        description: content.description,
+                        media: content.media,
                         roundedImage: false,
                         reversed: false,
                       }}
@@ -97,9 +87,9 @@ const ProductDetailsPage = async ({ params }: Props) => {
                     <SubDetail
                       key={i}
                       data={{
-                        name: content?.name,
-                        description: content?.description,
-                        media: content?.media,
+                        name: content.name,
+                        description: content.description,
+                        media: content.media,
                         roundedImage: false,
                         reversed: true,
                       }}
@@ -111,18 +101,18 @@ const ProductDetailsPage = async ({ params }: Props) => {
             <div className="lg:py-17 w-full px-4 py-7 md:py-7 lg:w-3/12">
               <div className="mb-10  bg-primary bg-opacity-5 dark:bg-opacity-10">
                 <h3 className="border-b border-body-color border-opacity-10 py-4 px-4 text-lg font-semibold text-black dark:border-white dark:border-opacity-10 dark:text-white">
-                  Related solutions of {name}
+                  Related products of {name}
                 </h3>
                 <ul className="p-4">
-                  {relatedSolutions?.map((solution, i) => (
+                  {relatedProducts.map((product, i) => (
                     <li
                       className="mb-3 border-b border-body-color border-opacity-10 pb-3 dark:border-white dark:border-opacity-10"
                       key={i}
                     >
                       <RelatedPost
-                        title={solution?.attributes?.name}
-                        image={getStrapiMedia(solution?.attributes?.thumbnail)}
-                        slug={`/solution/${solution?.attributes?.slug}`}
+                        title={product?.attributes?.name}
+                        image={getStrapiMedia(product?.attributes?.thumbnail)}
+                        slug={`/product/${product?.attributes?.slug}`}
                       />
                     </li>
                   ))}
@@ -130,10 +120,10 @@ const ProductDetailsPage = async ({ params }: Props) => {
               </div>
               <div className="mb-10  bg-primary bg-opacity-5 dark:bg-opacity-10">
                 <h3 className="border-b border-body-color border-opacity-10 py-4 px-4 text-lg font-semibold text-black dark:border-white dark:border-opacity-10 dark:text-white">
-                  Popular products
+                  Popular solutions
                 </h3>
                 <ul className="p-4">
-                  {popularProducts?.map(({ attributes }, i) => (
+                  {popularSolutions?.map(({ attributes }, i) => (
                     <li
                       className="mb-3 border-b border-body-color border-opacity-10 pb-3 dark:border-white dark:border-opacity-10"
                       key={i}
@@ -141,7 +131,7 @@ const ProductDetailsPage = async ({ params }: Props) => {
                       <RelatedPost
                         title={attributes?.name}
                         image={getStrapiMedia(attributes?.thumbnail)}
-                        slug={`/products/${attributes?.slug}`}
+                        slug={`/solution/${attributes?.slug}`}
                       />
                     </li>
                   ))}
@@ -155,4 +145,4 @@ const ProductDetailsPage = async ({ params }: Props) => {
   );
 };
 
-export default ProductDetailsPage;
+export default SolutionDetailsPage;

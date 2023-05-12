@@ -1,4 +1,4 @@
-import { getStrapiMedia } from '@/app/api/urlBuilder';
+import { getStrapiMedia } from '@/app/[lng]/api/urlBuilder';
 import { Blog } from '@/types/blog';
 import Image from 'next/image';
 import Link from 'next/link';
@@ -36,13 +36,13 @@ const SingleBlog = ({ blog }: { blog: Blog }) => {
           <div className="flex items-center">
             <div className="mr-5 flex items-center border-r border-body-color border-opacity-10 pr-5 dark:border-white dark:border-opacity-10 xl:mr-3 xl:pr-3 2xl:mr-5 2xl:pr-5">
               <div className="w-full">
-                <h4 className="mb-1 text-sm font-medium text-dark dark:text-white">
+                <h4 className="mb-1 text-sm font-medium text-primary-title-dark dark:text-primary-title">
                   By {authorName}
                 </h4>
               </div>
             </div>
             <div className="inline-block">
-              <h4 className="mb-1 text-sm font-medium text-dark dark:text-white">
+              <h4 className="mb-1 text-sm font-medium text-primary-title-dark dark:text-primary-title">
                 Published
               </h4>
               <p className="text-xs text-body-color">
