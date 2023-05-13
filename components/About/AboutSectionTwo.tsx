@@ -12,9 +12,9 @@ const AboutSectionTwo = ({ data }: { data: any }) => {
     roundedImage = false,
   } = data || {};
   const List = ({ text }) => (
-    <p className="mb-5 flex items-center text-xl font-bold text-primary-title-dark dark:text-primary-title sm:text-2xl lg:text-xl xl:text-2xl">
-      <span className="mr-4 flex h-[30px] w-[30px] items-center justify-center bg-primary bg-opacity-10 text-primary">
-        <FaCheck />
+    <p className="mb-4 flex items-center text-xl font-bold text-primary-title-dark dark:text-primary-title sm:text-2xl lg:text-xl xl:text-2xl">
+      <span className="mr-4 flex h-[25px] w-[25px] items-center justify-center bg-primary bg-opacity-10 text-primary">
+        <FaCheck className="h-[18px] w-[18px]" />
       </span>
       {text}
     </p>

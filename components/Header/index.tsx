@@ -33,17 +33,15 @@ const Header = ({ params: { lng } }: Props) => {
         rounded={false}
         className="wow fadeInUp z-10 bg-white dark:bg-gray-900"
       >
-        <Link href="/">
-          <Navbar.Brand to="/">
-            <Image
-              src={getStrapiMedia(headerAttributes?.logo)}
-              alt="logo"
-              width={140}
-              height={30}
-              className="w-full"
-            />
-          </Navbar.Brand>
-        </Link>
+        <Navbar.Brand href="/">
+          <Image
+            src={getStrapiMedia(headerAttributes?.logo)}
+            alt="Logo"
+            width={140}
+            height={30}
+            className="w-full"
+          />
+        </Navbar.Brand>
         <Navbar.Toggle />
         <Navbar.Collapse>
           <Dropdown
@@ -168,6 +166,7 @@ const Header = ({ params: { lng } }: Props) => {
                       width="20"
                       height="15"
                       alt={l}
+                      className=""
                     />
                   </Link>
                 </span>
