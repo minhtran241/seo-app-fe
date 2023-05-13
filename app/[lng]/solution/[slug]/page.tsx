@@ -49,7 +49,7 @@ const SolutionDetailsPage = async ({ params }: SingleProps) => {
     notFound();
     return null;
   }
-  const { Seo, name, description, thumbnail, source, contents } = solutionAttrs;
+  const { seo, name, description, thumbnail, source, contents } = solutionAttrs;
   const {
     metaTitle,
     metaDescription,
@@ -59,7 +59,7 @@ const SolutionDetailsPage = async ({ params }: SingleProps) => {
     metaRobots,
     canonicalURL,
     metaSocial,
-  } = Seo || {};
+  } = seo || {};
   return (
     <>
       <title>{metaTitle}</title>
@@ -92,7 +92,7 @@ const SolutionDetailsPage = async ({ params }: SingleProps) => {
           <meta
             name={`${soc?.socialNetwork?.toLowerCase()}:image`}
             content={getStrapiMedia(soc?.image)}
-          ></meta>
+          />
         </>
       ))}
       <Breadcrumb pageName={name} description={description} source={source} />

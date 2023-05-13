@@ -20,7 +20,7 @@ const AboutPage = async ({ params: { lng } }: Props) => {
     metaRobots,
     canonicalURL,
     metaSocial,
-  } = aboutUsData?.Seo || {};
+  } = aboutUsData?.seo || {};
   return (
     <>
       <title>{metaTitle}</title>
@@ -53,7 +53,7 @@ const AboutPage = async ({ params: { lng } }: Props) => {
           <meta
             name={`${soc?.socialNetwork?.toLowerCase()}:image`}
             content={getStrapiMedia(soc?.image)}
-          ></meta>
+          />
         </>
       ))}
       <Breadcrumb

@@ -13,7 +13,7 @@ import { notFound } from 'next/navigation';
 import { SingleProps } from '@/types/lng';
 
 type Product = {
-  Seo: any;
+  seo: any;
   name: string;
   description: string;
   thumbnail: any;
@@ -62,7 +62,7 @@ const ProductDetailsPage = async ({ params }: SingleProps) => {
     notFound();
     return null;
   }
-  const { Seo, name, description, thumbnail, source, contents } =
+  const { seo, name, description, thumbnail, source, contents } =
     productAttrs || {};
   const {
     metaTitle,
@@ -73,7 +73,7 @@ const ProductDetailsPage = async ({ params }: SingleProps) => {
     metaRobots,
     canonicalURL,
     metaSocial,
-  } = Seo || {};
+  } = seo || {};
   return (
     <>
       <title>{metaTitle}</title>
@@ -106,7 +106,7 @@ const ProductDetailsPage = async ({ params }: SingleProps) => {
           <meta
             name={`${soc?.socialNetwork?.toLowerCase()}:image`}
             content={getStrapiMedia(soc?.image)}
-          ></meta>
+          />
         </>
       ))}
       <Breadcrumb pageName={name} description={description} source={source} />

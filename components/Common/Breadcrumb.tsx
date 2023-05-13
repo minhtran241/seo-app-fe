@@ -1,5 +1,5 @@
 import Link from 'next/link';
-import { FiLink2 } from 'react-icons/fi';
+import { FaLink, FaHome } from 'react-icons/fa';
 
 const Breadcrumb = ({
   pageName,
@@ -30,7 +30,7 @@ const Breadcrumb = ({
                     className="flex text-base font-medium leading-relaxed text-white underline "
                     href={source}
                   >
-                    <FiLink2 className="h-[25px] w-[25px] pr-2" /> {source}
+                    <FaLink className="h-[25px] w-[25px] pr-2" /> {source}
                   </Link>
                 )}
               </div>
@@ -43,7 +43,7 @@ const Breadcrumb = ({
                       href="/"
                       className="pr-1 text-base font-medium text-white "
                     >
-                      Home
+                      <FaHome />
                     </Link>
                     <span className="mr-3 block h-2 w-2 rotate-45 border-t-2 border-r-2 border-white"></span>
                   </li>

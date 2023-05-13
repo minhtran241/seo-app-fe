@@ -22,7 +22,7 @@ export default async function Home({ params: { lng } }: Props) {
     metaRobots,
     canonicalURL,
     metaSocial,
-  } = homeData?.Seo || {};
+  } = homeData?.seo || {};
   const featureData = {
     title: homeData?.Categories?.title,
     description: null,
@@ -62,7 +62,7 @@ export default async function Home({ params: { lng } }: Props) {
           <meta
             name={`${soc?.socialNetwork?.toLowerCase()}:image`}
             content={getStrapiMedia(soc?.image)}
-          ></meta>
+          />
         </>
       ))}
       <ScrollUp />

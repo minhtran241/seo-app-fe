@@ -10,7 +10,7 @@ import { getStrapiMedia } from '../api/urlBuilder';
 
 const Blog = async ({ params: { lng } }: Props) => {
   preload(lng);
-  const { Seo, title, description } = (await blogPageDataCache(lng)) || {};
+  const { seo, title, description } = (await blogPageDataCache(lng)) || {};
   const blogData = await blogsDataCache(lng);
   const {
     metaTitle,
@@ -21,7 +21,7 @@ const Blog = async ({ params: { lng } }: Props) => {
     metaRobots,
     canonicalURL,
     metaSocial,
-  } = Seo || {};
+  } = seo || {};
   return (
     <>
       <title>{metaTitle}</title>
@@ -54,7 +54,7 @@ const Blog = async ({ params: { lng } }: Props) => {
           <meta
             name={`${soc?.socialNetwork?.toLowerCase()}:image`}
             content={getStrapiMedia(soc?.image)}
-          ></meta>
+          />
         </>
       ))}
       <Breadcrumb pageName={title} description={description} source={null} />

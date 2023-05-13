@@ -14,7 +14,7 @@ import { SingleProps } from '@/types/lng';
 
 type SingleBlog = {
   id: string;
-  Seo: any;
+  seo: any;
   title: string;
   description: string;
   thumbnail: any;
@@ -67,7 +67,7 @@ const BlogDetailsPage = async ({ params }: SingleProps) => {
     metaRobots,
     canonicalURL,
     metaSocial,
-  } = blogAttrs?.Seo || {};
+  } = blogAttrs?.seo || {};
 
   return (
     <>
@@ -101,7 +101,7 @@ const BlogDetailsPage = async ({ params }: SingleProps) => {
           <meta
             name={`${soc?.socialNetwork?.toLowerCase()}:image`}
             content={getStrapiMedia(soc?.image)}
-          ></meta>
+          />
         </>
       ))}
       <section className="bg-white pt-[80px] pb-[120px] dark:bg-gray-900">

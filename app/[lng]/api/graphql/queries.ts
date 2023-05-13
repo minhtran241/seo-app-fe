@@ -5,7 +5,7 @@ const GET_HOME_PAGE: DocumentNode = gql`
     home(locale: $locale) {
       data {
         attributes {
-          Seo {
+          seo {
             metaTitle
             metaDescription
             metaImage {
@@ -131,7 +131,7 @@ const GET_ABOUT_US_PAGE: DocumentNode = gql`
     aboutUs(locale: $locale) {
       data {
         attributes {
-          Seo {
+          seo {
             metaTitle
             metaDescription
             metaImage {
@@ -252,7 +252,7 @@ const GET_BLOG_POST: DocumentNode = gql`
       data {
         id
         attributes {
-          Seo {
+          seo {
             metaTitle
             metaDescription
             metaImage {
@@ -341,7 +341,7 @@ const GET_PRODUCTS_DETAILS: DocumentNode = gql`
     products(filters: { slug: { eq: $slug } }, locale: $locale) {
       data {
         attributes {
-          Seo {
+          seo {
             metaTitle
             metaDescription
             metaImage {
@@ -400,7 +400,7 @@ const GET_SOLUTION_DETAILS: DocumentNode = gql`
     solutions(filters: { slug: { eq: $slug } }, locale: $locale) {
       data {
         attributes {
-          Seo {
+          seo {
             metaTitle
             metaDescription
             metaImage {
@@ -643,7 +643,7 @@ const GET_BLOG_PAGE: DocumentNode = gql`
     blogPage(locale: $locale) {
       data {
         attributes {
-          Seo {
+          seo {
             metaTitle
             metaDescription
             metaImage {
@@ -678,6 +678,47 @@ const GET_BLOG_PAGE: DocumentNode = gql`
   }
 `;
 
+const GET_CONTACT_PAGE: DocumentNode = gql`
+  query ($locale: I18NLocaleCode) {
+    contact(locale: $locale) {
+      data {
+        attributes {
+          seo {
+            metaTitle
+            metaDescription
+            metaImage {
+              data {
+                attributes {
+                  url
+                }
+              }
+            }
+            keywords
+            metaViewport
+            metaRobots
+            canonicalURL
+            metaSocial {
+              socialNetwork
+              title
+              description
+              image {
+                data {
+                  attributes {
+                    url
+                  }
+                }
+              }
+            }
+          }
+          title
+          description
+          source
+        }
+      }
+    }
+  }
+`;
+
 export {
   GET_HOME_PAGE,
   GET_ABOUT_US_PAGE,
@@ -694,4 +735,5 @@ export {
   GET_POPULAR_SOLUTIONS,
   UPDATE_BLOG_POST_VIEWS,
   GET_BLOG_PAGE,
+  GET_CONTACT_PAGE,
 };
