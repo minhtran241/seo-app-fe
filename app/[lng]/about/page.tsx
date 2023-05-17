@@ -40,7 +40,7 @@ const AboutPage = async ({ params: { lng } }: Props) => {
       <meta name="viewport" content={metaViewport} />
       <link rel="canonical" href={canonicalURL} />
       <meta name="robots" content={metaRobots}></meta>
-      {metaSocial?.map((soc) => (
+      {metaSocial?.map((soc, i) => (
         <>
           <meta
             name={`${soc?.socialNetwork?.toLowerCase()}:title`}

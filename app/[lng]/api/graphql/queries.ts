@@ -466,33 +466,35 @@ const GET_HEADER: DocumentNode = gql`
               }
             }
           }
-          navs(sort: "order") {
-            name
-            path
-          }
-          categories {
-            data {
-              attributes {
-                name
-                slug
-                products {
-                  data {
-                    attributes {
-                      name
-                      slug
+          groupedByCategory {
+            title
+            categories {
+              data {
+                attributes {
+                  name
+                  products {
+                    data {
+                      attributes {
+                        name
+                        slug
+                      }
                     }
                   }
-                }
-                solutions {
-                  data {
-                    attributes {
-                      name
-                      slug
+                  solutions {
+                    data {
+                      attributes {
+                        name
+                        slug
+                      }
                     }
                   }
                 }
               }
             }
+          }
+          navs(sort: "order") {
+            name
+            path
           }
         }
       }

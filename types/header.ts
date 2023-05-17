@@ -1,5 +1,5 @@
 export type Header = {
   logo: any;
-  categories: any;
+  groupedByCategory: any;
   navs: any;
 };

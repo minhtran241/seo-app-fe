@@ -50,7 +50,7 @@ const Header = ({ params: { lng } }: Props) => {
             data-dropdown-placement="bottom"
             className="flex w-full items-center justify-between bg-white pl-3 pr-4 font-medium text-gray-900 dark:bg-gray-800 dark:text-white dark:hover:text-blue-500 md:w-auto md:border-0 md:p-0 md:hover:text-blue-600 md:dark:hover:text-blue-500"
             arrowIcon={true}
-            label="Products / Solutions"
+            label={headerAttributes?.groupedByCategory?.title}
             inline={true}
           >
             <Dropdown.Item
@@ -59,33 +59,35 @@ const Header = ({ params: { lng } }: Props) => {
               title="Products"
             >
               <div className="mx-auto grid max-w-screen-xl text-sm text-gray-500 dark:text-gray-400 md:grid-cols-4 ">
-                {headerAttributes?.categories &&
-                  headerAttributes?.categories?.data?.map((category, i) => (
-                    <div key={i} className="px-2">
-                      <div className="items-center pb-2 text-sm font-bold text-primary-title-dark dark:text-secondary">
-                        {category?.attributes?.name}
+                {headerAttributes?.groupedByCategory?.categories &&
+                  headerAttributes?.groupedByCategory?.categories?.data?.map(
+                    (category, i) => (
+                      <div key={i} className="px-2 pb-3">
+                        <div className="items-center pb-2 text-sm font-bold text-primary-title-dark dark:text-secondary">
+                          {category?.attributes?.name}
+                        </div>
+                        <ul
+                          className="space-y-2 sm:mb-4 md:mb-0"
+                          aria-labelledby="mega-menu-full-cta-button"
+                          key={i}
+                        >
+                          {category?.attributes?.products?.data &&
+                            category?.attributes?.products?.data?.map(
+                              (product, i) => (
+                                <li key={i}>
+                                  <Link
+                                    href={`/product/${product?.attributes?.slug}`}
+                                    className="hover:text-blue-600 hover:underline dark:hover:text-blue-500"
+                                  >
+                                    {product?.attributes?.name}
+                                  </Link>
+                                </li>
+                              )
+                            )}
+                        </ul>
                       </div>
-                      <ul
-                        className="space-y-2 sm:mb-4 md:mb-0"
-                        aria-labelledby="mega-menu-full-cta-button"
-                        key={i}
-                      >
-                        {category?.attributes?.products?.data &&
-                          category?.attributes?.products?.data?.map(
-                            (product, i) => (
-                              <li key={i}>
-                                <Link
-                                  href={`/product/${product?.attributes?.slug}`}
-                                  className="hover:text-blue-600 hover:underline dark:hover:text-blue-500"
-                                >
-                                  {product?.attributes?.name}
-                                </Link>
-                              </li>
-                            )
-                          )}
-                      </ul>
-                    </div>
-                  ))}
+                    )
+                  )}
               </div>
             </Dropdown.Item>
             <Dropdown.Item
@@ -94,33 +96,35 @@ const Header = ({ params: { lng } }: Props) => {
               title="Solutions"
             >
               <div className="mx-auto grid max-w-screen-xl text-sm text-gray-500 dark:text-gray-400 md:grid-cols-4">
-                {headerAttributes?.categories &&
-                  headerAttributes?.categories?.data?.map((category, i) => (
-                    <div key={i} className="px-2">
-                      <div className="items-center pb-2 text-sm font-bold text-primary-title-dark dark:text-secondary">
-                        {category?.attributes?.name}
+                {headerAttributes?.groupedByCategory?.categories &&
+                  headerAttributes?.groupedByCategory?.categories?.data?.map(
+                    (category, i) => (
+                      <div key={i} className="px-2 pb-3">
+                        <div className="items-center pb-2 text-sm font-bold text-primary-title-dark dark:text-secondary">
+                          {category?.attributes?.name}
+                        </div>
+                        <ul
+                          className="space-y-2 sm:mb-4 md:mb-0"
+                          aria-labelledby="mega-menu-full-cta-button"
+                          key={i}
+                        >
+                          {category?.attributes?.solutions?.data &&
+                            category?.attributes?.solutions?.data?.map(
+                              (solution, i) => (
+                                <li key={i}>
+                                  <Link
+                                    href={`/solution/${solution?.attributes?.slug}`}
+                                    className="hover:text-blue-600 hover:underline dark:hover:text-blue-500"
+                                  >
+                                    {solution?.attributes?.name}
+                                  </Link>
+                                </li>
+                              )
+                            )}
+                        </ul>
                       </div>
-                      <ul
-                        className="space-y-2 sm:mb-4 md:mb-0"
-                        aria-labelledby="mega-menu-full-cta-button"
-                        key={i}
-                      >
-                        {category?.attributes?.solutions?.data &&
-                          category?.attributes?.solutions?.data?.map(
-                            (solution, i) => (
-                              <li key={i}>
-                                <Link
-                                  href={`/solution/${solution?.attributes?.slug}`}
-                                  className="hover:text-blue-600 hover:underline dark:hover:text-blue-500"
-                                >
-                                  {solution?.attributes?.name}
-                                </Link>
-                              </li>
-                            )
-                          )}
-                      </ul>
-                    </div>
-                  ))}
+                    )
+                  )}
               </div>
             </Dropdown.Item>
           </Dropdown>
