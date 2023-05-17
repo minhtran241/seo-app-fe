@@ -140,46 +140,52 @@ const SolutionDetailsPage = async ({ params }: SingleProps) => {
               })}
             </div>
             <div className="lg:py-17 w-full px-4 py-7 md:py-7 lg:w-3/12">
-              <div className="mb-10  bg-primary bg-opacity-5 dark:bg-opacity-10">
-                <h3 className="border-b border-body-color border-opacity-10 py-4 px-4 text-lg font-semibold text-black dark:border-white dark:border-opacity-10 dark:text-white">
-                  {lng === 'vi'
-                    ? 'Các sản phẩm liên quan'
-                    : `Related solutions of ${name}`}
-                </h3>
-                <ul className="p-4">
-                  {relatedProducts.map((product, i) => (
-                    <li
-                      className="mb-3 border-b border-body-color border-opacity-10 pb-3 dark:border-white dark:border-opacity-10"
-                      key={i}
-                    >
-                      <RelatedPost
-                        title={product?.attributes?.name}
-                        image={getStrapiMedia(product?.attributes?.thumbnail)}
-                        slug={`/product/${product?.attributes?.slug}`}
-                      />
-                    </li>
-                  ))}
-                </ul>
-              </div>
-              <div className="mb-10  bg-primary bg-opacity-5 dark:bg-opacity-10">
-                <h3 className="border-b border-body-color border-opacity-10 py-4 px-4 text-lg font-semibold text-black dark:border-white dark:border-opacity-10 dark:text-white">
-                  {lng === 'vi' ? 'Các giải pháp phổ biến' : 'Popular products'}
-                </h3>
-                <ul className="p-4">
-                  {popularSolutions?.map(({ attributes }, i) => (
-                    <li
-                      className="mb-3 border-b border-body-color border-opacity-10 pb-3 dark:border-white dark:border-opacity-10"
-                      key={i}
-                    >
-                      <RelatedPost
-                        title={attributes?.name}
-                        image={getStrapiMedia(attributes?.thumbnail)}
-                        slug={`/solution/${attributes?.slug}`}
-                      />
-                    </li>
-                  ))}
-                </ul>
-              </div>
+              {relatedProducts?.length > 0 && (
+                <div className="mb-10  bg-primary bg-opacity-5 dark:bg-opacity-10">
+                  <h3 className="border-b border-body-color border-opacity-10 py-4 px-4 text-lg font-semibold text-black dark:border-white dark:border-opacity-10 dark:text-white">
+                    {lng === 'vi'
+                      ? 'Các sản phẩm liên quan'
+                      : `Related solutions of ${name}`}
+                  </h3>
+                  <ul className="p-4">
+                    {relatedProducts.map((product, i) => (
+                      <li
+                        className="mb-3 border-b border-body-color border-opacity-10 pb-3 dark:border-white dark:border-opacity-10"
+                        key={i}
+                      >
+                        <RelatedPost
+                          title={product?.attributes?.name}
+                          image={getStrapiMedia(product?.attributes?.thumbnail)}
+                          slug={`/product/${product?.attributes?.slug}`}
+                        />
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              )}
+              {popularSolutions?.length > 0 && (
+                <div className="mb-10  bg-primary bg-opacity-5 dark:bg-opacity-10">
+                  <h3 className="border-b border-body-color border-opacity-10 py-4 px-4 text-lg font-semibold text-black dark:border-white dark:border-opacity-10 dark:text-white">
+                    {lng === 'vi'
+                      ? 'Các giải pháp phổ biến'
+                      : 'Popular products'}
+                  </h3>
+                  <ul className="p-4">
+                    {popularSolutions?.map(({ attributes }, i) => (
+                      <li
+                        className="mb-3 border-b border-body-color border-opacity-10 pb-3 dark:border-white dark:border-opacity-10"
+                        key={i}
+                      >
+                        <RelatedPost
+                          title={attributes?.name}
+                          image={getStrapiMedia(attributes?.thumbnail)}
+                          slug={`/solution/${attributes?.slug}`}
+                        />
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              )}
             </div>
           </div>
         </div>
