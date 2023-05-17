@@ -307,35 +307,6 @@ const GET_BLOG_POST: DocumentNode = gql`
   }
 `;
 
-const GET_CATEGORIES_PRODUCTS: DocumentNode = gql`
-  query ($locale: I18NLocaleCode) {
-    categories(locale: $locale) {
-      data {
-        attributes {
-          name
-          description
-          products {
-            data {
-              attributes {
-                name
-                description
-                slug
-                thumbnail {
-                  data {
-                    attributes {
-                      url
-                    }
-                  }
-                }
-              }
-            }
-          }
-        }
-      }
-    }
-  }
-`;
-
 const GET_PRODUCTS_DETAILS: DocumentNode = gql`
   query ($locale: I18NLocaleCode, $slug: String!) {
     products(filters: { slug: { eq: $slug } }, locale: $locale) {
@@ -726,7 +697,6 @@ export {
   GET_ABOUT_US_PAGE,
   GET_BLOG_POST,
   GET_BLOG_POSTS,
-  GET_CATEGORIES_PRODUCTS,
   GET_PRODUCTS_DETAILS,
   GET_SOLUTION_DETAILS,
   GET_HEADER,
