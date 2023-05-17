@@ -1,5 +1,6 @@
 'use client';
 
+import GoogleAnalytics from '@/components/GoogleAnalytics/index';
 import { dir } from 'i18next';
 import { languages } from '../i18n/settings';
 import '../../styles/index.css';
@@ -33,6 +34,7 @@ export default function RootLayout({
         <head /> will contain the components returned by the nearest parent
         head.js. Find out more at https://beta.nextjs.org/docs/api-reference/file-conventions/head
       */}
+      <GoogleAnalytics GA_TRACKING_ID={process.env.GA_TRACKING_ID} />
       <body className="bg-white dark:bg-black">
         <Providers>
           <Header params={{ lng }} />
