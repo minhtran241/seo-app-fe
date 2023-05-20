@@ -7,7 +7,7 @@ const SubDetail = ({ data }) => {
   return (
     <>
       {reversed ? (
-        <section className="lg:py-15 bg-primary/[.03] py-5 dark:bg-primary/10 md:py-5">
+        <section className="lg:py-15 bg-secondary py-5 dark:bg-primary/10 md:py-5">
           <div className="container mx-auto">
             <div className="-mx-4 flex flex-wrap items-center">
               {media && (

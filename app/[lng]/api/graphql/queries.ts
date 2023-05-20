@@ -169,7 +169,8 @@ const GET_ABOUT_US_PAGE: DocumentNode = gql`
           }
           Formation {
             title
-            History(sort: "order:asc") {
+            milestones(sort: "order:asc") {
+              time
               name
               description
             }

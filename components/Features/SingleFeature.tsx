@@ -9,7 +9,7 @@ const SingleFeature = ({ data }) => {
   return (
     <div className="w-full">
       <div className="wow fadeInUp" data-wow-delay=".15s">
-        <div className="mb-10 flex h-[70px] w-[70px] items-center justify-center bg-primary bg-opacity-10 text-primary">
+        <div className="mb-10 flex h-[70px] w-[70px] items-center justify-center bg-primary bg-opacity-10">
           <Image
             src={getStrapiMedia(feature?.media)}
             alt="Feature Icon"
@@ -21,7 +21,7 @@ const SingleFeature = ({ data }) => {
           {feature?.name}
         </h3>
         {isDescription && (
-          <div className="pr-[10px] text-base font-medium leading-relaxed text-body-color">
+          <div className="pr-[10px] text-base font-medium leading-relaxed text-gray-500 dark:text-gray-400">
             {parse(feature?.description)}
           </div>
         )}

@@ -1,11 +1,12 @@
+'use client'; // This is a client component 👈🏽
 import Image from 'next/image';
-import parse from 'html-react-parser';
 import { FaCalendarCheck } from 'react-icons/fa';
 import { getStrapiMedia } from '@/app/[lng]/api/urlBuilder';
 import SectionTitle from '../Common/SectionTitle';
+import { Timeline } from 'flowbite-react';
 
-const Timeline = ({ data }) => {
-  const { title, History: milestones, historyImage } = data || {};
+const Milestones = ({ data }) => {
+  const { title, milestones, historyImage } = data || {};
   return (
     <>
       <section className="lg:py-15  bg-white py-5 dark:bg-gray-800">
@@ -15,7 +16,7 @@ const Timeline = ({ data }) => {
             {historyImage?.data?.attributes && (
               <div className="h-full w-full px-4 pb-8 lg:w-1/2">
                 <div
-                  className="wow fadeInUp relative mx-auto max-w-[500px] rounded border lg:m-0"
+                  className="wow fadeInUp relative mx-auto max-w-[500px] rounded lg:m-0"
                   data-wow-delay=".15s"
                 >
                   <Image
@@ -30,7 +31,7 @@ const Timeline = ({ data }) => {
             )}
             <div className="w-full px-4 lg:w-1/2">
               <div className="wow fadeInUp max-w-[470px]" data-wow-delay=".2s">
-                <ol className="border-l-2 border-body-color">
+                {/* <ol className="border-l-2 border-body-color">
                   {milestones?.map((milestone, i) => (
                     <li key={i}>
                       <div className="flex-start md:flex">
@@ -43,14 +44,28 @@ const Timeline = ({ data }) => {
                               {milestone?.name}
                             </p>
                           </div>
-                          <div className="text-base font-medium leading-relaxed text-body-color">
+                          <div className="text-base font-medium leading-relaxed text-gray-500 dark:text-gray-400">
                             {parse(milestone?.description)}
                           </div>
                         </div>
                       </div>
                     </li>
                   ))}
-                </ol>
+                </ol> */}
+                <Timeline>
+                  {milestones?.map((milestone, i) => (
+                    <Timeline.Item key={i}>
+                      <Timeline.Point icon={FaCalendarCheck} />
+                      <Timeline.Content>
+                        <Timeline.Time>{milestone?.time}</Timeline.Time>
+                        <Timeline.Title className="text-primary">
+                          {milestone?.name}
+                        </Timeline.Title>
+                        <Timeline.Body>{milestone?.description}</Timeline.Body>
+                      </Timeline.Content>
+                    </Timeline.Item>
+                  ))}
+                </Timeline>
               </div>
             </div>
           </div>
@@ -60,4 +75,4 @@ const Timeline = ({ data }) => {
   );
 };
 
-export default Timeline;
+export default Milestones;

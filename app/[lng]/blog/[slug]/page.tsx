@@ -125,7 +125,7 @@ const BlogDetailsPage = async ({ params }: SingleProps) => {
                         </div>
                       </div> */}
                       <div className="w-full">
-                        <h4 className="text-base font-medium text-body-color">
+                        <h4 className="text-base font-medium text-gray-500 dark:text-gray-400">
                           By{' '}
                           <span>
                             {blogAttrs?.author?.data?.attributes?.fullname}
@@ -134,13 +134,13 @@ const BlogDetailsPage = async ({ params }: SingleProps) => {
                       </div>
                     </div>
                     <div className="mb-5 flex items-center">
-                      <p className="mr-5 flex items-center text-base font-medium text-body-color">
+                      <p className="mr-5 flex items-center text-base font-medium text-gray-500 dark:text-gray-400">
                         <span className="mr-2">
                           <FaCalendar />
                         </span>
                         {new Date(blogAttrs?.publishedAt).toLocaleDateString()}
                       </p>
-                      <p className="flex items-center text-base font-medium text-body-color">
+                      <p className="flex items-center text-base font-medium text-gray-500 dark:text-gray-400">
                         <span className="mr-2">
                           <FaEye />
                         </span>
@@ -148,14 +148,9 @@ const BlogDetailsPage = async ({ params }: SingleProps) => {
                       </p>
                     </div>
                   </div>
-                  {/* <div className="mb-5">
-                    <a
-                      href="#0"
-                      className="inline-flex items-center justify-center rounded-full bg-primary py-2 px-4 text-sm font-semibold text-white"
-                    >
-                      Design
-                    </a>
-                  </div> */}
+                  <div className="mb-5">
+                    <SharePost />
+                  </div>
                 </div>
                 <div>
                   {blogAttrs?.description && (
@@ -183,18 +178,18 @@ const BlogDetailsPage = async ({ params }: SingleProps) => {
                   <div className="items-center justify-between sm:flex">
                     <div className="mb-5">
                       {blogAttrs?.translator && (
-                        <h5 className="mb-3 text-sm font-medium text-body-color">
+                        <h5 className="mb-3 text-sm font-medium text-gray-500 dark:text-gray-400">
                           Translator: {blogAttrs?.translator}
                         </h5>
                       )}
                       {blogAttrs?.source && (
-                        <h5 className="mb-3 text-sm font-medium text-body-color">
+                        <h5 className="mb-3 text-sm font-medium text-gray-500 dark:text-gray-400">
                           Source: {blogAttrs?.source}
                         </h5>
                       )}
                     </div>
                     <div className="mb-5">
-                      <h5 className="mb-3 text-sm font-medium text-body-color sm:text-right">
+                      <h5 className="mb-3 text-sm font-medium text-gray-500 dark:text-gray-400 sm:text-right">
                         Share this blog :
                       </h5>
                       <div className="flex items-center sm:justify-end">

@@ -11,7 +11,7 @@ const Brands = ({ data }) => {
         <SectionTitle title={title} paragraph={description} center={true} />
         <div className="-mx-4 flex flex-wrap">
           <div className="w-full px-4">
-            <div className="wow fadeInUp flex flex-wrap items-center justify-center rounded-md bg-primary bg-opacity-10 py-8 px-8 dark:bg-gray-900 sm:px-10 md:py-[40px] md:px-[50px] xl:p-[50px] 2xl:py-[60px] 2xl:px-[70px]">
+            <div className="wow fadeInUp flex flex-wrap items-center justify-center border-b-4 border-primary bg-secondary py-8 px-8 dark:bg-gray-900 sm:px-10 md:py-[40px] md:px-[50px] xl:p-[50px] 2xl:py-[60px] 2xl:px-[70px]">
               {brands?.map((brand, i) => (
                 <SingleBrand key={i} brand={brand} />
               ))}

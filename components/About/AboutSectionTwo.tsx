@@ -13,7 +13,7 @@ const AboutSectionTwo = ({ data }: { data: any }) => {
   } = data || {};
   const List = ({ text }) => (
     <p className="mb-4 flex items-center text-xl font-bold text-primary-title-dark dark:text-primary-title sm:text-2xl lg:text-xl xl:text-2xl">
-      <span className="mr-4 flex h-[25px] w-[25px] items-center justify-center bg-primary bg-opacity-10 text-primary">
+      <span className="mr-4 flex h-[25px] w-[25px] items-center justify-center bg-primary bg-opacity-10 text-primary dark:bg-blue-900 dark:text-blue-300">
         <FaCheck className="h-[18px] w-[18px]" />
       </span>
       {text}
@@ -35,7 +35,7 @@ const AboutSectionTwo = ({ data }: { data: any }) => {
                 return (
                   <div className="mb-9" key={i}>
                     <List text={property?.name} />
-                    <div className="text-base font-medium leading-relaxed text-body-color">
+                    <div className="text-base font-medium leading-relaxed text-gray-500 dark:text-gray-400">
                       {property?.description}
                     </div>
                   </div>

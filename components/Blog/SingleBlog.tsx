@@ -16,9 +16,14 @@ const SingleBlog = ({ blog }: { blog: Blog }) => {
         {thumbnail?.data?.attributes && (
           <Link
             href={`/blog/${slug}`}
-            className="relative block h-[220px] w-full border border-primary"
+            className="relative block h-[220px] w-full rounded border border-secondary"
           >
-            <Image src={getStrapiMedia(thumbnail)} alt="image" fill />
+            <Image
+              src={getStrapiMedia(thumbnail)}
+              alt="image"
+              fill
+              className="rounded"
+            />
           </Link>
         )}
         <div className="py-3 sm:py-8 md:py-8 xl:py-8">
@@ -30,14 +35,14 @@ const SingleBlog = ({ blog }: { blog: Blog }) => {
               {title}
             </Link>
           </p>
-          <p className="mb-6 border-b border-body-color border-opacity-10 pb-6 text-base text-body-color dark:border-white dark:border-opacity-10">
+          <p className="mb-6 border-b border-body-color border-opacity-10 pb-6 text-base text-gray-500 dark:border-white dark:border-opacity-10 dark:text-gray-400">
             {description.slice(0, 150) + '...'}
           </p>
           <div className="flex items-center">
             <div className="mr-5 flex items-center border-r border-body-color border-opacity-10 pr-5 dark:border-white dark:border-opacity-10 xl:mr-3 xl:pr-3 2xl:mr-5 2xl:pr-5">
               <div className="w-full">
                 <h4 className="mb-1 text-sm font-medium text-primary-title-dark dark:text-primary-title">
-                  By {authorName}
+                  {authorName}
                 </h4>
               </div>
             </div>
@@ -45,7 +50,7 @@ const SingleBlog = ({ blog }: { blog: Blog }) => {
               <h4 className="mb-1 text-sm font-medium text-primary-title-dark dark:text-primary-title">
                 Published
               </h4>
-              <p className="text-xs text-body-color">
+              <p className="text-xs text-gray-500 dark:text-gray-400">
                 {new Date(publishedAt).toLocaleDateString()}
               </p>
             </div>

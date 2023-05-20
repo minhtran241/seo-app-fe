@@ -14,10 +14,10 @@ const Contact = () => {
               data-wow-delay=".15s
               "
             >
-              <h2 className="mb-3 text-2xl font-bold text-black dark:text-white sm:text-3xl lg:text-2xl xl:text-3xl">
+              <h2 className="mb-3 text-2xl font-bold text-primary-title-dark dark:text-white sm:text-3xl lg:text-2xl xl:text-3xl">
                 Need Help? Open a Ticket
               </h2>
-              <p className="mb-12 text-base font-medium text-body-color dark:text-white/80">
+              <p className="mb-12 text-base font-medium text-gray-500 dark:text-gray-400 dark:text-white/80">
                 Our support team will get back to you ASAP via email.
               </p>
               <form>
@@ -33,7 +33,7 @@ const Contact = () => {
                       <input
                         type="text"
                         placeholder="Enter your name"
-                        className="w-full  border border-transparent py-3 px-6 text-base text-body-color placeholder-body-color shadow-one outline-none focus:border-primary focus-visible:shadow-none dark:bg-white dark:shadow-signUp"
+                        className="w-full  border border-transparent py-3 px-6 text-base text-gray-500 placeholder-body-color shadow-one outline-none focus:border-primary focus-visible:shadow-none dark:bg-white dark:text-gray-400 dark:shadow-signUp"
                       />
                     </div>
                   </div>
@@ -48,7 +48,7 @@ const Contact = () => {
                       <input
                         type="email"
                         placeholder="Enter your email"
-                        className="w-full  border border-transparent py-3 px-6 text-base text-body-color placeholder-body-color shadow-one outline-none focus:border-primary focus-visible:shadow-none dark:bg-white dark:shadow-signUp"
+                        className="w-full  border border-transparent py-3 px-6 text-base text-gray-500 placeholder-body-color shadow-one outline-none focus:border-primary focus-visible:shadow-none dark:bg-white dark:text-gray-400 dark:shadow-signUp"
                       />
                     </div>
                   </div>
@@ -64,12 +64,12 @@ const Contact = () => {
                         name="message"
                         rows={5}
                         placeholder="Enter your Message"
-                        className="w-full resize-none  border border-transparent py-3 px-6 text-base text-body-color placeholder-body-color shadow-one outline-none focus:border-primary focus-visible:shadow-none dark:bg-white dark:shadow-signUp"
+                        className="w-full resize-none  border border-transparent py-3 px-6 text-base text-gray-500 placeholder-body-color shadow-one outline-none focus:border-primary focus-visible:shadow-none dark:bg-white dark:text-gray-400 dark:shadow-signUp"
                       ></textarea>
                     </div>
                   </div>
                   <div className="w-full px-4">
-                    <button className=" bg-primary py-4 px-9 text-base font-medium text-white transition duration-300 ease-in-out hover:bg-opacity-80 hover:shadow-signUp">
+                    <button className=" bg-primary-title-dark py-4 px-9 text-base font-medium text-white transition duration-300 ease-in-out hover:bg-opacity-80 hover:shadow-signUp dark:bg-primary">
                       Submit Ticket
                     </button>
                   </div>
