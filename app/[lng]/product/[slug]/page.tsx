@@ -185,6 +185,7 @@ const ProductDetailsPage = async ({ params }: SingleProps) => {
       {relatedSolutions?.length > 0 && (
         <RelatedContents
           data={{
+            type: 'solution',
             title:
               lng === 'vi'
                 ? 'Các giải pháp liên quan'

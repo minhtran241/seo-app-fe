@@ -9,7 +9,13 @@ type Content = {
   thumbnail: any;
 };
 
-const SingleContent = ({ content }: { content: Content }) => {
+const SingleContent = ({
+  type,
+  content,
+}: {
+  type: string;
+  content: Content;
+}) => {
   const { name, slug, description, thumbnail } = content;
 
   return (
@@ -20,7 +26,7 @@ const SingleContent = ({ content }: { content: Content }) => {
       >
         {thumbnail?.data?.attributes && (
           <Link
-            href={`/blog/${slug}`}
+            href={`/${type}/${slug}`}
             className="w-ful relative block h-[220px]"
           >
             <Image
@@ -34,7 +40,7 @@ const SingleContent = ({ content }: { content: Content }) => {
         <div className="py-3 sm:py-8 md:py-8 xl:py-8">
           <p>
             <Link
-              href={`/blog/${slug}`}
+              href={`/${type}/${slug}`}
               className="mb-2 block text-lg font-bold text-black hover:text-primary dark:text-white dark:hover:text-primary sm:text-xl"
             >
               {name}
