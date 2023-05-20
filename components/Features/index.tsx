@@ -14,7 +14,7 @@ const Features = ({ data }) => {
     <>
       <section
         id="features"
-        className="lg:py-18 bg-primary/[.03] py-8 dark:bg-gray-900 md:py-8"
+        className="lg:py-18 bg-primary/[.03] py-8 dark:bg-gray-800 md:py-8"
       >
         <div className="container">
           <SectionTitle title={title} paragraph={description} center />

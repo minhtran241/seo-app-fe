@@ -59,7 +59,7 @@ const Blog = async ({ params: { lng } }: Props) => {
       ))}
       <Breadcrumb pageName={title} description={description} source={null} />
 
-      <section className="bg-white pt-[120px] pb-[120px] dark:bg-gray-900">
+      <section className="bg-white pt-[120px] pb-[120px] dark:bg-gray-800">
         <div className="container">
           <div className="-mx-4 flex flex-wrap justify-center">
             {blogData.map((blog, i) => (

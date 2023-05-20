@@ -7,7 +7,7 @@ const SubDetail = ({ data }) => {
   return (
     <>
       {reversed ? (
-        <section className="lg:py-15 bg-secondary py-5 dark:bg-primary/10 md:py-5">
+        <section className="lg:py-15 py-5 md:py-5">
           <div className="container mx-auto">
             <div className="-mx-4 flex flex-wrap items-center">
               {media && (
@@ -18,7 +18,7 @@ const SubDetail = ({ data }) => {
                   >
                     {roundedImage ? (
                       <Image
-                        className="rounded-full border border-primary"
+                        className="rounded-full"
                         src={getStrapiMedia(media)}
                         alt="about image"
                         width={545}
@@ -26,7 +26,7 @@ const SubDetail = ({ data }) => {
                       />
                     ) : (
                       <Image
-                        className="rounded border border-primary"
+                        className="rounded"
                         src={getStrapiMedia(media)}
                         alt="about image"
                         width={545}
@@ -64,7 +64,6 @@ const SubDetail = ({ data }) => {
                     {name}
                   </h1>
                 </div>
-
                 <div className="mb-4 md:-mx-4 md:flex md:items-start">
                   <div className="md:mx-4 md:mt-0">
                     <div className="mt-3 text-black dark:text-white">
@@ -81,7 +80,7 @@ const SubDetail = ({ data }) => {
                   >
                     {roundedImage ? (
                       <Image
-                        className="rounded-full border border-primary"
+                        className="rounded-full"
                         src={getStrapiMedia(media)}
                         alt="about image"
                         width={545}
@@ -89,7 +88,7 @@ const SubDetail = ({ data }) => {
                       />
                     ) : (
                       <Image
-                        className="rounded border border-primary"
+                        className="rounded"
                         src={getStrapiMedia(media)}
                         alt="about image"
                         width={545}

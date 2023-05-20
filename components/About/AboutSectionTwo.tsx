@@ -20,7 +20,7 @@ const AboutSectionTwo = ({ data }: { data: any }) => {
     </p>
   );
   return (
-    <section className="lg:py-15 bg-white py-5 dark:bg-gray-800">
+    <section className="lg:py-15 bg-white py-5 dark:bg-gray-900">
       <div className="container">
         {title && (
           <SectionTitle title={title} paragraph={description} center={false} />

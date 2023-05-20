@@ -62,7 +62,7 @@ const AboutPage = async ({ params: { lng } }: Props) => {
         source={null}
       />
       {aboutUsData?.Cover?.data?.attributes && (
-        <section className="lg:py-17 bg-white py-7 dark:bg-gray-800 md:py-7">
+        <section className="lg:py-17 bg-white py-7 dark:bg-gray-900 md:py-7">
           <div className="w-full px-4">
             <Image
               src={getStrapiMedia(aboutUsData?.Cover)}

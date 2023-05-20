@@ -18,7 +18,7 @@ const Footer = ({ params: { lng } }: Props) => {
     return (
       <>
         <footer
-          className="wow fadeInUp relative z-10 bg-primary pt-8 dark:bg-gray-800 md:pt-10 lg:pt-12"
+          className="wow fadeInUp relative z-10 bg-primary pt-8 md:pt-10 lg:pt-12"
           data-wow-delay=".1s"
         >
           <div className="container">

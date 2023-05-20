@@ -55,10 +55,10 @@ const Header = ({ params: { lng } }: Props) => {
           >
             <Dropdown.Item
               id="mega-menu-full-cta-dropdown"
-              className=" border-gray-200 bg-white shadow-sm dark:bg-gray-700"
+              className=" border-gray-700 bg-white shadow-sm dark:bg-gray-900"
               title="Products"
             >
-              <div className="mx-auto grid max-w-screen-xl text-sm text-gray-500 dark:text-gray-400 md:grid-cols-4 ">
+              <div className="mx-auto grid max-w-screen-xl text-sm text-gray-500 dark:text-white md:grid-cols-4 ">
                 {headerAttributes?.groupedByCategory?.categories &&
                   headerAttributes?.groupedByCategory?.categories?.data?.map(
                     (category, i) => (
@@ -92,10 +92,10 @@ const Header = ({ params: { lng } }: Props) => {
             </Dropdown.Item>
             <Dropdown.Item
               id="mega-menu-full-cta-dropdown"
-              className=" border-gray-200 bg-white shadow-sm  dark:bg-gray-700"
+              className=" border-gray-700 bg-white shadow-sm dark:bg-gray-900"
               title="Solutions"
             >
-              <div className="mx-auto grid max-w-screen-xl text-sm text-gray-500 dark:text-gray-400 md:grid-cols-4">
+              <div className="mx-auto grid max-w-screen-xl text-sm text-gray-500 dark:text-white md:grid-cols-4">
                 {headerAttributes?.groupedByCategory?.categories &&
                   headerAttributes?.groupedByCategory?.categories?.data?.map(
                     (category, i) => (

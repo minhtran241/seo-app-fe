@@ -1,7 +1,7 @@
 const NewsLatterBox = () => {
   return (
     <div
-      className="wow fadeInUp relative z-10 bg-primary/[3%] p-8 dark:bg-gray-800 sm:p-11 lg:p-8 xl:p-11"
+      className="wow fadeInUp relative z-10 bg-primary/[3%] p-8 dark:bg-gray-900 sm:p-11 lg:p-8 xl:p-11"
       data-wow-delay=".2s"
     >
       <h3 className="mb-4 text-2xl font-bold leading-tight text-primary-title-dark dark:text-white">

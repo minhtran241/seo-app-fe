@@ -55,7 +55,7 @@ const Detail = ({ data }) => {
           </div>
         </section>
       ) : (
-        <section className="lg:py-17  bg-primary/[.03] py-7 dark:bg-gray-900 md:py-7">
+        <section className="lg:py-17  bg-primary/[.03] py-7 dark:bg-gray-800 md:py-7">
           <div className="container mx-auto">
             <div className="-mx-4 flex flex-wrap items-center">
               <div className="w-full px-4 lg:w-1/2">

@@ -6,12 +6,12 @@ import { getStrapiMedia } from '@/app/[lng]/api/urlBuilder';
 const Brands = ({ data }) => {
   const { title, description, brands } = data || {};
   return (
-    <section className="lg:py-15 bg-white py-5 dark:bg-gray-800">
+    <section className="lg:py-15 bg-white py-5 dark:bg-gray-900">
       <div className="container">
         <SectionTitle title={title} paragraph={description} center={true} />
         <div className="-mx-4 flex flex-wrap">
           <div className="w-full px-4">
-            <div className="wow fadeInUp flex flex-wrap items-center justify-center border-b-4 border-primary bg-secondary py-8 px-8 dark:bg-gray-900 sm:px-10 md:py-[40px] md:px-[50px] xl:p-[50px] 2xl:py-[60px] 2xl:px-[70px]">
+            <div className="wow fadeInUp flex flex-wrap items-center justify-center border-b-4 border-primary bg-secondary py-8 px-8 dark:border-blue-300 dark:bg-gray-800 sm:px-10 md:py-[40px] md:px-[50px] xl:p-[50px] 2xl:py-[60px] 2xl:px-[70px]">
               {brands?.map((brand, i) => (
                 <SingleBrand key={i} brand={brand} />
               ))}

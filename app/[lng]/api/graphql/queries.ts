@@ -510,6 +510,7 @@ const GET_SOLUTIONS_RELATED_CONTENTS: DocumentNode = gql`
               attributes {
                 name
                 slug
+                description
                 thumbnail {
                   data {
                     attributes {
@@ -536,6 +537,7 @@ const GET_PRODUCTS_RELATED_CONTENT: DocumentNode = gql`
               attributes {
                 name
                 slug
+                description
                 thumbnail {
                   data {
                     attributes {
@@ -563,6 +565,7 @@ const GET_POPULAR_PRODUCTS: DocumentNode = gql`
         attributes {
           name
           slug
+          description
           thumbnail {
             data {
               attributes {
@@ -587,6 +590,7 @@ const GET_POPULAR_SOLUTIONS: DocumentNode = gql`
         attributes {
           name
           slug
+          description
           thumbnail {
             data {
               attributes {
