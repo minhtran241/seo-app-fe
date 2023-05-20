@@ -114,7 +114,8 @@ const ProductDetailsPage = async ({ params }: SingleProps) => {
       <section className="overflow-hidden bg-white pt-[35px] pb-[60px] dark:bg-gray-800">
         <div className="container">
           <div className="-mx-4 flex flex-wrap">
-            {/* <div className="w-full px-4 lg:w-9/12"> */}
+						{/* <div className="w-full px-4 lg:w-9/12"> */}
+						<div className="w-full px-4">
             <section className="">
               <Image
                 src={getStrapiMedia(thumbnail)}
@@ -180,8 +181,10 @@ const ProductDetailsPage = async ({ params }: SingleProps) => {
               )}
             </div> */}
         </div>
+				</div>
         {/* </div> */}
       </section>
+			
       {relatedSolutions?.length > 0 && (
         <RelatedContents
           data={{

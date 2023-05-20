@@ -177,7 +177,7 @@ const Header = ({ params: { lng } }: Props) => {
               );
             })}
         </div>
-        <ThemeToggler />
+        {/* <ThemeToggler /> */}
       </Navbar>
     );
   }

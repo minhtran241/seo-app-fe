@@ -101,6 +101,7 @@ const SolutionDetailsPage = async ({ params }: SingleProps) => {
         <div className="container">
           <div className="-mx-4 flex flex-wrap">
             {/* <div className="w-full px-4 lg:w-9/12"> */}
+						<div className="w-full px-4">
             <section className="lg:py-17  py-7 md:py-7">
               <Image
                 src={getStrapiMedia(thumbnail)}
@@ -167,6 +168,7 @@ const SolutionDetailsPage = async ({ params }: SingleProps) => {
             </div> */}
         </div>
         {/* </div> */}
+				</div>
       </section>
       {relatedProducts?.length > 0 && (
         <RelatedContents

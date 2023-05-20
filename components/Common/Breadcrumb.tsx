@@ -21,17 +21,21 @@ const Breadcrumb = ({
                   {pageName}
                 </h1>
                 {description && (
-                  <p className="mb-2 text-base font-medium leading-relaxed text-white ">
+                  <p className="mb-2 text-base font-medium leading-relaxed text-white">
                     {description}
                   </p>
                 )}
                 {source && (
+									<div className="flex items-center flex-wrap">
+										<div className="pr-2 text-base font-medium text-white"><FaLink /> </div>
                   <Link
-                    className="flex text-base font-medium leading-relaxed text-white underline "
+                    className="text-base font-medium leading-relaxed text-white underline"
                     href={source}
                   >
-                    <FaLink className="h-[25px] w-[25px] pr-2" /> {source}
+										{source}
                   </Link>
+									
+									</div>
                 )}
               </div>
             </div>
