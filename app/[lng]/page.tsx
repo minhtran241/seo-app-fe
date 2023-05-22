@@ -67,7 +67,7 @@ export default async function Home({ params: { lng } }: Props) {
       ))}
       <ScrollUp />
       <Hero data={homeData?.Hero} />
-      <Features data={featureData} />
+      <Features data={{ ...featureData, col: featureData?.features?.length }} />
       <Brands data={homeData?.Brands} />
       <AboutSectionTwo data={homeData?.Sections[0]} />
       <Blog data={homeData?.Blogs} />

@@ -9,7 +9,7 @@ const Milestones = ({ data }) => {
   const { title, milestones, historyImage } = data || {};
   return (
     <>
-      <section className="lg:py-15  bg-white py-5 dark:bg-gray-900">
+      <section className="lg:py-15  py-5 bg-primary/[.03] dark:bg-gray-800 ">
         <div className="container">
           <SectionTitle title={title} paragraph={null} center={true} />
           <div className="-mx-4 flex flex-wrap items-center">

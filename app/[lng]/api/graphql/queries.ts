@@ -197,8 +197,29 @@ const GET_ABOUT_US_PAGE: DocumentNode = gql`
               }
             }
           }
+          Brands {
+            title
+            description
+            brands {
+              name
+              href
+              media {
+                data {
+                  attributes {
+                    url
+                  }
+                }
+              }
+            }
+          }
+          SocialProof {
+            proofs(sort: "order:asc") {
+              title
+              description
+            }
+          }
           Team {
-            name
+            title
             description
             media {
               data {
@@ -206,6 +227,10 @@ const GET_ABOUT_US_PAGE: DocumentNode = gql`
                   url
                 }
               }
+            }
+            properties {
+              name
+              description
             }
           }
         }
@@ -494,6 +519,8 @@ const GET_FOOTER: DocumentNode = gql`
               path
             }
           }
+          facebookLink
+          websiteLink
         }
       }
     }

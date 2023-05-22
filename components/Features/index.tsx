@@ -8,8 +8,29 @@ import SingleFeature from './SingleFeature';
 // };
 
 const Features = ({ data }) => {
-  const { title, description, features } = data || {};
+  const { title, description, features, col } = data || {};
   const lgGridCols: number = features?.length || 2;
+  let gridEle = <></>;
+  if (col === 4)
+    gridEle = (
+      <div
+        className={`mb-12 grid grid-cols-1 gap-x-7 gap-y-14 md:grid-cols-2 lg:grid-cols-4`}
+      >
+        {features?.map((feature, i) => (
+          <SingleFeature key={i} data={{ feature, i }} />
+        ))}
+      </div>
+    );
+	else if (col === 3) gridEle = (
+		<div
+			className={`mb-12 grid grid-cols-1 gap-x-7 gap-y-14 md:grid-cols-2 lg:grid-cols-3`}
+		>
+			{features?.map((feature, i) => (
+				<SingleFeature key={i} data={{ feature, i }} />
+			))}
+		</div>
+	);
+
   return (
     <>
       <section
@@ -18,13 +39,7 @@ const Features = ({ data }) => {
       >
         <div className="container">
           <SectionTitle title={title} paragraph={description} center />
-          <div
-            className={`grid grid-cols-1 gap-x-7 gap-y-14 lg:grid-cols-${lgGridCols} mb-12 md:grid-cols-2`}
-          >
-            {features?.map((feature, i) => (
-              <SingleFeature key={i} data={{ feature, i }} />
-            ))}
-          </div>
+          {gridEle}
         </div>
       </section>
     </>

@@ -2,8 +2,9 @@ import SharePost from '@/components/Blog/SharePost';
 import Image from 'next/image';
 import parse from 'html-react-parser';
 import { notFound } from 'next/navigation';
-import { FaCalendar, FaEye } from 'react-icons/fa';
+import { FaCalendar, FaUser } from 'react-icons/fa';
 // import { useMutation } from '@apollo/client';
+import React from 'react';
 import { apolloClient } from '../../api/apollo-client';
 import {
   GET_BLOG_POST,
@@ -11,6 +12,7 @@ import {
 } from '../../api/graphql/queries';
 import { getStrapiMedia } from '../../api/urlBuilder';
 import { SingleProps } from '@/types/lng';
+import getURL from '@/utils/blog/getURL';
 
 type SingleBlog = {
   id: string;
@@ -104,7 +106,7 @@ const BlogDetailsPage = async ({ params }: SingleProps) => {
           />
         </>
       ))}
-      <section className="bg-white pt-[80px] pb-[120px] dark:bg-gray-800">
+      <section className="bg-primary/[.03] pt-[80px] pb-[120px] dark:bg-gray-800">
         <div className="container">
           <div className="-mx-4 flex flex-wrap justify-center">
             <div className="w-full px-4 lg:w-8/12">
@@ -114,42 +116,29 @@ const BlogDetailsPage = async ({ params }: SingleProps) => {
                 </h2>
                 <div className="mb-10 flex flex-wrap items-center justify-between border-b border-body-color border-opacity-10 pb-4 dark:border-white dark:border-opacity-10">
                   <div className="flex flex-wrap items-center">
-                    <div className="mr-5 mb-5 items-center">
-                      {/* <div className="mr-4">
-                        <div className="relative h-10 w-10 overflow-hidden rounded-full">
-                          <Image
-                            src="/images/blog/author-02.png"
-                            alt="author"
-                            fill
-                          />
-                        </div>
-                      </div> */}
-                      <div className="w-full">
-                        <h4 className="text-base font-medium text-gray-500 dark:text-gray-400">
-                          By{' '}
-                          <span>
-                            {blogAttrs?.author?.data?.attributes?.fullname}
-                          </span>
-                        </h4>
-                      </div>
-                    </div>
                     <div className="mb-5 flex items-center">
+                      <p className="mr-5  flex items-center text-base font-medium text-gray-500 dark:text-gray-400">
+                        <span className="mr-2 text-primary">
+                          <FaUser />
+                        </span>
+                        {blogAttrs?.author?.data?.attributes?.fullname}
+                      </p>
                       <p className="mr-5 flex items-center text-base font-medium text-gray-500 dark:text-gray-400">
-                        <span className="mr-2">
+                        <span className="mr-2 text-primary">
                           <FaCalendar />
                         </span>
                         {new Date(blogAttrs?.publishedAt).toLocaleDateString()}
                       </p>
-                      <p className="flex items-center text-base font-medium text-gray-500 dark:text-gray-400">
-                        <span className="mr-2">
+                      {/* <p className="flex items-center text-base font-medium text-gray-500 dark:text-gray-400">
+                        <span className="mr-2 text-primary">
                           <FaEye />
                         </span>
                         {blogAttrs?.views}
-                      </p>
+                      </p> */}
                     </div>
                   </div>
                   <div className="mb-5">
-                    <SharePost />
+                    <SharePost data={{ url: getURL(`/blog/${slug}`) }} />
                   </div>
                 </div>
                 <div>
@@ -193,7 +182,7 @@ const BlogDetailsPage = async ({ params }: SingleProps) => {
                         Share this blog :
                       </h5>
                       <div className="flex items-center sm:justify-end">
-                        <SharePost />
+                        <SharePost data={{ url: getURL(`/blog/${slug}`) }} />
                       </div>
                     </div>
                   </div>

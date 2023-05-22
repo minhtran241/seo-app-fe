@@ -25,8 +25,8 @@ const AboutSectionTwo = ({ data }: { data: any }) => {
         {title && (
           <SectionTitle title={title} paragraph={description} center={false} />
         )}
-        <div className="-mx-4 flex flex-wrap items-center">
-          <div className="w-full px-4 lg:w-1/2">
+        <div className="mx-auto max-w-screen-xl items-center gap-16 px-4 pb-4 lg:grid lg:grid-cols-2 lg:px-6">
+          <div className="w-full px-4">
             <div
               className="wow fadeInUp mx-auto max-w-[500px]"
               data-wow-delay=".2s"
@@ -44,27 +44,24 @@ const AboutSectionTwo = ({ data }: { data: any }) => {
             </div>
           </div>
           {media?.data?.attributes && (
-            <div className="w-full px-4 lg:w-1/2">
-              <div
-                className="wow fadeInUp relative mb-12 aspect-[45/44] max-w-[500px] text-center lg:m-0"
-                data-wow-delay=".15s"
-              >
-                {roundedImage ? (
-                  <Image
-                    className="rounded-full"
-                    src={getStrapiMedia(media)}
-                    alt="About Image"
-                    fill
-                  />
-                ) : (
-                  <Image
-                    className="rounded-md"
-                    src={getStrapiMedia(media)}
-                    alt="About Image"
-                    fill
-                  />
-                )}
-              </div>
+            <div className="w-full px-4">
+              {roundedImage ? (
+                <Image
+                  className="rounded-full"
+                  src={getStrapiMedia(media)}
+                  alt="About Image"
+                  width={500}
+                  height={1000}
+                />
+              ) : (
+                <Image
+                  className="rounded-md"
+                  src={getStrapiMedia(media)}
+                  alt="About Image"
+                  width={500}
+                  height={1000}
+                />
+              )}
             </div>
           )}
         </div>

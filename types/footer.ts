@@ -1,7 +1,7 @@
 export type Footer = {
-  facebookLink: string;
-  gmailLink: string;
   logo: any;
-  sections: any;
   text: string;
+  sections: any;
+  facebookLink: string;
+  websiteLink: string;
 };

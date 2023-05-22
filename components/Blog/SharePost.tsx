@@ -1,26 +1,28 @@
-import { FaLinkedinIn, FaTwitter, FaFacebookF } from 'react-icons/fa';
+'use client';
+import {
+  FacebookShareButton,
+  FacebookIcon,
+  LinkedinShareButton,
+  LinkedinIcon,
+  TwitterShareButton,
+  TwitterIcon,
+} from 'next-share';
 
-const SharePost = () => {
+const SharePost = ({ data }: { data: { url: string } }) => {
+  const { url } = data || {};
+  const status: string = 'Check out this blog from Pama!';
+  const hashtag: string = 'pamaBlog';
   return (
     <>
-      <a
-        href="#0"
-        className="mb-3 inline-flex h-9 w-9 items-center justify-center rounded-md bg-primary bg-opacity-10 text-gray-500 duration-300 hover:bg-opacity-100 hover:text-white dark:text-gray-400 sm:ml-3"
-      >
-        <FaLinkedinIn />
-      </a>
-      <a
-        href="#0"
-        className="ml-3 mb-3 inline-flex h-9 w-9 items-center justify-center rounded-md bg-primary bg-opacity-10 text-gray-500 duration-300 hover:bg-opacity-100 hover:text-white dark:text-gray-400"
-      >
-        <FaTwitter />
-      </a>
-      <a
-        href="#0"
-        className="ml-3 mb-3 inline-flex h-9 w-9 items-center justify-center rounded-md bg-primary bg-opacity-10 text-gray-500 duration-300 hover:bg-opacity-100 hover:text-white dark:text-gray-400"
-      >
-        <FaFacebookF />
-      </a>
+      <FacebookShareButton url={url} quote={status} hashtag={hashtag}>
+        <FacebookIcon size={32} />
+      </FacebookShareButton>
+      <TwitterShareButton url={url} title={status}>
+        <TwitterIcon size={32} />
+      </TwitterShareButton>
+      <LinkedinShareButton url={url} title={status}>
+        <LinkedinIcon size={32} />
+      </LinkedinShareButton>
     </>
   );
 };

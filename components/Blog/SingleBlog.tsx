@@ -16,13 +16,13 @@ const SingleBlog = ({ blog }: { blog: Blog }) => {
         {thumbnail?.data?.attributes && (
           <Link
             href={`/blog/${slug}`}
-            className="relative block h-[220px] w-full rounded border border-secondary"
+            className="relative block h-[220px] w-full  border border-secondary"
           >
             <Image
               src={getStrapiMedia(thumbnail)}
               alt="image"
               fill
-              className="rounded"
+              className=""
             />
           </Link>
         )}
