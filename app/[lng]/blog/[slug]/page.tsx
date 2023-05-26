@@ -160,8 +160,13 @@ const BlogDetailsPage = async ({ params }: SingleProps) => {
                     </div>
                   )}
 
-                  <div className="mb-8 text-base leading-relaxed text-black dark:text-white sm:text-lg sm:leading-relaxed lg:text-base lg:leading-relaxed xl:text-lg xl:leading-relaxed">
-                    {parse(blogAttrs?.content || '')}
+                  <div className="mb-8 text-black dark:text-white">
+                    {parse(
+                      blogAttrs?.content?.replaceAll(
+                        'src="',
+                        `src="${process.env.STRAPI_ASSETS_BASE_URL}`
+                      )
+                    )}
                   </div>
 
                   <div className="items-center justify-between sm:flex">
