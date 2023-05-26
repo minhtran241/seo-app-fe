@@ -218,21 +218,6 @@ const GET_ABOUT_US_PAGE: DocumentNode = gql`
               description
             }
           }
-          Team {
-            title
-            description
-            media {
-              data {
-                attributes {
-                  url
-                }
-              }
-            }
-            properties {
-              name
-              description
-            }
-          }
         }
       }
     }

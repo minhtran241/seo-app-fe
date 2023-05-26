@@ -8,7 +8,7 @@ import React from 'react';
 import { apolloClient } from '../../api/apollo-client';
 import {
   GET_BLOG_POST,
-  UPDATE_BLOG_POST_VIEWS,
+  // UPDATE_BLOG_POST_VIEWS,
 } from '../../api/graphql/queries';
 import { getStrapiMedia } from '../../api/urlBuilder';
 import { SingleProps } from '@/types/lng';
@@ -39,18 +39,23 @@ const getBlog = async (lng: string, slug: string): Promise<SingleBlog> => {
   };
 };
 
-const updateBlogViews = async (id: string, views: number): Promise<void> => {
-  await apolloClient.mutate({
-    mutation: UPDATE_BLOG_POST_VIEWS,
-    variables: { id: id, views: views },
-  });
-  // const blogViews: number = data?.updateBlogPost?.data?.attributes?.views || 0;
-  // return blogViews;
-};
+// const updateBlogViews = async (id: string, views: number): Promise<void> => {
+//   await apolloClient.mutate({
+//     mutation: UPDATE_BLOG_POST_VIEWS,
+//     variables: { id: id, views: views },
+//   });
+//   const blogViews: number = data?.updateBlogPost?.data?.attributes?.views || 0;
+//   return blogViews;
+// };
 
 const BlogDetailsPage = async ({ params }: SingleProps) => {
   const { lng, slug } = params;
   const blogAttrs = await getBlog(lng, slug);
+  const content: string =
+    blogAttrs?.content?.replaceAll(
+      'src="',
+      `src="${process.env.STRAPI_ASSETS_BASE_URL}`
+    ) || '';
 
   if (!blogAttrs) {
     notFound();
@@ -161,12 +166,7 @@ const BlogDetailsPage = async ({ params }: SingleProps) => {
                   )}
 
                   <div className="mb-8 text-black dark:text-white">
-                    {parse(
-                      blogAttrs?.content?.replaceAll(
-                        'src="',
-                        `src="${process.env.STRAPI_ASSETS_BASE_URL}`
-                      )
-                    )}
+                    {parse(content)}
                   </div>
 
                   <div className="items-center justify-between sm:flex">
