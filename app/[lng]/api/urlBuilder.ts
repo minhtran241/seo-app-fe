@@ -1,5 +1,3 @@
-import { marked } from 'marked';
-
 const assetsBaseUrl = process.env.STRAPI_ASSETS_BASE_URL;
 
 const getStrapiURL = (path = '') => {
@@ -14,11 +12,6 @@ const getStrapiMedia = (media) => {
   return imageUrl;
 };
 
-const richTextReducer = (rawRichtext) => {
-  const parsedRichText = marked.parse(rawRichtext);
-  return parsedRichText;
-};
-
 const imageReducer = (imageField) => {
   const fields = imageField.data.attributes;
   return {
@@ -30,4 +23,4 @@ const imageReducer = (imageField) => {
   };
 };
 
-export { getStrapiURL, getStrapiMedia, richTextReducer };
+export { getStrapiURL, getStrapiMedia };
