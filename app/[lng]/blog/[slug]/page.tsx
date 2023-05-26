@@ -13,6 +13,7 @@ import {
 import { getStrapiMedia } from '../../api/urlBuilder';
 import { SingleProps } from '@/types/lng';
 import getURL from '@/utils/blog/getURL';
+import Blog from '@/components/Blog';
 
 type SingleBlog = {
   id: string;
@@ -26,6 +27,7 @@ type SingleBlog = {
   content: string;
   translator: string;
   source: string;
+  relatedBlogs: any;
 };
 
 const getBlog = async (lng: string, slug: string): Promise<SingleBlog> => {
@@ -195,8 +197,9 @@ const BlogDetailsPage = async ({ params }: SingleProps) => {
               </div>
             </div>
           </div>
-        </div>
+        </div>     
       </section>
+			<Blog data={blogAttrs?.relatedBlogs} />
     </>
   );
 };

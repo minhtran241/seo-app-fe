@@ -6,6 +6,10 @@ import {
   LinkedinIcon,
   TwitterShareButton,
   TwitterIcon,
+  PinterestShareButton,
+  PinterestIcon,
+  EmailShareButton,
+  EmailIcon,
 } from 'next-share';
 
 const SharePost = ({ data }: { data: { url: string } }) => {
@@ -15,14 +19,20 @@ const SharePost = ({ data }: { data: { url: string } }) => {
   return (
     <>
       <FacebookShareButton url={url} quote={status} hashtag={hashtag}>
-        <FacebookIcon size={32} />
+        <FacebookIcon size={32} round className="mr-2" />
       </FacebookShareButton>
       <TwitterShareButton url={url} title={status}>
-        <TwitterIcon size={32} />
+        <TwitterIcon size={32} round className="mr-2" />
       </TwitterShareButton>
       <LinkedinShareButton url={url} title={status}>
-        <LinkedinIcon size={32} />
+        <LinkedinIcon size={32} round className="mr-2" />
       </LinkedinShareButton>
+      <PinterestShareButton url={url} media={status}>
+        <PinterestIcon size={32} round className="mr-2" />
+      </PinterestShareButton>
+      <EmailShareButton url={url} subject={status}>
+        <EmailIcon size={32} round />
+      </EmailShareButton>
     </>
   );
 };

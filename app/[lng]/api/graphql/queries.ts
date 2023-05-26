@@ -312,6 +312,34 @@ const GET_BLOG_POST: DocumentNode = gql`
           }
           publishedAt
           content
+          relatedBlogs {
+            title
+            blogs {
+              data {
+                attributes {
+                  title
+                  description
+                  slug
+                  thumbnail {
+                    data {
+                      attributes {
+                        url
+                        alternativeText
+                      }
+                    }
+                  }
+                  author {
+                    data {
+                      attributes {
+                        fullname
+                      }
+                    }
+                  }
+                  publishedAt
+                }
+              }
+            }
+          }
         }
       }
     }
