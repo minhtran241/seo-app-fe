@@ -584,7 +584,7 @@ const GET_FOOTER: DocumentNode = gql`
             data {
               attributes {
                 url
-								alternativeText
+                alternativeText
               }
             }
           }
@@ -698,8 +698,22 @@ const GET_BLOG_PAGE: DocumentNode = gql`
               }
             }
           }
-          title
-          description
+          hero {
+            media {
+              data {
+                attributes {
+                  url
+                }
+              }
+            }
+            title
+            tag
+            description
+            buttons {
+              label
+              link
+            }
+          }
         }
       }
     }
@@ -739,8 +753,7 @@ const GET_CONTACT_PAGE: DocumentNode = gql`
             }
           }
           title
-          description
-          source
+          details
         }
       }
     }

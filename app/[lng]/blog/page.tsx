@@ -1,5 +1,4 @@
 import SingleBlog from '@/components/Blog/SingleBlog';
-import Breadcrumb from '@/components/Common/Breadcrumb';
 import { Props } from '@/types/lng';
 import {
   blogPageDataCache,
@@ -7,10 +6,11 @@ import {
   preload,
 } from '@/utils/blog/getBlogsData';
 import { getStrapiMedia } from '../api/urlBuilder';
+import Hero from '@/components/Hero';
 
 const Blog = async ({ params: { lng } }: Props) => {
   preload(lng);
-  const { seo, title, description } = (await blogPageDataCache(lng)) || {};
+  const { seo, hero } = (await blogPageDataCache(lng)) || {};
   const blogData = await blogsDataCache(lng);
   const {
     metaTitle,
@@ -57,8 +57,8 @@ const Blog = async ({ params: { lng } }: Props) => {
           />
         </>
       ))}
-      <Breadcrumb pageName={title} description={description} source={null} />
 
+      <Hero data={hero} />
       <section className="bg-white pt-[120px] pb-[120px] dark:bg-gray-800">
         <div className="container">
           <div className="-mx-4 flex flex-wrap justify-center">

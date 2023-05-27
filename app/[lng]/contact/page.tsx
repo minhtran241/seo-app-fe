@@ -6,7 +6,7 @@ import { getStrapiMedia } from '../api/urlBuilder';
 
 const ContactPage = async ({ params: { lng } }: Props) => {
   preload(lng);
-  const { seo, title, description, source } = (await contactPageDataCache(lng)) || {};
+  const { seo, title, details } = (await contactPageDataCache(lng)) || {};
   const {
     metaTitle,
     metaDescription,
@@ -52,9 +52,8 @@ const ContactPage = async ({ params: { lng } }: Props) => {
           />
         </>
       ))}
-      <Breadcrumb pageName={title} description={description} source={source} />
-
-      <Contact />
+      {/* <Breadcrumb pageName={title} description={description} source={source} /> */}
+      <Contact data={{ title: title, details: details }} />
     </>
   );
 };
