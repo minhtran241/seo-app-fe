@@ -21,15 +21,26 @@ const Features = ({ data }) => {
         ))}
       </div>
     );
-	else if (col === 3) gridEle = (
-		<div
-			className={`mb-12 grid grid-cols-1 gap-x-7 gap-y-14 md:grid-cols-2 lg:grid-cols-3`}
-		>
-			{features?.map((feature, i) => (
-				<SingleFeature key={i} data={{ feature, i }} />
-			))}
-		</div>
-	);
+  else if (col === 3)
+    gridEle = (
+      <div
+        className={`mb-12 grid grid-cols-1 gap-x-7 gap-y-14 md:grid-cols-2 lg:grid-cols-3`}
+      >
+        {features?.map((feature, i) => (
+          <SingleFeature key={i} data={{ feature, i }} />
+        ))}
+      </div>
+    );
+  else if (col === 2)
+    gridEle = (
+      <div
+        className={`mb-12 grid grid-cols-1 gap-x-7 gap-y-14 md:grid-cols-2 lg:grid-cols-2`}
+      >
+        {features?.map((feature, i) => (
+          <SingleFeature key={i} data={{ feature, i }} />
+        ))}
+      </div>
+    );
 
   return (
     <>

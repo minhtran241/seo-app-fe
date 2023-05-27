@@ -12,7 +12,10 @@ const SingleFeature = ({ data }) => {
         <div className="mb-10 flex h-[70px] w-[70px] items-center justify-center bg-primary bg-opacity-10">
           <Image
             src={getStrapiMedia(feature?.media)}
-            alt="Feature Icon"
+            alt={
+              feature?.media?.data?.attributes?.alternativeText ||
+              'Feature Image'
+            }
             width={35}
             height={35}
           />

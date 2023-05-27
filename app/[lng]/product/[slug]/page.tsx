@@ -1,12 +1,7 @@
-// import RelatedPost from '@/components/Blog/RelatedPost';
-import Breadcrumb from '@/components/Common/Breadcrumb';
-import Image from 'next/image';
 import SubDetail from '@/components/SubDetail';
 import { apolloClient } from '../../api/apollo-client';
 import {
-  // GET_POPULAR_PRODUCTS,
-  GET_PRODUCTS_DETAILS,
-  GET_PRODUCTS_RELATED_CONTENT,
+  GET_PRODUCT_DETAILS,
 } from '../../api/graphql/queries';
 import { getStrapiMedia } from '../../api/urlBuilder';
 import { notFound } from 'next/navigation';
@@ -21,44 +16,35 @@ type Product = {
   thumbnail: any;
   source: string;
   contents: any;
+  relatedSolutions: any;
 };
 
 const getProduct = async (lng: string, slug: string): Promise<Product> => {
   const { data } = await apolloClient.query({
-    query: GET_PRODUCTS_DETAILS,
+    query: GET_PRODUCT_DETAILS,
     variables: { locale: lng, slug: slug },
   });
   const productAttrs: Product = data?.products?.data[0]?.attributes;
   return productAttrs;
 };
 
-const getRelatedSolutions = async (
-  lng: string,
-  slug: string
-): Promise<[any]> => {
-  const { data } = await apolloClient.query({
-    query: GET_PRODUCTS_RELATED_CONTENT,
-    variables: { locale: lng, slug },
-  });
-  const relatedSolutions: any =
-    data?.products?.data[0]?.attributes?.solutions?.data;
-  return relatedSolutions;
-};
-
-// const getPopularProducts = async (lng: string) => {
+// const getRelatedSolutions = async (
+//   lng: string,
+//   slug: string
+// ): Promise<[any]> => {
 //   const { data } = await apolloClient.query({
-//     query: GET_POPULAR_PRODUCTS,
-//     variables: { locale: lng },
+//     query: GET_PRODUCTS_RELATED_CONTENT,
+//     variables: { locale: lng, slug },
 //   });
-//   const popularProducts = data?.products?.data;
-//   return popularProducts;
+//   const relatedSolutions: any =
+//     data?.products?.data[0]?.attributes?.solutions?.data;
+//   return relatedSolutions;
 // };
 
 const ProductDetailsPage = async ({ params }: SingleProps) => {
   const { lng, slug } = params;
   const productAttrs = await getProduct(lng, slug);
-  const relatedSolutions = await getRelatedSolutions(lng, slug);
-  // const popularProducts = await getPopularProducts(lng);
+  // const relatedSolutions = await getRelatedSolutions(lng, slug);
 
   if (!productAttrs) {
     notFound();
@@ -111,19 +97,18 @@ const ProductDetailsPage = async ({ params }: SingleProps) => {
           />
         </>
       ))}
-      {/* <Breadcrumb pageName={name} description={description} source={source} /> */}
       <Hero
         data={{
+          tag: null,
           title: name,
           description: description,
           media: thumbnail,
-          source: source,
+          buttons: [{ label: name, link: source }],
         }}
       />
       <section className="overflow-hidden bg-white pt-[35px] pb-[60px] dark:bg-gray-800">
         <div className="container">
           <div className="-mx-4 flex flex-wrap">
-            {/* <div className="w-full px-4 lg:w-9/12"> */}
             <div className="w-full px-4">
               {/* <section className="">
                 <Image
@@ -164,45 +149,15 @@ const ProductDetailsPage = async ({ params }: SingleProps) => {
                 }
               })}
             </div>
-            {/* <div className="lg:py-17 w-full px-4 py-7 md:py-7 lg:w-3/12">
-              {popularProducts?.length > 0 && (
-                <div className="mb-10">
-                  <h3 className="border-b border-body-color border-opacity-10 py-4 px-4 text-lg font-semibold text-primary-title-dark dark:border-white dark:border-opacity-10 dark:text-primary-title">
-                    {lng === 'vi'
-                      ? 'Các sản phẩm phổ biến'
-                      : 'Popular products'}
-                  </h3>
-                  <ul className="p-4">
-                    {popularProducts?.map(({ attributes }, i) => (
-                      <li
-                        className="mb-3 border-b border-body-color border-opacity-10 pb-3 dark:border-white dark:border-opacity-10"
-                        key={i}
-                      >
-                        <RelatedPost
-                          title={attributes?.name}
-                          image={getStrapiMedia(attributes?.thumbnail)}
-                          slug={`/product/${attributes?.slug}`}
-                        />
-                      </li>
-                    ))}
-                  </ul>
-                </div>
-              )}
-            </div> */}
           </div>
         </div>
-        {/* </div> */}
       </section>
 
-      {relatedSolutions?.length > 0 && (
+      {productAttrs?.relatedSolutions?.solutions?.data?.length > 0 && (
         <RelatedContents
           data={{
-            type: 'solution',
-            title:
-              lng === 'vi'
-                ? 'Các giải pháp liên quan'
-                : `Related solutions of ${name}`,
-            relatedContents: relatedSolutions,
+            type: 'product',
+            relatedContents: productAttrs?.relatedSolutions,
           }}
         />
       )}

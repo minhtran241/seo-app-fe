@@ -31,7 +31,7 @@ const SingleContent = ({
           >
             <Image
               src={getStrapiMedia(thumbnail)}
-              alt="image"
+              alt={thumbnail?.data?.attributes?.alternativeText || 'Thumbnail'}
               fill
               className=""
             />

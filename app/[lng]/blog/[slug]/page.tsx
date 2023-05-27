@@ -159,7 +159,10 @@ const BlogDetailsPage = async ({ params }: SingleProps) => {
                       <div className="relative aspect-[97/60] w-full sm:aspect-[97/44]">
                         <Image
                           src={getStrapiMedia(blogAttrs?.thumbnail)}
-                          alt="Blog Thumbnail"
+                          alt={
+                            blogAttrs?.thumbnail?.data?.attributes
+                              ?.alternativeText || 'Blog Thumbnail'
+                          }
                           fill
                           className="object-cover object-center"
                         />
@@ -197,9 +200,9 @@ const BlogDetailsPage = async ({ params }: SingleProps) => {
               </div>
             </div>
           </div>
-        </div>     
+        </div>
       </section>
-			<Blog data={blogAttrs?.relatedBlogs} />
+      <Blog data={blogAttrs?.relatedBlogs} />
     </>
   );
 };

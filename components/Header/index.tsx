@@ -36,7 +36,10 @@ const Header = ({ params: { lng } }: Props) => {
         <Navbar.Brand href="/">
           <Image
             src={getStrapiMedia(headerAttributes?.logo)}
-            alt="Logo"
+            alt={
+              headerAttributes?.logo?.data?.attributes?.alternativeText ||
+              'Pama Logo'
+            }
             width={140}
             height={30}
             className="w-full"

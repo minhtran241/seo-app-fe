@@ -1,20 +1,23 @@
 import { apolloClient } from '../../api/apollo-client';
-import {
-  // GET_POPULAR_SOLUTIONS,
-  GET_SOLUTIONS_RELATED_CONTENTS,
-  GET_SOLUTION_DETAILS,
-} from '../../api/graphql/queries';
-import Breadcrumb from '@/components/Common/Breadcrumb';
+import { GET_SOLUTION_DETAILS } from '../../api/graphql/queries';
 import SubDetail from '@/components/SubDetail';
 import { notFound } from 'next/navigation';
-// import RelatedPost from '@/components/Blog/RelatedPost';
 import { getStrapiMedia } from '../../api/urlBuilder';
-import Image from 'next/image';
 import { SingleProps } from '@/types/lng';
 import RelatedContents from '@/components/RelatedContents';
 import Hero from '@/components/Hero';
 
-const getSolution = async (lng: string, slug: string) => {
+type Solution = {
+  seo: any;
+  name: string;
+  description: string;
+  thumbnail: any;
+  source: string;
+  contents: any;
+  relatedProducts: any;
+};
+
+const getSolution = async (lng: string, slug: string): Promise<Solution> => {
   const { data } = await apolloClient.query({
     query: GET_SOLUTION_DETAILS,
     variables: { locale: lng, slug },
@@ -23,29 +26,19 @@ const getSolution = async (lng: string, slug: string) => {
   return solutionAttrs;
 };
 
-const getRelatedProducts = async (lng: string, slug: string) => {
-  const { data } = await apolloClient.query({
-    query: GET_SOLUTIONS_RELATED_CONTENTS,
-    variables: { locale: lng, slug },
-  });
-  const relatedProducts = data?.solutions?.data[0]?.attributes?.products?.data;
-  return relatedProducts;
-};
-
-// const getPopularSolutions = async (lng: string) => {
+// const getRelatedProducts = async (lng: string, slug: string) => {
 //   const { data } = await apolloClient.query({
-//     query: GET_POPULAR_SOLUTIONS,
-//     variables: { locale: lng },
+//     query: GET_SOLUTIONS_RELATED_CONTENTS,
+//     variables: { locale: lng, slug },
 //   });
-//   const popularSolutions = data?.solutions?.data;
-//   return popularSolutions;
+//   const relatedProducts = data?.solutions?.data[0]?.attributes?.products?.data;
+//   return relatedProducts;
 // };
 
 const SolutionDetailsPage = async ({ params }: SingleProps) => {
   const { lng, slug } = params;
   const solutionAttrs = await getSolution(lng, slug);
-  const relatedProducts = await getRelatedProducts(lng, slug);
-  // const popularSolutions = await getPopularSolutions(lng);
+  // const relatedProducts = await getRelatedProducts(lng, slug);
 
   if (!solutionAttrs) {
     notFound();
@@ -100,10 +93,11 @@ const SolutionDetailsPage = async ({ params }: SingleProps) => {
       {/* <Breadcrumb pageName={name} description={description} source={source} /> */}
       <Hero
         data={{
+          tag: null,
           title: name,
           description: description,
           media: thumbnail,
-          source: source,
+          buttons: [{ label: name, link: source }],
         }}
       />
       <section className="overflow-hidden bg-white pt-[35px] pb-[60px] dark:bg-gray-800">
@@ -179,15 +173,11 @@ const SolutionDetailsPage = async ({ params }: SingleProps) => {
           {/* </div> */}
         </div>
       </section>
-      {relatedProducts?.length > 0 && (
+      {solutionAttrs?.relatedProducts?.products?.data?.length > 0 && (
         <RelatedContents
           data={{
-            type: 'product',
-            title:
-              lng === 'vi'
-                ? 'Các sản phẩm liên quan'
-                : `Related productions of ${name}`,
-            relatedContents: relatedProducts,
+            type: 'solution',
+            relatedContents: solutionAttrs?.relatedProducts,
           }}
         />
       )}

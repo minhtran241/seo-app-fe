@@ -1,15 +1,12 @@
-import Breadcrumb from '@/components/Common/Breadcrumb';
 import Timeline from '@/components/Timeline';
 import { preload } from '@/utils/about/getAboutData';
 import { aboutDataCache } from '@/utils/about/getAboutData';
-import Image from 'next/image';
 import { Props } from '@/types/lng';
 import { getStrapiMedia } from '../api/urlBuilder';
 import Features from '@/components/Features';
-import Detail from '@/components/Detail';
 import Brands from '@/components/Brands';
 import SocialProof from '@/components/SocialProof';
-import AboutSectionTwo from '@/components/About/AboutSectionTwo';
+import Hero from '@/components/Hero';
 
 const AboutPage = async ({ params: { lng } }: Props) => {
   preload(lng);
@@ -59,34 +56,16 @@ const AboutPage = async ({ params: { lng } }: Props) => {
           />
         </>
       ))}
-      <Breadcrumb
-        pageName={aboutUsData?.title}
-        description={aboutUsData?.description}
-        source={null}
-      />
-      {aboutUsData?.Cover?.data?.attributes && (
-        <section className="lg:py-17 bg-white py-7 dark:bg-gray-900 md:py-7">
-          <div className="w-full px-4">
-            <Image
-              src={getStrapiMedia(aboutUsData?.Cover)}
-              alt="About Us Cover"
-              width={1500}
-              height={300}
-              className="mx-auto rounded object-cover object-center"
-            />
-          </div>
-        </section>
-      )}
-      <Timeline data={aboutUsData?.Formation} />
-      <Brands data={aboutUsData?.Brands} />
-      <SocialProof data={aboutUsData?.SocialProof} />
+      <Hero data={aboutUsData?.hero} />
+      <SocialProof data={aboutUsData?.socialProof} />
+      <Timeline data={aboutUsData?.formation} />
       <Features
         data={{
-          ...aboutUsData?.Features,
-          col: aboutUsData?.Features?.features?.length,
+          ...aboutUsData?.features,
+          col: aboutUsData?.features?.features?.length,
         }}
       />
-      <AboutSectionTwo data={aboutUsData?.Team} />
+      <Brands data={aboutUsData?.brands} />
     </>
   );
 };

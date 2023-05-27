@@ -49,7 +49,9 @@ const AboutSectionTwo = ({ data }: { data: any }) => {
                 <Image
                   className="rounded-full"
                   src={getStrapiMedia(media)}
-                  alt="About Image"
+                  alt={
+                    media?.data?.attributes?.alternativeText || 'About Image'
+                  }
                   width={500}
                   height={1000}
                 />
@@ -57,7 +59,9 @@ const AboutSectionTwo = ({ data }: { data: any }) => {
                 <Image
                   className="rounded-md"
                   src={getStrapiMedia(media)}
-                  alt="About Image"
+                  alt={
+                    media?.data?.attributes?.alternativeText || 'About Image'
+                  }
                   width={500}
                   height={1000}
                 />

@@ -44,7 +44,11 @@ const SingleBrand = ({ brand }: { brand: any }) => {
         rel="nofollow noreferrer"
         className="relative h-10 w-full"
       >
-        <Image src={getStrapiMedia(media)} alt={name} fill />
+        <Image
+          src={getStrapiMedia(media)}
+          alt={media?.data?.attributes?.alternativeText || name}
+          fill
+        />
       </Link>
     </div>
   );

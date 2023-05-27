@@ -32,7 +32,7 @@ const GET_HOME_PAGE: DocumentNode = gql`
               }
             }
           }
-          Hero {
+          hero {
             media {
               data {
                 attributes {
@@ -43,8 +43,12 @@ const GET_HOME_PAGE: DocumentNode = gql`
             title
             tag
             description
+            buttons {
+              label
+              link
+            }
           }
-          Categories {
+          categories {
             title
             categories(sort: "order:asc") {
               data {
@@ -56,6 +60,7 @@ const GET_HOME_PAGE: DocumentNode = gql`
                     data {
                       attributes {
                         url
+                        alternativeText
                       }
                     }
                   }
@@ -63,22 +68,7 @@ const GET_HOME_PAGE: DocumentNode = gql`
               }
             }
           }
-          Sections {
-            title
-            description
-            media {
-              data {
-                attributes {
-                  url
-                }
-              }
-            }
-            properties {
-              name
-              description
-            }
-          }
-          Brands {
+          brands {
             title
             description
             brands {
@@ -88,12 +78,29 @@ const GET_HOME_PAGE: DocumentNode = gql`
                 data {
                   attributes {
                     url
+                    alternativeText
                   }
                 }
               }
             }
           }
-          Blogs {
+          sections {
+            title
+            description
+            media {
+              data {
+                attributes {
+                  url
+                  alternativeText
+                }
+              }
+            }
+            properties {
+              name
+              description
+            }
+          }
+          blogs {
             title
             blogs {
               data {
@@ -105,6 +112,7 @@ const GET_HOME_PAGE: DocumentNode = gql`
                     data {
                       attributes {
                         url
+                        alternativeText
                       }
                     }
                   }
@@ -158,16 +166,30 @@ const GET_ABOUT_US_PAGE: DocumentNode = gql`
               }
             }
           }
-          title
-          description
-          Cover {
-            data {
-              attributes {
-                url
+          hero {
+            media {
+              data {
+                attributes {
+                  url
+                  alternativeText
+                }
               }
             }
+            tag
+            title
+            description
+            buttons {
+              label
+              link
+            }
           }
-          Formation {
+          socialProof {
+            proofs(sort: "order:asc") {
+              title
+              description
+            }
+          }
+          formation {
             title
             milestones(sort: "order:asc") {
               time
@@ -178,11 +200,12 @@ const GET_ABOUT_US_PAGE: DocumentNode = gql`
               data {
                 attributes {
                   url
+                  alternativeText
                 }
               }
             }
           }
-          Features {
+          features {
             title
             description
             features {
@@ -192,12 +215,13 @@ const GET_ABOUT_US_PAGE: DocumentNode = gql`
                 data {
                   attributes {
                     url
+                    alternativeText
                   }
                 }
               }
             }
           }
-          Brands {
+          brands {
             title
             description
             brands {
@@ -207,15 +231,10 @@ const GET_ABOUT_US_PAGE: DocumentNode = gql`
                 data {
                   attributes {
                     url
+                    alternativeText
                   }
                 }
               }
-            }
-          }
-          SocialProof {
-            proofs(sort: "order:asc") {
-              title
-              description
             }
           }
         }
@@ -307,6 +326,7 @@ const GET_BLOG_POST: DocumentNode = gql`
             data {
               attributes {
                 url
+                alternativeText
               }
             }
           }
@@ -346,7 +366,7 @@ const GET_BLOG_POST: DocumentNode = gql`
   }
 `;
 
-const GET_PRODUCTS_DETAILS: DocumentNode = gql`
+const GET_PRODUCT_DETAILS: DocumentNode = gql`
   query ($locale: I18NLocaleCode, $slug: String!) {
     products(filters: { slug: { eq: $slug } }, locale: $locale) {
       data {
@@ -395,6 +415,27 @@ const GET_PRODUCTS_DETAILS: DocumentNode = gql`
               data {
                 attributes {
                   url
+                  alternativeText
+                }
+              }
+            }
+          }
+          relatedSolutions {
+            title
+            solutions {
+              data {
+                attributes {
+                  name
+                  slug
+                  description
+                  thumbnail {
+                    data {
+                      attributes {
+                        url
+                        alternativeText
+                      }
+                    }
+                  }
                 }
               }
             }
@@ -454,6 +495,27 @@ const GET_SOLUTION_DETAILS: DocumentNode = gql`
               data {
                 attributes {
                   url
+                  alternativeText
+                }
+              }
+            }
+          }
+          relatedProducts {
+            title
+            products {
+              data {
+                attributes {
+                  name
+                  slug
+                  description
+                  thumbnail {
+                    data {
+                      attributes {
+                        url
+                        alternativeText
+                      }
+                    }
+                  }
                 }
               }
             }
@@ -473,6 +535,7 @@ const GET_HEADER: DocumentNode = gql`
             data {
               attributes {
                 url
+                alternativeText
               }
             }
           }
@@ -521,6 +584,7 @@ const GET_FOOTER: DocumentNode = gql`
             data {
               attributes {
                 url
+								alternativeText
               }
             }
           }
@@ -534,60 +598,6 @@ const GET_FOOTER: DocumentNode = gql`
           }
           facebookLink
           websiteLink
-        }
-      }
-    }
-  }
-`;
-
-const GET_SOLUTIONS_RELATED_CONTENTS: DocumentNode = gql`
-  query ($locale: I18NLocaleCode, $slug: String!) {
-    solutions(filters: { slug: { eq: $slug } }, locale: $locale) {
-      data {
-        attributes {
-          products(pagination: { limit: 6 }) {
-            data {
-              attributes {
-                name
-                slug
-                description
-                thumbnail {
-                  data {
-                    attributes {
-                      url
-                    }
-                  }
-                }
-              }
-            }
-          }
-        }
-      }
-    }
-  }
-`;
-
-const GET_PRODUCTS_RELATED_CONTENT: DocumentNode = gql`
-  query ($locale: I18NLocaleCode, $slug: String!) {
-    products(filters: { slug: { eq: $slug } }, locale: $locale) {
-      data {
-        attributes {
-          solutions(pagination: { limit: 6 }) {
-            data {
-              attributes {
-                name
-                slug
-                description
-                thumbnail {
-                  data {
-                    attributes {
-                      url
-                    }
-                  }
-                }
-              }
-            }
-          }
         }
       }
     }
@@ -742,12 +752,10 @@ export {
   GET_ABOUT_US_PAGE,
   GET_BLOG_POST,
   GET_BLOG_POSTS,
-  GET_PRODUCTS_DETAILS,
+  GET_PRODUCT_DETAILS,
   GET_SOLUTION_DETAILS,
   GET_HEADER,
   GET_FOOTER,
-  GET_SOLUTIONS_RELATED_CONTENTS,
-  GET_PRODUCTS_RELATED_CONTENT,
   GET_POPULAR_PRODUCTS,
   GET_POPULAR_SOLUTIONS,
   UPDATE_BLOG_POST_VIEWS,

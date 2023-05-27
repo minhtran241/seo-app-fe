@@ -8,7 +8,6 @@ import { preload } from '@/utils/home/getHomeData';
 import { getHomeData } from './api/home/data';
 import Brands from '@/components/Brands';
 import { getStrapiMedia } from './api/urlBuilder';
-// import { Roboto } from '@next/font/google';
 
 export default async function Home({ params: { lng } }: Props) {
   preload(lng);
@@ -66,15 +65,11 @@ export default async function Home({ params: { lng } }: Props) {
         </>
       ))}
       <ScrollUp />
-      <Hero data={homeData?.Hero} />
+      <Hero data={homeData?.hero} />
       <Features data={{ ...featureData, col: featureData?.features?.length }} />
-      <Brands data={homeData?.Brands} />
-      <AboutSectionTwo data={homeData?.Sections[0]} />
-      <Blog data={homeData?.Blogs} />
-      {/* <Video /> */}
-      {/* <Testimonials /> */}
-      {/* <Pricing /> */}
-      {/* <Contact /> */}
+      <Brands data={homeData?.brands} />
+      <AboutSectionTwo data={homeData?.sections[0]} />
+      <Blog data={homeData?.blogs} />
     </>
   );
 }

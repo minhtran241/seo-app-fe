@@ -17,63 +17,6 @@ const Footer = ({ params: { lng } }: Props) => {
   if (footerAttributes) {
     return (
       <>
-        {/* <footer
-          classNameName="wow fadeInUp relative z-10 bg-primary pt-8 md:pt-10 lg:pt-12"
-          data-wow-delay=".1s"
-        >
-          <div classNameName="container">
-            <div classNameName="-mx-4 flex flex-wrap">
-              <div classNameName="w-full px-4 md:w-1/2 lg:w-4/12 xl:w-5/12">
-                <div classNameName="mb-2 max-w-[360px] lg:mb-8">
-                  <Link href="/" classNameName="mb-4 inline-block">
-                    <Image
-                      src={getStrapiMedia(footerAttributes?.logo)}
-                      alt="logo"
-                      classNameName="w-full"
-                      width={280}
-                      height={30}
-                    />
-                  </Link>
-                  <p classNameName="mb-4 text-base font-medium leading-relaxed text-white ">
-                    {footerAttributes?.text}
-                  </p>
-                </div>
-              </div>
-
-              {footerAttributes?.sections.map(({ name, Navs }, i) => (
-                <div
-                  classNameName="w-full px-4 sm:w-1/2 md:w-1/2 lg:w-2/12 xl:w-2/12"
-                  key={i}
-                >
-                  <div classNameName="mb-6 lg:mb-8">
-                    <h2 classNameName="mb-2 text-lg font-bold text-white">
-                      {name}
-                    </h2>
-                    <ul>
-                      {Navs?.map(({ name, path }, i) => (
-                        <li key={i}>
-                          <a
-                            href={path}
-                            classNameName="mb-1 inline-block text-sm font-medium text-white hover:text-white/80 dark:hover:text-white/70"
-                          >
-                            {name}
-                          </a>
-                        </li>
-                      ))}
-                    </ul>
-                  </div>
-                </div>
-              ))}
-            </div>
-          </div>
-          <div classNameName="border-t border-white py-4">
-            <div classNameName="container">
-              <p classNameName="text-center text-base text-white">
-                PAMA © 2023. All Rights Reserved.
-              </p>
-            </div>
-          </div>
-        </footer> */}
         <footer className="bg-primary p-4 dark:bg-gray-800 sm:p-6">
           <div className="mx-auto max-w-screen-xl">
             <div className="md:flex md:justify-between">
@@ -82,7 +25,10 @@ const Footer = ({ params: { lng } }: Props) => {
                   <Image
                     src={getStrapiMedia(footerAttributes?.logo)}
                     className="mb-3"
-                    alt="Pama Logo"
+                    alt={
+                      footerAttributes?.logo?.data?.attributes
+                        ?.alternativeText || 'Pama Logo'
+                    }
                     width={180}
                     height={20}
                   />

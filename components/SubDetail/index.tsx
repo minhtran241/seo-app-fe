@@ -20,7 +20,10 @@ const SubDetail = ({ data }) => {
                       <Image
                         className="rounded-full"
                         src={getStrapiMedia(media)}
-                        alt="about image"
+                        alt={
+                          media?.data?.attributes?.alternativeText ||
+                          'About Image'
+                        }
                         width={545}
                         height={400}
                       />
@@ -28,7 +31,10 @@ const SubDetail = ({ data }) => {
                       <Image
                         className="rounded"
                         src={getStrapiMedia(media)}
-                        alt="about image"
+                        alt={
+                          media?.data?.attributes?.alternativeText ||
+                          'About Image'
+                        }
                         width={545}
                         height={400}
                       />
@@ -82,7 +88,10 @@ const SubDetail = ({ data }) => {
                       <Image
                         className="rounded-full"
                         src={getStrapiMedia(media)}
-                        alt="about image"
+                        alt={
+                          media?.data?.attributes?.alternativeText ||
+                          'About Image'
+                        }
                         width={545}
                         height={400}
                       />
@@ -90,7 +99,10 @@ const SubDetail = ({ data }) => {
                       <Image
                         className="rounded"
                         src={getStrapiMedia(media)}
-                        alt="about image"
+                        alt={
+                          media?.data?.attributes?.alternativeText ||
+                          'About Image'
+                        }
                         width={545}
                         height={400}
                       />
