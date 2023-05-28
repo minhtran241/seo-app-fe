@@ -1,12 +1,13 @@
-import Breadcrumb from '@/components/Common/Breadcrumb';
 import Contact from '@/components/Contact';
 import { Props } from '@/types/lng';
 import { contactPageDataCache, preload } from '@/utils/contact/getContactData';
 import { getStrapiMedia } from '../api/urlBuilder';
+import Script from 'next/script';
 
 const ContactPage = async ({ params: { lng } }: Props) => {
   preload(lng);
-  const { seo, title, details } = (await contactPageDataCache(lng)) || {};
+  const { seo, title, details, form, announcement } =
+    (await contactPageDataCache(lng)) || {};
   const {
     metaTitle,
     metaDescription,
@@ -53,7 +54,15 @@ const ContactPage = async ({ params: { lng } }: Props) => {
         </>
       ))}
       {/* <Breadcrumb pageName={title} description={description} source={source} /> */}
-      <Contact data={{ title: title, details: details }} />
+      <Contact
+        data={{
+          title: title,
+          details: details,
+          form: form,
+          announcement: announcement,
+        }}
+      />
+      <Script src="https://www.google.com/recaptcha/api.js" async defer />
     </>
   );
 };

@@ -1,6 +1,6 @@
 import Image from 'next/image';
 import Link from 'next/link';
-import ThemeToggler from './ThemeToggler';
+// import ThemeToggler from './ThemeToggler';
 import { Dropdown, Navbar } from 'flowbite-react';
 import {
   countryCode,
@@ -53,20 +53,20 @@ const Header = ({ params: { lng } }: Props) => {
             data-dropdown-placement="bottom"
             className="flex w-full items-center justify-between bg-white pl-3 pr-4 font-medium text-gray-900 dark:bg-gray-800 dark:text-white dark:hover:text-blue-500 md:w-auto md:border-0 md:p-0 md:hover:text-blue-600 md:dark:hover:text-blue-500"
             arrowIcon={true}
-            label={headerAttributes?.groupedByCategory?.title}
+            label={headerAttributes?.groupedByCategory?.title?.toUpperCase()}
             inline={true}
           >
             <Dropdown.Item
               id="mega-menu-full-cta-dropdown"
               className=" border-gray-700 bg-white shadow-sm dark:bg-gray-900"
-              title="Products"
+              title="Products / Sản phẩm"
             >
               <div className="mx-auto grid max-w-screen-xl text-sm text-gray-500 dark:text-white md:grid-cols-4 ">
                 {headerAttributes?.groupedByCategory?.categories &&
                   headerAttributes?.groupedByCategory?.categories?.data?.map(
                     (category, i) => (
                       <div key={i} className="px-2 pb-3">
-                        <div className="items-center pb-2 text-sm font-bold text-primary-title-dark dark:text-secondary">
+                        <div className="items-center pb-2 text-sm font-bold uppercase text-primary-title-dark dark:text-secondary">
                           {category?.attributes?.name}
                         </div>
                         <ul
@@ -96,14 +96,14 @@ const Header = ({ params: { lng } }: Props) => {
             <Dropdown.Item
               id="mega-menu-full-cta-dropdown"
               className=" border-gray-700 bg-white shadow-sm dark:bg-gray-900"
-              title="Solutions"
+              title="Solutions / Giải pháp"
             >
               <div className="mx-auto grid max-w-screen-xl text-sm text-gray-500 dark:text-white md:grid-cols-4">
                 {headerAttributes?.groupedByCategory?.categories &&
                   headerAttributes?.groupedByCategory?.categories?.data?.map(
                     (category, i) => (
                       <div key={i} className="px-2 pb-3">
-                        <div className="items-center pb-2 text-sm font-bold text-primary-title-dark dark:text-secondary">
+                        <div className="items-center pb-2 text-sm font-bold uppercase text-primary-title-dark dark:text-secondary">
                           {category?.attributes?.name}
                         </div>
                         <ul
@@ -134,14 +134,20 @@ const Header = ({ params: { lng } }: Props) => {
 
           {headerAttributes?.navs?.map((nav, i) => {
             return currentPath == '' && nav?.path == '/' ? (
-              <Navbar.Link key={i} href={`/${lng}${nav.path}`} active={true}>
+              <Navbar.Link
+                key={i}
+                href={`/${lng}${nav.path}`}
+                active={true}
+                className="bg-primary uppercase"
+              >
                 {nav.name}
               </Navbar.Link>
             ) : (
               <Navbar.Link
                 key={i}
                 href={`/${lng}${nav.path}`}
-                active={nav.path == currentPath}
+                active={nav.path === currentPath}
+                className="uppercase"
               >
                 {nav.name}
               </Navbar.Link>

@@ -10,6 +10,7 @@
   },
   "dependencies": {
     "@apollo/client": "^3.7.12",
+    "@formspree/react": "^2.4.1",
     "@next/font": "13.1.6",
     "accept-language": "^3.0.18",
     "eslint": "8.33.0",

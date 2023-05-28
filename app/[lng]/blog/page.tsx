@@ -68,7 +68,6 @@ const Blog = async ({ params: { lng } }: Props) => {
               </div>
             ))}
           </div>
-
           {/* <div
             className="wow fadeInUp -mx-4 flex flex-wrap"
             data-wow-delay=".15s"

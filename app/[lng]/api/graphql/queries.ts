@@ -754,6 +754,28 @@ const GET_CONTACT_PAGE: DocumentNode = gql`
           }
           title
           details
+          form {
+            inputs {
+              name
+              label
+              placeholder
+              required
+              htmlId
+              inputType
+            }
+            textareas {
+              name
+              label
+              placeholder
+              required
+              htmlId
+            }
+            submitLabel
+            announcement {
+              title
+              message
+            }
+          }
         }
       }
     }

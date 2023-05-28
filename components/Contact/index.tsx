@@ -1,8 +1,6 @@
-import { FaPaperPlane } from 'react-icons/fa';
-import parse from 'html-react-parser';
 import Map from './Map';
 import { ContactProps } from '@/types/contact';
-import ContactForm from './ContactForm';
+import ContactSection from './ContactSection';
 
 const Contact = ({ data }: { data: ContactProps }) => {
   return (
@@ -11,7 +9,7 @@ const Contact = ({ data }: { data: ContactProps }) => {
         <div className="block bg-white shadow-lg">
           <div className="flex flex-wrap items-center">
             <Map />
-            <ContactForm data={data} />
+            <ContactSection data={data} />
           </div>
         </div>
       </div>
