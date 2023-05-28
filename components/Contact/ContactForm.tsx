@@ -46,7 +46,7 @@ const ContactForm = ({ data }) => {
       ></div>
       <button
         type="submit"
-        className="flex      
+        className="flex 
 				 w-full
 				 items-center
 				 justify-center

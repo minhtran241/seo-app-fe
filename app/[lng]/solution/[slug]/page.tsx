@@ -176,7 +176,7 @@ const SolutionDetailsPage = async ({ params }: SingleProps) => {
       {solutionAttrs?.relatedProducts?.products?.data?.length > 0 && (
         <RelatedContents
           data={{
-            type: 'solution',
+            type: 'product',
             relatedContents: solutionAttrs?.relatedProducts,
           }}
         />

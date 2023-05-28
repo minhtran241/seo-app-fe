@@ -1,8 +1,6 @@
 import SubDetail from '@/components/SubDetail';
 import { apolloClient } from '../../api/apollo-client';
-import {
-  GET_PRODUCT_DETAILS,
-} from '../../api/graphql/queries';
+import { GET_PRODUCT_DETAILS } from '../../api/graphql/queries';
 import { getStrapiMedia } from '../../api/urlBuilder';
 import { notFound } from 'next/navigation';
 import { SingleProps } from '@/types/lng';
@@ -156,7 +154,7 @@ const ProductDetailsPage = async ({ params }: SingleProps) => {
       {productAttrs?.relatedSolutions?.solutions?.data?.length > 0 && (
         <RelatedContents
           data={{
-            type: 'product',
+            type: 'solution',
             relatedContents: productAttrs?.relatedSolutions,
           }}
         />
