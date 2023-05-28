@@ -2,6 +2,7 @@
 import { useForm, ValidationError } from '@formspree/react';
 import FormInput from '../Form/FormInput';
 import FormTextarea from '../Form/FormTextarea';
+import ReCAPTCHA from 'react-google-recaptcha';
 
 const ContactForm = ({ data }) => {
   const { form, announcement } = data;
@@ -40,10 +41,12 @@ const ContactForm = ({ data }) => {
           />
         </div>
       ))}{' '}
-      <div
-        className="g-recaptcha my-6 rounded-none"
-        data-sitekey={process.env.GOOGLE_RECAPTCHA_SITE_KEY}
-      ></div>
+      <div className="my-6">
+        <ReCAPTCHA
+          size="normal"
+          sitekey="6LelaUgmAAAAAIpGyEDmhDk8aF7AN-H2lSYPj12k"
+        />
+      </div>
       <button
         type="submit"
         className="flex 

@@ -2,7 +2,6 @@ import Contact from '@/components/Contact';
 import { Props } from '@/types/lng';
 import { contactPageDataCache, preload } from '@/utils/contact/getContactData';
 import { getStrapiMedia } from '../api/urlBuilder';
-import Script from 'next/script';
 
 const ContactPage = async ({ params: { lng } }: Props) => {
   preload(lng);
@@ -62,7 +61,6 @@ const ContactPage = async ({ params: { lng } }: Props) => {
           announcement: announcement,
         }}
       />
-      <Script src="https://www.google.com/recaptcha/api.js" async defer />
     </>
   );
 };
