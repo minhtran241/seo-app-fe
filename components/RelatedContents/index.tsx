@@ -9,8 +9,8 @@ type RelatedContentsProps = {
 const RelatedContents = ({ data }: { data: RelatedContentsProps }) => {
   const { type, relatedContents } = data || {};
   let properties;
-  if (type === 'product') properties = relatedContents?.solutions?.data;
-  else if (type === 'solution') properties = relatedContents?.products?.data;
+  if (type === 'product') properties = relatedContents?.products?.data;
+  else if (type === 'solution') properties = relatedContents?.solutions?.data;
   return (
     <section
       id="blog"

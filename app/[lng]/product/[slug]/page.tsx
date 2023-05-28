@@ -150,7 +150,6 @@ const ProductDetailsPage = async ({ params }: SingleProps) => {
           </div>
         </div>
       </section>
-
       {productAttrs?.relatedSolutions?.solutions?.data?.length > 0 && (
         <RelatedContents
           data={{
