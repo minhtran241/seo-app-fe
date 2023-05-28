@@ -62,7 +62,7 @@ const ContactPage = async ({ params: { lng } }: Props) => {
           announcement: announcement,
         }}
       />
-      {/* <Script src="https://www.google.com/recaptcha/api.js" async defer /> */}
+      <Script src="https://www.google.com/recaptcha/api.js" async defer />
     </>
   );
 };
