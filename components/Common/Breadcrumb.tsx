@@ -40,7 +40,7 @@ const Breadcrumb = ({ data }: { data: BreadcrumbProps }) => {
                     </li>
                   ))}
                   <li className="text-base font-medium text-primary">
-                    {pages?.slice(-1)?.name?.toUpperCase() ||
+                    {pages?.slice(-1)[0]?.name?.toUpperCase() ||
                       'Home'?.toUpperCase()}
                   </li>
                 </ul>

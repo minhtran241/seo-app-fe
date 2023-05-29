@@ -43,7 +43,7 @@ const ContactForm = ({ data }) => {
         </div>
       ))}{' '}
       <div className="my-6">
-        <ReCAPTCHA size="normal" sitekey={siteKey} />
+        <ReCAPTCHA size="normal" sitekey="6LelaUgmAAAAAIpGyEDmhDk8aF7AN-H2lSYPj12k" />
       </div>
       <button
         type="submit"

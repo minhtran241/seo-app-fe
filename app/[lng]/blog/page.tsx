@@ -58,7 +58,7 @@ const Blog = async ({ params: { lng } }: Props) => {
         </>
       ))}
       <Breadcrumb data={breadcrumb} />
-      <section className="bg-white pt-[120px] pb-[120px] dark:bg-gray-800">
+      <section className="bg-white pt-[60px] pb-[60px] dark:bg-gray-800">
         <div className="container">
           <div className="-mx-4 flex flex-wrap justify-center">
             {blogData.map((blog, i) => (

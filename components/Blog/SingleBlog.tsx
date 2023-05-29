@@ -16,7 +16,7 @@ const SingleBlog = ({ blog }: { blog: Blog }) => {
         {thumbnail?.data?.attributes && (
           <Link
             href={`/blog/${slug}`}
-            className="relative block h-[220px] w-full  border border-secondary"
+            className="relative block h-[220px] w-full border border-secondary"
           >
             <Image
               src={getStrapiMedia(thumbnail)}
@@ -35,8 +35,10 @@ const SingleBlog = ({ blog }: { blog: Blog }) => {
               {title}
             </Link>
           </p>
-					<p className="mb-6 border-b border-body-color border-opacity-10 pb-6 text-base text-gray-500 dark:border-white dark:border-opacity-10 dark:text-gray-400">
-						{description?.length > 150 ? description.slice(0, 150) + '...' : description}
+          <p className="mb-6 border-b border-body-color border-opacity-10 pb-6 text-base text-gray-500 dark:border-white dark:border-opacity-10 dark:text-gray-400">
+            {description?.length > 150
+              ? description.slice(0, 150) + '...'
+              : description}
           </p>
           <div className="flex items-center">
             <div className="mr-5 flex items-center border-r border-body-color border-opacity-10 pr-5 dark:border-white dark:border-opacity-10 xl:mr-3 xl:pr-3 2xl:mr-5 2xl:pr-5">
