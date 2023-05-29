@@ -1,58 +1,47 @@
 import Link from 'next/link';
-import { FaLink, FaHome } from 'react-icons/fa';
 
-const Breadcrumb = ({
-  pageName,
-  description = null,
-  source = null,
-}: {
-  pageName: string;
+type BreadcrumbProps = {
+  title: string;
   description: string;
-  source: string;
-}) => {
+  pages: any;
+};
+
+const Breadcrumb = ({ data }: { data: BreadcrumbProps }) => {
+  const { title, description, pages } = data;
   return (
     <>
-      <section className="relative overflow-hidden bg-gradient-to-r from-[#023E60] via-[#29ABE2] to-[#355F8E] pt-14 sm:pb-14 lg:pb-0 lg:pt-[50px]">
+      <section className="relative overflow-hidden bg-primary/[.03] pt-14 sm:pb-14 lg:pb-0 lg:pt-[50px]">
         <div className="container">
           <div className="-mx-4 flex flex-wrap items-center">
             <div className="w-full px-4 md:w-8/12 lg:w-7/12">
               <div className="mb-8 max-w-[570px] md:mb-0 lg:mb-12">
-                <h1 className="mb-5 text-2xl font-bold uppercase text-white  sm:text-3xl">
-                  {pageName}
+                <h1 className="mb-5 text-2xl font-bold uppercase text-primary-title-dark sm:text-3xl">
+                  {title}
                 </h1>
                 {description && (
-                  <p className="mb-2 text-base font-medium leading-relaxed text-white">
+                  <p className="mb-2 text-base font-medium leading-relaxed text-gray-500">
                     {description}
                   </p>
-                )}
-                {source && (
-									<div className="flex items-center flex-wrap">
-										<div className="pr-2 text-base font-medium text-white"><FaLink /> </div>
-                  <Link
-                    className="text-base font-medium leading-relaxed text-white underline"
-                    href={source}
-                  >
-										{source}
-                  </Link>
-									
-									</div>
                 )}
               </div>
             </div>
             <div className="w-full px-4 pb-5 sm:pb-5 md:w-4/12 lg:w-5/12 lg:pb-0">
               <div className="text-end">
                 <ul className="flex items-center md:justify-end">
-                  <li className="flex items-center">
-                    <Link
-                      href="/"
-                      className="pr-1 text-base font-medium text-white "
-                    >
-                      <FaHome />
-                    </Link>
-                    <span className="mr-3 block h-2 w-2 rotate-45 border-t-2 border-r-2 border-white"></span>
-                  </li>
-                  <li className="text-base font-medium text-white ">
-                    {pageName}
+                  {pages?.slice(0, -1)?.map(({ name, path }, i) => (
+                    <li className="flex items-center" key={i}>
+                      <Link
+                        href={path || '/'}
+                        className="pr-1 text-base font-medium text-gray-500 hover:text-primary"
+                      >
+                        {name.toUpperCase()}
+                      </Link>
+                      <span className="mr-3 block h-2 w-2 rotate-45 border-t-2 border-r-2 border-gray-600"></span>
+                    </li>
+                  ))}
+                  <li className="text-base font-medium text-primary">
+                    {pages[pages?.length - 1]?.name?.toUpperCase() ||
+                      'Current Page'?.toUpperCase()}
                   </li>
                 </ul>
               </div>

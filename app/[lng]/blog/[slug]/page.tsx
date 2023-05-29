@@ -202,7 +202,9 @@ const BlogDetailsPage = async ({ params }: SingleProps) => {
           </div>
         </div>
       </section>
-      <Blog data={blogAttrs?.relatedBlogs} />
+      {blogAttrs?.relatedBlogs?.blog?.length > 0 && (
+        <Blog data={blogAttrs?.relatedBlogs} />
+      )}
     </>
   );
 };

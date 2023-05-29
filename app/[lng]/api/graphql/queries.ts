@@ -698,20 +698,12 @@ const GET_BLOG_PAGE: DocumentNode = gql`
               }
             }
           }
-          hero {
-            media {
-              data {
-                attributes {
-                  url
-                }
-              }
-            }
+          breadcrumb {
             title
-            tag
             description
-            buttons {
-              label
-              link
+            pages(sort: "order:asc") {
+              name
+              path
             }
           }
         }
