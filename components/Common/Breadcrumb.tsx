@@ -7,7 +7,7 @@ type BreadcrumbProps = {
 };
 
 const Breadcrumb = ({ data }: { data: BreadcrumbProps }) => {
-  const { title, description, pages } = data;
+  const { title, description, pages } = data || {};
   return (
     <>
       <section className="relative overflow-hidden bg-primary/[.03] pt-14 sm:pb-14 lg:pb-0 lg:pt-[50px]">
@@ -40,8 +40,8 @@ const Breadcrumb = ({ data }: { data: BreadcrumbProps }) => {
                     </li>
                   ))}
                   <li className="text-base font-medium text-primary">
-                    {pages[pages?.length - 1]?.name?.toUpperCase() ||
-                      'Current Page'?.toUpperCase()}
+                    {pages?.slice(-1)?.name?.toUpperCase() ||
+                      'Home'?.toUpperCase()}
                   </li>
                 </ul>
               </div>
