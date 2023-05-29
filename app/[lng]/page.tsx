@@ -23,9 +23,9 @@ export default async function Home({ params: { lng } }: Props) {
     metaSocial,
   } = homeData?.seo || {};
   const featureData = {
-    title: homeData?.Categories?.title,
+    title: homeData?.categories?.title,
     description: null,
-    features: homeData?.Categories?.categories?.data?.map(
+    features: homeData?.categories?.categories?.data?.map(
       (el) => el?.attributes
     ),
   };

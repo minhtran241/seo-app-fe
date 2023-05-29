@@ -31,7 +31,7 @@ const Hero = ({ data }) => {
                   {buttons?.length > 0 &&
                     buttons?.map(({ label, link }, i) => (
                       <Link
-                        className="mb-4 inline-block w-full rounded border-2 border-transparent bg-gray-200 py-5 px-8 text-sm font-bold uppercase text-gray-800 transition duration-200 hover:bg-gray-100 md:mr-6 md:w-auto"
+                        className="mb-4 inline-block w-full rounded border-2 border-transparent bg-gray-200 py-5 px-8 text-sm font-bold uppercase text-gray-800 transition duration-200 hover:bg-gray-100 md:mx-3 md:w-auto"
                         href={link}
                         target="_blank"
                         key={i}

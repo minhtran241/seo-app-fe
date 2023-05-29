@@ -5,6 +5,7 @@ import FormTextarea from '../Form/FormTextarea';
 import ReCAPTCHA from 'react-google-recaptcha';
 
 const ContactForm = ({ data }) => {
+  const siteKey: string = process.env.GOOGLE_RECAPTCHA_SITE_KEY;
   const { form, announcement } = data;
   const [state, handleSubmit] = useForm('mayzzaqv');
   if (state.succeeded) {
@@ -42,10 +43,7 @@ const ContactForm = ({ data }) => {
         </div>
       ))}{' '}
       <div className="my-6">
-        <ReCAPTCHA
-          size="normal"
-          sitekey="6LelaUgmAAAAAIpGyEDmhDk8aF7AN-H2lSYPj12k"
-        />
+        <ReCAPTCHA size="normal" sitekey={siteKey} />
       </div>
       <button
         type="submit"
