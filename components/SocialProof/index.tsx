@@ -1,7 +1,7 @@
 const SocialProof = ({ data }: { data: { proofs: any[] } }) => {
   const { proofs } = data || {};
   return (
-    <section className=" bg-white dark:bg-gray-900">
+    <section className=" bg-primary/[.08] dark:bg-gray-900">
       <div className="mx-auto max-w-screen-xl px-4 py-8 text-center lg:py-16 lg:px-6">
         <dl className="mx-auto grid max-w-screen-md gap-8 text-primary dark:text-white sm:grid-cols-3">
           {proofs?.map(({ title, description }, i) => (

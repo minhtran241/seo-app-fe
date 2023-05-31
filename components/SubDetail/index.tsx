@@ -47,6 +47,7 @@ const SubDetail = ({ data }) => {
                   <h1 className="text-2xl font-semibold text-primary-title-dark dark:text-primary-title lg:text-3xl">
                     {name}
                   </h1>
+                  <span className="mb-3 inline-block w-20 border-t-2 border-solid border-blue-400"></span>
                 </div>
 
                 <div className="mb-4 md:-mx-4 md:flex md:items-start">
@@ -69,6 +70,7 @@ const SubDetail = ({ data }) => {
                   <h1 className="text-2xl font-semibold text-primary-title-dark dark:text-primary-title lg:text-3xl">
                     {name}
                   </h1>
+                  <span className="mb-3 inline-block w-20 border-t-2 border-solid border-blue-200"></span>
                 </div>
                 <div className="mb-4 md:-mx-4 md:flex md:items-start">
                   <div className="md:mx-4 md:mt-0">

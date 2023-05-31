@@ -29,6 +29,7 @@
     "react-dom": "18.2.0",
     "react-google-recaptcha": "^2.1.0",
     "react-i18next": "^12.2.2",
+    "sass": "^1.62.1",
     "sharp": "^0.32.1"
   },
   "devDependencies": {

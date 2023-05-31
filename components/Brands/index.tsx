@@ -6,7 +6,7 @@ import { getStrapiMedia } from '@/app/[lng]/api/urlBuilder';
 const Brands = ({ data }) => {
   const { title, description, brands } = data || {};
   return (
-    <section className="lg:py-15 bg-white py-5 dark:bg-gray-900">
+    <section className="mb-10 bg-white dark:bg-gray-900 lg:mb-20">
       <div className="container">
         <SectionTitle title={title} paragraph={description} center={true} />
         <div className="-mx-4 flex flex-wrap">

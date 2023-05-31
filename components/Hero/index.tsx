@@ -6,45 +6,32 @@ const Hero = ({ data }) => {
   const bgImage = media ? getStrapiMedia(media) : null;
   return (
     <>
-      <section className=" bg-primary ">
+      <div
+        className="relative flex content-center items-center justify-center pt-16 pb-32"
+        style={{ minHeight: '75vh' }}
+      >
         <div
-          className="h-full w-full bg-cover bg-center"
+          className="absolute top-0 h-full w-full bg-cover bg-center"
           style={{
             backgroundImage: `url(${bgImage})`,
           }}
         >
-          <div className="flex h-full w-full items-center justify-center bg-gray-900 bg-opacity-60">
-            <div className="text-center">
-              <div className="container mx-auto px-4 py-10">
-                <div className="mx-auto max-w-4xl text-center">
-                  {tag && (
-                    <span className="font-semibold uppercase tracking-widest text-gray-200">
-                      {tag}
-                    </span>
-                  )}
-                  <h2 className="mt-8 mb-6 text-4xl font-bold text-gray-100 lg:text-5xl">
-                    {title}
-                  </h2>
-                  <p className="mx-auto mb-10 max-w-3xl text-lg text-gray-300">
-                    {description}
-                  </p>
-                  {buttons?.length > 0 &&
-                    buttons?.map(({ label, link }, i) => (
-                      <Link
-                        className="mb-4 inline-block w-full rounded border-2 border-transparent bg-gray-200 py-5 px-8 text-sm font-bold uppercase text-gray-800 transition duration-200 hover:bg-gray-100 md:mx-3 md:w-auto"
-                        href={link}
-                        target="_blank"
-                        key={i}
-                      >
-                        {label}
-                      </Link>
-                    ))}
-                </div>
+          <span
+            id="blackOverlay"
+            className="absolute h-full w-full bg-black opacity-75"
+          ></span>
+        </div>
+        <div className="container relative mx-auto">
+          <div className="flex flex-wrap items-center">
+            <div className="ml-auto mr-auto w-full px-4 text-center lg:w-6/12">
+              <div className="pr-12">
+                <h1 className="text-5xl font-semibold text-white">{title}</h1>
+                <p className="mt-4 text-lg text-gray-300">{description}</p>
               </div>
             </div>
           </div>
         </div>
-      </section>
+      </div>
     </>
   );
 };

@@ -6,7 +6,7 @@ const Blog = ({ data }) => {
   return (
     <section
       id="blog"
-      className="lg:py-15 border-t-4 border-primary bg-secondary py-5 dark:border-blue-300 dark:bg-gray-800 md:py-5"
+      className="lg:py-15 bg-primary/[.08] py-5 dark:border-blue-300 dark:bg-gray-800 md:py-5"
     >
       <div className="container">
         <SectionTitle title={title} paragraph={null} center />

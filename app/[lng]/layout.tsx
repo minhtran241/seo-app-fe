@@ -2,7 +2,7 @@
 
 import { dir } from 'i18next';
 import { languages } from '../i18n/settings';
-import '../../styles/index.css';
+import '../../styles/style.scss';
 import { GoogleAnalytics } from 'nextjs-google-analytics';
 
 interface RootLayoutProps {

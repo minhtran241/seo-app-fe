@@ -6,12 +6,15 @@ import {
   preload,
 } from '@/utils/blog/getBlogsData';
 import { getStrapiMedia } from '../api/urlBuilder';
-import Breadcrumb from '@/components/Common/Breadcrumb';
+import Image from 'next/image';
+import Link from 'next/link';
 
 const Blog = async ({ params: { lng } }: Props) => {
   preload(lng);
-  const { seo, breadcrumb } = (await blogPageDataCache(lng)) || {};
+  const { seo, title } = (await blogPageDataCache(lng)) || {};
   const blogData = await blogsDataCache(lng);
+  const latestBlog = blogData[0]?.attributes;
+  const otherBlogs = blogData.slice(1);
   const {
     metaTitle,
     metaDescription,
@@ -57,78 +60,67 @@ const Blog = async ({ params: { lng } }: Props) => {
           />
         </>
       ))}
-      <Breadcrumb data={breadcrumb} />
-      <section className="bg-white pt-[60px] pb-[60px] dark:bg-gray-800">
+      <section className="bg-primary/[.08] pt-[60px] pb-[60px] dark:bg-gray-800">
         <div className="container">
-          <div className="-mx-4 flex flex-wrap justify-center">
-            {blogData.map((blog, i) => (
-              <div key={i} className="w-full px-4 md:w-2/3 lg:w-1/2 xl:w-1/3">
-                <SingleBlog blog={blog.attributes} />
+          <div className=" border-l-4 border-blue-500">
+            <h1 className="ml-4 text-2xl font-semibold text-gray-800 dark:text-white lg:text-3xl">
+              {title?.toUpperCase()}
+            </h1>
+          </div>
+          <div className="mt-16 lg:-mx-6 lg:flex lg:items-center">
+            <Link
+              href={`/blog/${latestBlog?.slug}`}
+              className="h-72 w-full object-cover dark:hover:shadow-black/30 lg:mx-6 lg:h-96 lg:w-1/2"
+            >
+              <Image
+                className="h-72  w-full lg:h-96"
+                src={getStrapiMedia(latestBlog?.thumbnail)}
+                alt={
+                  latestBlog?.thumbnail?.data?.attributes?.alternativeText ||
+                  'Blog Thumbnail'
+                }
+                width={500}
+                height={288}
+              />
+            </Link>
+            <div className="mt-6 lg:mx-6 lg:mt-0 lg:w-1/2 ">
+              <p className="text-sm font-semibold uppercase text-blue-500">
+                {new Date(latestBlog?.publishedAt).toLocaleDateString()}
+              </p>
+              <Link
+                href={`/blog/${latestBlog?.slug}`}
+                className="mt-4 block text-2xl font-semibold transition duration-300 ease-in-out hover:text-blue-600 md:text-3xl"
+              >
+                {latestBlog?.title}
+              </Link>
+              <p className="text-md md:text-md mt-3 text-gray-500 dark:text-gray-300">
+                {latestBlog?.description}
+              </p>
+              <Link
+                href={`/blog/${latestBlog?.slug}`}
+                className="mt-2 inline-block font-bold text-blue-500 underline hover:text-blue-400"
+              >
+                Read more &rarr;
+              </Link>
+              <div className="mt-6 flex items-center">
+                <div className="">
+                  <h1 className="text-sm text-gray-700 dark:text-gray-200">
+                    {latestBlog?.author?.data?.attributes?.fullname ||
+                      'Administrator'}
+                  </h1>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div className="container pt-8">
+          <div className="grid grid-cols-1 gap-x-8 gap-y-10 pt-6 md:grid-cols-2 md:gap-x-6 lg:gap-x-8 xl:grid-cols-3">
+            {otherBlogs?.map(({ attributes }, i) => (
+              <div key={i} className="w-full">
+                <SingleBlog blog={attributes} />
               </div>
             ))}
           </div>
-          {/* <div
-            className="wow fadeInUp -mx-4 flex flex-wrap"
-            data-wow-delay=".15s"
-          >
-            <div className="w-full px-4">
-              <ul className="flex items-center justify-center pt-8">
-                <li className="mx-1">
-                  <a
-                    href="#0"
-                    className="flex h-9 min-w-[36px] items-center justify-center rounded-md bg-body-color bg-opacity-[15%] px-4 text-sm text-gray-500 dark:text-gray-400 transition hover:bg-primary hover:bg-opacity-100 hover:text-white"
-                  >
-                    Prev
-                  </a>
-                </li>
-                <li className="mx-1">
-                  <a
-                    href="#0"
-                    className="flex h-9 min-w-[36px] items-center justify-center rounded-md bg-body-color bg-opacity-[15%] px-4 text-sm text-gray-500 dark:text-gray-400 transition hover:bg-primary hover:bg-opacity-100 hover:text-white"
-                  >
-                    1
-                  </a>
-                </li>
-                <li className="mx-1">
-                  <a
-                    href="#0"
-                    className="flex h-9 min-w-[36px] items-center justify-center rounded-md bg-body-color bg-opacity-[15%] px-4 text-sm text-gray-500 dark:text-gray-400 transition hover:bg-primary hover:bg-opacity-100 hover:text-white"
-                  >
-                    2
-                  </a>
-                </li>
-                <li className="mx-1">
-                  <a
-                    href="#0"
-                    className="flex h-9 min-w-[36px] items-center justify-center rounded-md bg-body-color bg-opacity-[15%] px-4 text-sm text-gray-500 dark:text-gray-400 transition hover:bg-primary hover:bg-opacity-100 hover:text-white"
-                  >
-                    3
-                  </a>
-                </li>
-                <li className="mx-1">
-                  <a className="flex h-9 min-w-[36px] cursor-not-allowed items-center justify-center rounded-md bg-body-color bg-opacity-[15%] px-4 text-sm text-gray-500 dark:text-gray-400">
-                    ...
-                  </a>
-                </li>
-                <li className="mx-1">
-                  <a
-                    href="#0"
-                    className="flex h-9 min-w-[36px] items-center justify-center rounded-md bg-body-color bg-opacity-[15%] px-4 text-sm text-gray-500 dark:text-gray-400 transition hover:bg-primary hover:bg-opacity-100 hover:text-white"
-                  >
-                    12
-                  </a>
-                </li>
-                <li className="mx-1">
-                  <a
-                    href="#0"
-                    className="flex h-9 min-w-[36px] items-center justify-center rounded-md bg-body-color bg-opacity-[15%] px-4 text-sm text-gray-500 dark:text-gray-400 transition hover:bg-primary hover:bg-opacity-100 hover:text-white"
-                  >
-                    Next
-                  </a>
-                </li>
-              </ul>
-            </div>
-          </div> */}
         </div>
       </section>
     </>

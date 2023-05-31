@@ -11,17 +11,7 @@ const Features = ({ data }) => {
   const { title, description, features, col } = data || {};
   const lgGridCols: number = features?.length || 2;
   let gridEle = <></>;
-  if (col === 4)
-    gridEle = (
-      <div
-        className={`mb-12 grid grid-cols-1 gap-x-7 gap-y-14 md:grid-cols-2 lg:grid-cols-4`}
-      >
-        {features?.map((feature, i) => (
-          <SingleFeature key={i} data={{ feature, i }} />
-        ))}
-      </div>
-    );
-  else if (col === 3)
+  if (col === 3)
     gridEle = (
       <div
         className={`mb-12 grid grid-cols-1 gap-x-7 gap-y-14 md:grid-cols-2 lg:grid-cols-3`}
@@ -31,7 +21,7 @@ const Features = ({ data }) => {
         ))}
       </div>
     );
-  else if (col === 2)
+  else if (col === 4)
     gridEle = (
       <div
         className={`mb-12 grid grid-cols-1 gap-x-7 gap-y-14 md:grid-cols-2 lg:grid-cols-2`}
@@ -46,7 +36,7 @@ const Features = ({ data }) => {
     <>
       <section
         id="features"
-        className="lg:py-18 bg-primary/[.03] py-8 dark:bg-gray-800 md:py-8"
+        className="lg:py-18 bg-primary/[.08] py-8 dark:bg-gray-800 md:py-8"
       >
         <div className="container">
           <SectionTitle title={title} paragraph={description} center />

@@ -61,7 +61,7 @@ const Milestones = ({ data }) => {
                       <Timeline.Point icon={FaCalendarCheck} />
                       <Timeline.Content>
                         <Timeline.Time>{milestone?.time}</Timeline.Time>
-                        <Timeline.Title className="text-primary">
+                        <Timeline.Title className="font-bold text-black">
                           {milestone?.name}
                         </Timeline.Title>
                         <Timeline.Body>{milestone?.description}</Timeline.Body>

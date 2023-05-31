@@ -20,7 +20,9 @@ const Detail = ({ data }) => {
                       <Image
                         className="rounded"
                         src={getStrapiMedia(media)}
-                        alt="Detail Image"
+                        alt={
+                          media?.data?.attributes?.alternativeText || 'Image'
+                        }
                         width={545}
                         height={400}
                       />
@@ -28,7 +30,9 @@ const Detail = ({ data }) => {
                       <Image
                         className=""
                         src={getStrapiMedia(media)}
-                        alt="Detail Image"
+                        alt={
+                          media?.data?.attributes?.alternativeText || 'Image'
+                        }
                         width={545}
                         height={400}
                       />
@@ -83,7 +87,9 @@ const Detail = ({ data }) => {
                       <Image
                         className="rounded"
                         src={getStrapiMedia(media)}
-                        alt="Detail Image"
+                        alt={
+                          media?.data?.attributes?.alternativeText || 'Image'
+                        }
                         width={545}
                         height={400}
                       />
@@ -91,7 +97,9 @@ const Detail = ({ data }) => {
                       <Image
                         className=""
                         src={getStrapiMedia(media)}
-                        alt="Detail Image"
+                        alt={
+                          media?.data?.attributes?.alternativeText || 'Image'
+                        }
                         width={545}
                         height={400}
                       />

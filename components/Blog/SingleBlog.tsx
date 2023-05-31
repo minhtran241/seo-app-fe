@@ -13,49 +13,46 @@ const SingleBlog = ({ blog }: { blog: Blog }) => {
         className="wow fadeInUp relative overflow-hidden"
         data-wow-delay=".1s"
       >
-        {thumbnail?.data?.attributes && (
-          <Link
-            href={`/blog/${slug}`}
-            className="relative block h-[220px] w-full border border-secondary"
-          >
-            <Image
-              src={getStrapiMedia(thumbnail)}
-              alt="image"
-              fill
-              className=""
-            />
+        <div className="overflow-hidden rounded shadow-lg">
+          <Link href={`/blog/${slug}`}>
+            <div className="relative h-[250px] w-full hover:max-h-screen">
+              <Image
+                className=""
+                src={getStrapiMedia(thumbnail)}
+                alt={
+                  thumbnail?.data?.attributes?.alternativeText ||
+                  'Blog Thumbnail'
+                }
+                fill
+              />
+              <div className="absolute bottom-0 top-0 right-0 left-0 bg-gray-900 opacity-25 transition duration-300 hover:bg-transparent"></div>
+              <div className="absolute bottom-0 left-0 bg-blue-600 px-4 py-2 text-sm text-white transition duration-500 ease-in-out hover:bg-white hover:text-blue-600">
+                {authorName}
+              </div>
+              <div className="absolute top-0 right-0 mt-3 mr-3 flex h-16 w-16 flex-col items-center justify-center rounded-full bg-blue-600 px-4 text-sm text-white transition duration-500 ease-in-out hover:bg-white hover:text-blue-600">
+                <span className="font-bold">
+                  {new Date(publishedAt).getDate()}
+                </span>
+                <small>
+                  {new Date(publishedAt).toLocaleString('default', {
+                    month: 'long',
+                  })}
+                </small>
+              </div>
+            </div>
           </Link>
-        )}
-        <div className="py-3 sm:py-8 md:py-8 xl:py-8">
-          <p>
+          <div className="py-4">
             <Link
               href={`/blog/${slug}`}
-              className="mb-2 block text-lg font-bold text-black hover:text-primary dark:text-white dark:hover:text-primary sm:text-xl"
+              className="inline-block text-lg font-semibold transition duration-300 ease-in-out hover:text-blue-600"
             >
               {title}
             </Link>
-          </p>
-          <p className="mb-6 border-b border-body-color border-opacity-10 pb-6 text-base text-gray-500 dark:border-white dark:border-opacity-10 dark:text-gray-400">
-            {description?.length > 150
-              ? description.slice(0, 150) + '...'
-              : description}
-          </p>
-          <div className="flex items-center">
-            <div className="mr-5 flex items-center border-r border-body-color border-opacity-10 pr-5 dark:border-white dark:border-opacity-10 xl:mr-3 xl:pr-3 2xl:mr-5 2xl:pr-5">
-              <div className="w-full">
-                <h4 className="mb-1 text-sm font-medium text-primary-title-dark dark:text-primary-title">
-                  {authorName}
-                </h4>
-              </div>
-            </div>
-            <div className="inline-block">
-              <h4 className="mb-1 text-sm font-medium text-primary-title-dark dark:text-primary-title">
-                Published
-              </h4>
-              <p className="text-xs text-gray-500 dark:text-gray-400">
-                {new Date(publishedAt).toLocaleDateString()}
-              </p>
-            </div>
+            <p className="text-sm text-gray-500">
+              {description?.length > 150
+                ? `${description?.substring(0, 150)}...`
+                : description}
+            </p>
           </div>
         </div>
       </div>

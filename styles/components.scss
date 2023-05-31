@@ -1,0 +1,24 @@
+//feature card
+.feature-card {
+  @apply transition-all duration-200 ease-in-out hover:shadow;
+}
+
+//swiper pagination
+.service-carousel .swiper-pagination {
+  @apply flex justify-center;
+
+  span {
+    @apply mx-[5px] inline-block h-[10px] w-[10px] cursor-pointer rounded-full border  border-primary;
+    &.swiper-pagination-bullet-active {
+      @apply bg-primary;
+    }
+  }
+}
+
+.triangle {
+  width: 0;
+  height: 0;
+  border-style: solid;
+  border-width: 0 20px 20px 0;
+  border-color: transparent #1a202c transparent transparent;
+}

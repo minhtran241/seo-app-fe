@@ -37,6 +37,7 @@ const GET_HOME_PAGE: DocumentNode = gql`
               data {
                 attributes {
                   url
+                  alternativeText
                 }
               }
             }
@@ -166,21 +167,22 @@ const GET_ABOUT_US_PAGE: DocumentNode = gql`
               }
             }
           }
-          hero {
-            media {
-              data {
-                attributes {
-                  url
-                  alternativeText
-                }
+          title
+          description
+          media1 {
+            data {
+              attributes {
+                url
+                alternativeText
               }
             }
-            tag
-            title
-            description
-            buttons {
-              label
-              link
+          }
+          media2 {
+            data {
+              attributes {
+                url
+                alternativeText
+              }
             }
           }
           socialProof {
@@ -258,6 +260,7 @@ const GET_BLOG_POSTS: DocumentNode = gql`
             data {
               attributes {
                 url
+                alternativeText
               }
             }
           }
@@ -404,6 +407,7 @@ const GET_PRODUCT_DETAILS: DocumentNode = gql`
             data {
               attributes {
                 url
+                alternativeText
               }
             }
           }
@@ -484,6 +488,7 @@ const GET_SOLUTION_DETAILS: DocumentNode = gql`
             data {
               attributes {
                 url
+                alternativeText
               }
             }
           }
@@ -620,6 +625,7 @@ const GET_POPULAR_PRODUCTS: DocumentNode = gql`
             data {
               attributes {
                 url
+                alternativeText
               }
             }
           }
@@ -645,6 +651,7 @@ const GET_POPULAR_SOLUTIONS: DocumentNode = gql`
             data {
               attributes {
                 url
+                alternativeText
               }
             }
           }
@@ -698,14 +705,7 @@ const GET_BLOG_PAGE: DocumentNode = gql`
               }
             }
           }
-          breadcrumb {
-            title
-            description
-            pages(sort: "order:asc") {
-              name
-              path
-            }
-          }
+          title
         }
       }
     }

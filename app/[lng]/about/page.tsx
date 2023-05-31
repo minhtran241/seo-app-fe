@@ -6,7 +6,7 @@ import { getStrapiMedia } from '../api/urlBuilder';
 import Features from '@/components/Features';
 import Brands from '@/components/Brands';
 import SocialProof from '@/components/SocialProof';
-import Hero from '@/components/Hero';
+import AboutSectionOne from '@/components/About/AboutSectionOne';
 
 const AboutPage = async ({ params: { lng } }: Props) => {
   preload(lng);
@@ -56,15 +56,23 @@ const AboutPage = async ({ params: { lng } }: Props) => {
           />
         </>
       ))}
-      <Hero data={aboutUsData?.hero} />
-      <SocialProof data={aboutUsData?.socialProof} />
-      <Timeline data={aboutUsData?.formation} />
+      <AboutSectionOne
+        data={{
+          title: aboutUsData?.title,
+          description: aboutUsData?.description,
+          media1: aboutUsData?.media1,
+          media2: aboutUsData?.media2,
+        }}
+      />
       <Features
         data={{
           ...aboutUsData?.features,
           col: aboutUsData?.features?.features?.length,
         }}
       />
+      <SocialProof data={aboutUsData?.socialProof} />
+      <Timeline data={aboutUsData?.formation} />
+
       <Brands data={aboutUsData?.brands} />
     </>
   );
