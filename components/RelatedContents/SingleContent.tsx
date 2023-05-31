@@ -27,7 +27,7 @@ const SingleContent = ({
         {thumbnail?.data?.attributes && (
           <Link
             href={`/${type}/${slug}`}
-            className="w-ful relative block h-[220px]"
+            className="w-ful relative block h-[218px]"
           >
             <Image
               src={getStrapiMedia(thumbnail)}
