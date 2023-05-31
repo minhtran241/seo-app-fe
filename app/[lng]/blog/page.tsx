@@ -70,17 +70,17 @@ const Blog = async ({ params: { lng } }: Props) => {
           <div className="mt-16 lg:-mx-6 lg:flex lg:items-center">
             <Link
               href={`/blog/${latestBlog?.slug}`}
-              className="h-72 w-full object-cover dark:hover:shadow-black/30 lg:mx-6 lg:h-96 lg:w-1/2"
+              className="h-[218px] w-full object-cover dark:hover:shadow-black/30 lg:mx-6 lg:h-[327px] lg:w-1/2"
             >
               <Image
-                className="h-72  w-full lg:h-96"
+                className="h-[218px] w-full lg:h-[327px]"
                 src={getStrapiMedia(latestBlog?.thumbnail)}
                 alt={
                   latestBlog?.thumbnail?.data?.attributes?.alternativeText ||
                   'Blog Thumbnail'
                 }
-                width={500}
-                height={288}
+                width={433}
+                height={218}
               />
             </Link>
             <div className="mt-6 lg:mx-6 lg:mt-0 lg:w-1/2 ">
