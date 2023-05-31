@@ -1,5 +1,5 @@
-import Link from 'next/link';
 import { getStrapiMedia } from '@/app/[lng]/api/urlBuilder';
+import Link from 'next/link';
 
 const Hero = ({ data }) => {
   const { media, title, tag, description, buttons } = data || {};
@@ -24,9 +24,22 @@ const Hero = ({ data }) => {
         <div className="container relative mx-auto">
           <div className="flex flex-wrap items-center">
             <div className="ml-auto mr-auto w-full px-4 text-center lg:w-6/12">
-              <div className="pr-12">
+              <div className="">
                 <h1 className="text-5xl font-semibold text-white">{title}</h1>
                 <p className="mt-4 text-lg text-gray-300">{description}</p>
+              </div>
+              <div className="mt-6">
+                {buttons?.map((button, i) => (
+                  <button
+                    type="button"
+                    className="mr-4 mb-4 border border-gray-300 bg-white px-8 py-3 text-base font-bold uppercase text-gray-900 shadow-md transition duration-300 ease-in-out hover:bg-transparent hover:text-white focus:outline-none focus:ring-4 focus:ring-gray-200"
+                    key={i}
+                  >
+                    <Link href={button?.link} target="_blank">
+                      {button?.label}
+                    </Link>
+                  </button>
+                ))}
               </div>
             </div>
           </div>
