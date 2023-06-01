@@ -24,9 +24,9 @@ const SingleFeature = ({ data }) => {
       )}
       {isDescription && (
         <div className="mt-4">
-          <h5 className="text-lg font-bold text-black">
+          <h4 className="text-lg font-bold text-black">
             {feature?.name?.toUpperCase()}
-          </h5>
+          </h4>
           <span className="mb-3 inline-block w-20 border-t-2 border-solid border-blue-200"></span>
           <div className="text-gray-600 dark:text-gray-400 ">
             {parse(feature?.description)}

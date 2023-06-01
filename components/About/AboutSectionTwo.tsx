@@ -27,7 +27,10 @@ const AboutSectionTwo = ({ data }: { data: any }) => {
             <div className="mb-6 inline-flex h-16 w-16 items-center justify-center rounded-full bg-blue-300 p-3 text-center text-blue-600 shadow-lg">
               <FaRocket />
             </div>
-            <h3 className="text-3xl font-semibold">{title}</h3>
+            <div className="border-l-4 border-blue-200">
+              {' '}
+              <h3 className="ml-4 text-3xl font-semibold">{title}</h3>
+            </div>
             <p className="mt-4 text-lg leading-relaxed text-gray-600">
               {description}
             </p>
@@ -41,7 +44,9 @@ const AboutSectionTwo = ({ data }: { data: any }) => {
                       </span>
                     </div>
                     <div>
-                      <h4 className="text-gray-600">{property?.name}</h4>
+                      <h4 className="text-lg text-gray-600">
+                        {property?.name}
+                      </h4>
                     </div>
                   </div>
                 </li>

@@ -44,11 +44,11 @@ const SingleBlog = ({ blog }: { blog: Blog }) => {
           <div className="py-4">
             <Link
               href={`/blog/${slug}`}
-              className="inline-block text-lg font-semibold transition duration-300 ease-in-out hover:text-blue-600"
+              className="inline-block text-xl font-semibold transition duration-300 ease-in-out hover:text-blue-600"
             >
               {title}
             </Link>
-            <p className="text-sm text-gray-500">
+            <p className="text-md text-gray-500">
               {description?.length > 150
                 ? `${description?.substring(0, 150)}...`
                 : description}

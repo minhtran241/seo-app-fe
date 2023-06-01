@@ -70,7 +70,7 @@ const AboutPage = async ({ params: { lng } }: Props) => {
           col: aboutUsData?.features?.features?.length,
         }}
       />
-      <SocialProof data={aboutUsData?.socialProof} />
+      {/* <SocialProof data={aboutUsData?.socialProof} /> */}
       <Timeline data={aboutUsData?.formation} />
 
       <Brands data={aboutUsData?.brands} />

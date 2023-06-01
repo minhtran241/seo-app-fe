@@ -67,13 +67,13 @@ const Blog = async ({ params: { lng } }: Props) => {
               {title?.toUpperCase()}
             </h1>
           </div>
-          <div className="mt-16 lg:-mx-6 lg:flex lg:items-center">
+          <div className="mt-12 lg:-mx-6 lg:flex lg:items-center">
             <Link
               href={`/blog/${latestBlog?.slug}`}
               className="h-[218px] w-full object-cover dark:hover:shadow-black/30 lg:mx-6 lg:h-[327px] lg:w-1/2"
             >
               <Image
-                className="h-[218px] w-full lg:h-[327px]"
+                className="h-[218px] w-full rounded lg:h-[327px]"
                 src={getStrapiMedia(latestBlog?.thumbnail)}
                 alt={
                   latestBlog?.thumbnail?.data?.attributes?.alternativeText ||

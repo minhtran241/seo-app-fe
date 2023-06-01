@@ -5,6 +5,7 @@ import { Dropdown, Navbar } from 'flowbite-react';
 import {
   countryCode,
   getCurrentPath,
+  getFlagEmoji,
   getHeaderDataCache,
   preload,
 } from '@/utils/header';
@@ -15,6 +16,7 @@ import { getStrapiMedia } from '@/app/[lng]/api/urlBuilder';
 import { languages } from '@/app/i18n/settings';
 import { usePathname } from 'next/navigation';
 import { Props } from '@/types/lng';
+import LocaleSwitcher from '../LocaleSwitch';
 
 const Header = ({ params: { lng } }: Props) => {
   const pathname = usePathname();
@@ -46,12 +48,12 @@ const Header = ({ params: { lng } }: Props) => {
           />
         </Navbar.Brand>
         <Navbar.Toggle />
-        <Navbar.Collapse>
+        <Navbar.Collapse className="">
           <Dropdown
             id="mega-menu-full-cta-dropdown-button"
             data-collapse-toggle="mega-menu-full-cta-dropdown"
             data-dropdown-placement="bottom"
-            className="flex w-full items-center justify-between bg-white pl-3 pr-4 font-medium text-gray-900 dark:bg-gray-800 dark:text-white dark:hover:text-blue-500 md:w-auto md:border-0 md:p-0 md:hover:text-blue-600 md:dark:hover:text-blue-500"
+            className=" "
             arrowIcon={true}
             label={headerAttributes?.groupedByCategory?.title?.toUpperCase()}
             inline={true}
@@ -61,12 +63,12 @@ const Header = ({ params: { lng } }: Props) => {
               className=" border-gray-700 bg-white shadow-sm dark:bg-gray-900"
               title="Products / Sản phẩm"
             >
-              <div className="mx-auto grid max-w-screen-xl text-sm text-gray-500 dark:text-white md:grid-cols-4 ">
+              <div className="mx-auto grid max-w-screen-xl px-4 text-gray-900 dark:text-white md:grid-cols-4 md:px-6">
                 {headerAttributes?.groupedByCategory?.categories &&
                   headerAttributes?.groupedByCategory?.categories?.data?.map(
                     (category, i) => (
                       <div key={i} className="px-2 pb-3">
-                        <div className="items-center pb-2 text-sm font-bold uppercase text-primary-title-dark dark:text-secondary">
+                        <div className="items-center pb-2 font-bold uppercase text-primary-title-dark dark:text-secondary">
                           {category?.attributes?.name}
                         </div>
                         <ul
@@ -98,12 +100,12 @@ const Header = ({ params: { lng } }: Props) => {
               className=" border-gray-700 bg-white shadow-sm dark:bg-gray-900"
               title="Solutions / Giải pháp"
             >
-              <div className="mx-auto grid max-w-screen-xl text-sm text-gray-500 dark:text-white md:grid-cols-4">
+              <div className="mx-auto grid max-w-screen-xl px-4 text-gray-900 dark:text-white md:grid-cols-4 md:px-6">
                 {headerAttributes?.groupedByCategory?.categories &&
                   headerAttributes?.groupedByCategory?.categories?.data?.map(
                     (category, i) => (
                       <div key={i} className="px-2 pb-3">
-                        <div className="items-center pb-2 text-sm font-bold uppercase text-primary-title-dark dark:text-secondary">
+                        <div className="items-center pb-2 font-bold uppercase text-primary-title-dark dark:text-secondary">
                           {category?.attributes?.name}
                         </div>
                         <ul
@@ -154,38 +156,7 @@ const Header = ({ params: { lng } }: Props) => {
             );
           })}
         </Navbar.Collapse>
-        <div className="flex p-4 sm:p-4 md:p-0 lg:p-0">
-          <Trans i18nKey="languageSwitcher" className="pr-2">
-            <div className="pr-2">
-              <Image
-                src={`https://flagcdn.com/${countryCode[lng]}.svg`}
-                width="20"
-                height="15"
-                alt={lng}
-                className="border border-primary"
-              />
-            </div>{' '}
-            <div>{}</div>
-          </Trans>
-          {languages
-            .filter((l) => lng !== l)
-            .map((l, index) => {
-              return (
-                <span key={l}>
-                  {index > 0 && ' or '}
-                  <Link href={`/${l}/${currentPath}`}>
-                    <Image
-                      src={`https://flagcdn.com/${countryCode[l]}.svg`}
-                      width="20"
-                      height="15"
-                      alt={l}
-                      className=""
-                    />
-                  </Link>
-                </span>
-              );
-            })}
-        </div>
+        <LocaleSwitcher lng={lng} currentPath={currentPath} />
         {/* <ThemeToggler /> */}
       </Navbar>
     );

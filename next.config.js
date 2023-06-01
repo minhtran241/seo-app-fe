@@ -10,6 +10,7 @@ const nextConfig = {
       'localhost',
       '188.166.209.113',
       'flagcdn.com',
+      'www.worldometers.info',
       process.env.STRAPI_IMAGES_DOMAIN,
     ],
   },

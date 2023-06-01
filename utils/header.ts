@@ -27,4 +27,9 @@ export const getCurrentPath = (pathname: string): string => {
   return currentPath;
 };
 
-export const countryCode = { vi: 'vn', en: 'us' };
+export const countryCode = { en: 'gb', vi: 'vn' };
+
+export const getFlagEmoji = (countryCode) =>
+  String.fromCodePoint(
+    ...[...countryCode.toUpperCase()].map((x) => 0x1f1a5 + x.charCodeAt())
+  );

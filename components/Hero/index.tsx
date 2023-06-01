@@ -32,7 +32,7 @@ const Hero = ({ data }) => {
                 {buttons?.map((button, i) => (
                   <button
                     type="button"
-                    className="mr-4 mb-4 border border-gray-300 bg-white px-8 py-3 text-base font-bold uppercase text-gray-900 shadow-md transition duration-300 ease-in-out hover:bg-transparent hover:text-white focus:outline-none focus:ring-4 focus:ring-gray-200"
+                    className="mr-4 mb-4 border border-white bg-white px-8 py-3 text-base font-bold uppercase text-gray-900 shadow-md transition duration-300 ease-in-out hover:bg-transparent hover:text-white focus:outline-none focus:ring-4 focus:ring-gray-200"
                     key={i}
                   >
                     <Link href={button?.link} target="_blank">
