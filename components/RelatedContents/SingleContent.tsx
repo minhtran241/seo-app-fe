@@ -46,8 +46,10 @@ const SingleContent = ({
               {name}
             </Link>
           </p>
-          <p className="mb-6 pb-6 text-base text-gray-500 dark:text-gray-400">
-            {description}
+          <p className="mb-6 pb-6 text-base text-gray-600 dark:text-gray-400">
+            {description?.length > 150
+              ? `${description.substring(0, 150)}...`
+              : description}
           </p>
         </div>
       </div>

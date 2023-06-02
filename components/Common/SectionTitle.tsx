@@ -24,7 +24,7 @@ const SectionTitle = ({
           {title}
         </h2>
         {paragraph && (
-          <p className="text-base !leading-relaxed text-gray-500 dark:text-gray-400 md:text-lg">
+          <p className="text-base !leading-relaxed text-gray-600 dark:text-gray-400 md:text-lg">
             {paragraph}
           </p>
         )}

@@ -48,7 +48,7 @@ const SingleBlog = ({ blog }: { blog: Blog }) => {
             >
               {title}
             </Link>
-            <p className="text-md text-gray-500">
+            <p className="text-md text-gray-600">
               {description?.length > 150
                 ? `${description?.substring(0, 150)}...`
                 : description}

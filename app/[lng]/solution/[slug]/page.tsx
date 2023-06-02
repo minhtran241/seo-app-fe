@@ -2,10 +2,10 @@ import { apolloClient } from '../../api/apollo-client';
 import { GET_SOLUTION_DETAILS } from '../../api/graphql/queries';
 import SubDetail from '@/components/SubDetail';
 import { notFound } from 'next/navigation';
-import { getStrapiMedia } from '../../api/urlBuilder';
 import { SingleProps } from '@/types/lng';
 import RelatedContents from '@/components/RelatedContents';
 import Hero from '@/components/Hero';
+import Seo from '@/components/Seo';
 
 type Solution = {
   seo: any;
@@ -45,51 +45,9 @@ const SolutionDetailsPage = async ({ params }: SingleProps) => {
     return null;
   }
   const { seo, name, description, thumbnail, source, contents } = solutionAttrs;
-  const {
-    metaTitle,
-    metaDescription,
-    metaImage,
-    keywords,
-    metaViewport,
-    metaRobots,
-    canonicalURL,
-    metaSocial,
-  } = seo || {};
   return (
     <>
-      <title>{metaTitle}</title>
-      <meta name="description" content={metaDescription} key="description" />
-      <meta name="keywords" content={keywords} />
-      <meta
-        property="og:image"
-        content={getStrapiMedia(metaImage)}
-        key="og:image"
-      />
-      <meta property="og:title" content={metaTitle} key="og:title" />
-      <meta
-        property="og:description"
-        content={metaDescription}
-        key="og:description"
-      />
-      <meta name="viewport" content={metaViewport} />
-      <link rel="canonical" href={canonicalURL} />
-      <meta name="robots" content={metaRobots}></meta>
-      {metaSocial?.map((soc) => (
-        <>
-          <meta
-            name={`${soc?.socialNetwork?.toLowerCase()}:title`}
-            content={soc?.title}
-          />
-          <meta
-            name={`${soc?.socialNetwork?.toLowerCase()}:description`}
-            content={soc?.description}
-          />
-          <meta
-            name={`${soc?.socialNetwork?.toLowerCase()}:image`}
-            content={getStrapiMedia(soc?.image)}
-          />
-        </>
-      ))}
+      <Seo data={seo || {}} />
       {/* <Breadcrumb pageName={name} description={description} source={source} /> */}
       <Hero
         data={{

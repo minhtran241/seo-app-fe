@@ -34,22 +34,23 @@ const Footer = ({ params: { lng } }: Props) => {
                     height={48}
                   />
                 </Link>
-                <p className="text-gray-500">{footerAttributes?.text}</p>
+                <p className="text-gray-600">{footerAttributes?.text}</p>
               </div>
               <div
                 className={`ml-12 grid grid-cols-3 gap-2 sm:grid-cols-3 sm:gap-1`}
               >
                 {footerAttributes?.sections.map(({ name, Navs }, i) => (
                   <div key={i}>
-                    <h2 className="text-md mb-2 font-bold uppercase text-black">
+                    <h2 className="text-md mb-2 font-bold text-black">
                       {name}
                     </h2>
+                    <span className="mb-3 inline-block w-10 border-t border-solid border-black"></span>
                     <ul className="text-black dark:text-gray-400">
                       {Navs?.map(({ name, path }, i) => (
                         <li className="mb-1" key={i}>
                           <Link
                             href={path}
-                            className="text-gray-500 hover:text-primary"
+                            className="text-gray-600 hover:text-primary"
                           >
                             {name}
                           </Link>

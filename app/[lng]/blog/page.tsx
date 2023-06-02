@@ -8,6 +8,7 @@ import {
 import { getStrapiMedia } from '../api/urlBuilder';
 import Image from 'next/image';
 import Link from 'next/link';
+import Seo from '@/components/Seo';
 
 const Blog = async ({ params: { lng } }: Props) => {
   preload(lng);
@@ -15,51 +16,9 @@ const Blog = async ({ params: { lng } }: Props) => {
   const blogData = await blogsDataCache(lng);
   const latestBlog = blogData[0]?.attributes;
   const otherBlogs = blogData.slice(1);
-  const {
-    metaTitle,
-    metaDescription,
-    metaImage,
-    keywords,
-    metaViewport,
-    metaRobots,
-    canonicalURL,
-    metaSocial,
-  } = seo || {};
   return (
     <>
-      <title>{metaTitle}</title>
-      <meta name="description" content={metaDescription} key="description" />
-      <meta name="keywords" content={keywords} />
-      <meta
-        property="og:image"
-        content={getStrapiMedia(metaImage)}
-        key="og:image"
-      />
-      <meta property="og:title" content={metaTitle} key="og:title" />
-      <meta
-        property="og:description"
-        content={metaDescription}
-        key="og:description"
-      />
-      <meta name="viewport" content={metaViewport} />
-      <link rel="canonical" href={canonicalURL} />
-      <meta name="robots" content={metaRobots}></meta>
-      {metaSocial?.map((soc) => (
-        <>
-          <meta
-            name={`${soc?.socialNetwork?.toLowerCase()}:title`}
-            content={soc?.title}
-          />
-          <meta
-            name={`${soc?.socialNetwork?.toLowerCase()}:description`}
-            content={soc?.description}
-          />
-          <meta
-            name={`${soc?.socialNetwork?.toLowerCase()}:image`}
-            content={getStrapiMedia(soc?.image)}
-          />
-        </>
-      ))}
+      <Seo data={seo || {}} />
       <section className="bg-primary/[.08] pt-[60px] pb-[60px] dark:bg-gray-800">
         <div className="container">
           <div className=" border-l-4 border-blue-500">
@@ -93,7 +52,7 @@ const Blog = async ({ params: { lng } }: Props) => {
               >
                 {latestBlog?.title}
               </Link>
-              <p className="text-md md:text-md mt-3 text-gray-500 dark:text-gray-300">
+              <p className="text-md md:text-md mt-3 text-gray-600 dark:text-gray-300">
                 {latestBlog?.description}
               </p>
               <Link
@@ -104,7 +63,7 @@ const Blog = async ({ params: { lng } }: Props) => {
               </Link>
               <div className="mt-6 flex items-center">
                 <div className="">
-                  <h1 className="text-sm text-gray-700 dark:text-gray-200">
+                  <h1 className="text-sm text-gray-600 dark:text-gray-200">
                     {latestBlog?.author?.data?.attributes?.fullname ||
                       'Administrator'}
                   </h1>

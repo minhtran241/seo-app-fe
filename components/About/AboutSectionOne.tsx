@@ -19,22 +19,20 @@ const AboutSectionOne = ({ data }: { data: AboutSectionOneProps }) => {
           <h2 className="mb-4 text-4xl font-extrabold tracking-tight text-gray-900 dark:text-white">
             {title}
           </h2>
-          <div className="mb-4">{parse(description || '')}</div>
+          <div className="mb-4 text-gray-700">{parse(description || '')}</div>
         </div>
         <div className="mt-8 grid grid-cols-2 gap-4">
           <Image
             className="w-full rounded-lg"
             src={getStrapiMedia(media1)}
-            alt={media1?.data?.attributes
-							?.alternativeText || 'Image'}
+            alt={media1?.data?.attributes?.alternativeText || 'Image'}
             width={250}
             height={500}
           />
           <Image
             className="mt-4 w-full rounded-lg lg:mt-10"
             src={getStrapiMedia(media2)}
-            alt={media2?.data?.attributes
-							?.alternativeText || 'Image'}
+            alt={media2?.data?.attributes?.alternativeText || 'Image'}
             width={250}
             height={500}
           />

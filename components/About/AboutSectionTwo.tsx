@@ -31,7 +31,7 @@ const AboutSectionTwo = ({ data }: { data: any }) => {
               {' '}
               <h3 className="ml-4 text-3xl font-semibold">{title}</h3>
             </div>
-            <p className="mt-4 text-lg leading-relaxed text-gray-600">
+            <p className="mt-4 text-lg leading-relaxed text-gray-700">
               {description}
             </p>
             <ul className="mt-6 list-none">
@@ -44,7 +44,7 @@ const AboutSectionTwo = ({ data }: { data: any }) => {
                       </span>
                     </div>
                     <div>
-                      <h4 className="text-lg text-gray-600">
+                      <h4 className="text-lg text-gray-700">
                         {property?.name}
                       </h4>
                     </div>

@@ -28,7 +28,7 @@ const SingleFeature = ({ data }) => {
             {feature?.name?.toUpperCase()}
           </h4>
           <span className="mb-3 inline-block w-20 border-t-2 border-solid border-blue-200"></span>
-          <div className="text-gray-600 dark:text-gray-400 ">
+          <div className="text-gray-700 dark:text-gray-400 ">
             {parse(feature?.description)}
           </div>
         </div>

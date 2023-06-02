@@ -63,12 +63,12 @@ const Header = ({ params: { lng } }: Props) => {
               className=" border-gray-700 bg-white shadow-sm dark:bg-gray-900"
               title="Products / Sản phẩm"
             >
-              <div className="mx-auto grid max-w-screen-xl px-4 text-gray-900 dark:text-white md:grid-cols-4 md:px-6">
+              <div className="mx-auto grid max-w-screen-xl px-4 text-gray-700 dark:text-white md:grid-cols-4 md:px-6">
                 {headerAttributes?.groupedByCategory?.categories &&
                   headerAttributes?.groupedByCategory?.categories?.data?.map(
                     (category, i) => (
                       <div key={i} className="px-2 pb-3">
-                        <div className="items-center pb-2 font-bold uppercase text-primary-title-dark dark:text-secondary">
+                        <div className="items-center pb-2 font-semibold uppercase text-primary-title-dark dark:text-secondary">
                           {category?.attributes?.name}
                         </div>
                         <ul
@@ -82,7 +82,7 @@ const Header = ({ params: { lng } }: Props) => {
                                 <li key={i}>
                                   <Link
                                     href={`/product/${product?.attributes?.slug}`}
-                                    className="hover:text-blue-600 hover:underline dark:hover:text-blue-500"
+                                    className="font-medium hover:text-primary dark:hover:text-blue-500"
                                   >
                                     {product?.attributes?.name}
                                   </Link>
@@ -100,12 +100,12 @@ const Header = ({ params: { lng } }: Props) => {
               className=" border-gray-700 bg-white shadow-sm dark:bg-gray-900"
               title="Solutions / Giải pháp"
             >
-              <div className="mx-auto grid max-w-screen-xl px-4 text-gray-900 dark:text-white md:grid-cols-4 md:px-6">
+              <div className="mx-auto grid max-w-screen-xl px-4 text-gray-700 dark:text-white md:grid-cols-4 md:px-6">
                 {headerAttributes?.groupedByCategory?.categories &&
                   headerAttributes?.groupedByCategory?.categories?.data?.map(
                     (category, i) => (
                       <div key={i} className="px-2 pb-3">
-                        <div className="items-center pb-2 font-bold uppercase text-primary-title-dark dark:text-secondary">
+                        <div className="items-center pb-2 font-semibold uppercase text-primary-title-dark dark:text-secondary">
                           {category?.attributes?.name}
                         </div>
                         <ul
@@ -119,7 +119,7 @@ const Header = ({ params: { lng } }: Props) => {
                                 <li key={i}>
                                   <Link
                                     href={`/solution/${solution?.attributes?.slug}`}
-                                    className="hover:text-blue-600 hover:underline dark:hover:text-blue-500"
+                                    className="font-medium hover:text-primary dark:hover:text-blue-500"
                                   >
                                     {solution?.attributes?.name}
                                   </Link>
@@ -156,7 +156,9 @@ const Header = ({ params: { lng } }: Props) => {
             );
           })}
         </Navbar.Collapse>
+        {/* <div className="border-l border-gray-400"> */}
         <LocaleSwitcher lng={lng} currentPath={currentPath} />
+        {/* </div> */}
         {/* <ThemeToggler /> */}
       </Navbar>
     );

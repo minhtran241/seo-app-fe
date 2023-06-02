@@ -136,7 +136,7 @@ const Custom404 = () => {
                 <h3 className="mb-4 text-3xl font-bold text-black dark:text-white sm:text-4xl">
                   Sorry, the page can’t be found
                 </h3>
-                <p className="mb-10 text-base font-medium leading-relaxed text-gray-500 dark:text-gray-400 sm:text-lg sm:leading-relaxed">
+                <p className="mb-10 text-base font-medium leading-relaxed text-gray-700 dark:text-gray-400 sm:text-lg sm:leading-relaxed">
                   The page you were looking for appears to have been moved,
                   deleted or does not exist.
                 </p>
