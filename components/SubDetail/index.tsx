@@ -44,15 +44,14 @@ const SubDetail = ({ data }) => {
               )}
               <div className="w-full px-4 lg:w-1/2">
                 <div className="mb-8">
-                  <h1 className="text-2xl font-semibold text-primary-title-dark dark:text-primary-title lg:text-3xl">
+                  <h1 className="title-font text-2xl font-semibold text-primary-title-dark dark:text-primary-title lg:text-3xl">
                     {name}
                   </h1>
-                  <span className="mb-3 inline-block w-20 border-t-2 border-solid border-blue-200"></span>
                 </div>
 
                 <div className="mb-4 md:-mx-4 md:flex md:items-start">
                   <div className="md:mx-4 md:mt-0">
-                    <div className="mt-3 text-black dark:text-white">
+                    <div className="mt-0 text-lg text-black dark:text-white">
                       {parse(description)}
                     </div>
                   </div>
@@ -63,18 +62,17 @@ const SubDetail = ({ data }) => {
         </section>
       ) : (
         <section className="lg:py-17  py-7 md:py-7">
-          <div className="container mx-auto">
+          <div className="container">
             <div className="-mx-4 flex flex-wrap items-center">
               <div className="w-full px-4 lg:w-1/2">
                 <div className="mb-8">
-                  <h1 className="text-2xl font-semibold text-primary-title-dark dark:text-primary-title lg:text-3xl">
+                  <h1 className="title-font text-2xl font-semibold text-primary-title-dark dark:text-primary-title lg:text-3xl">
                     {name}
                   </h1>
-                  <span className="mb-3 inline-block w-20 border-t-2 border-solid border-blue-200"></span>
                 </div>
                 <div className="mb-4 md:-mx-4 md:flex md:items-start">
                   <div className="md:mx-4 md:mt-0">
-                    <div className="mt-3 text-black dark:text-white">
+                    <div className="mt-0 text-lg text-black dark:text-white">
                       {parse(description)}
                     </div>
                   </div>

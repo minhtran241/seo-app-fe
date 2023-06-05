@@ -63,7 +63,7 @@ const Milestones = ({ data }) => {
                         <Timeline.Time>
                           <p className="text-gray-600">{milestone?.time}</p>
                         </Timeline.Time>
-                        <Timeline.Title className="font-bold text-black">
+                        <Timeline.Title className="font-bold text-primary">
                           {milestone?.name}
                         </Timeline.Title>
                         <Timeline.Body className="text-gray-700">

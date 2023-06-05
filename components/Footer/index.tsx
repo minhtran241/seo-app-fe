@@ -37,7 +37,7 @@ const Footer = ({ params: { lng } }: Props) => {
                 <p className="text-gray-600">{footerAttributes?.text}</p>
               </div>
               <div
-                className={`ml-12 grid grid-cols-3 gap-2 sm:grid-cols-3 sm:gap-1`}
+                className={`ml-12 grid grid-cols-3 gap-2 space-x-4 sm:grid-cols-3 sm:gap-1`}
               >
                 {footerAttributes?.sections.map(({ name, Navs }, i) => (
                   <div key={i}>

@@ -21,9 +21,11 @@ module.exports = {
       primary: '#1D4CB1',
       secondary: '#E6F8FF',
       yellow: '#FBB040',
+      'global-text': '#54565a',
       'body-color': '#777',
       'primary-title': '#F8F8FF',
       'primary-title-dark': '#0054A6',
+      'secondary-title-dark': '#0E93D2',
     },
     screens: {
       xs: '450px',
