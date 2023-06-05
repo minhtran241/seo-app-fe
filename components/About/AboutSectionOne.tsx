@@ -16,7 +16,7 @@ const AboutSectionOne = ({ data }: { data: AboutSectionOneProps }) => {
     <section className="bg-white dark:bg-gray-900">
       <div className="mx-auto max-w-screen-xl items-center gap-16 py-8 px-4 lg:grid lg:grid-cols-2 lg:py-16 lg:px-6">
         <div className="text-gray-700 dark:text-gray-400">
-          <h2 className="title-font mb-4 text-4xl font-bold tracking-tight text-primary dark:text-white">
+          <h2 className="title-font mb-4 text-4xl font-semibold tracking-tight text-primary dark:text-white">
             {title}
           </h2>
           <div className="mb-4 text-gray-700">{parse(description || '')}</div>

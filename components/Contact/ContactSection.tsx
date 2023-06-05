@@ -9,7 +9,7 @@ const ContactSection = ({ data }: { data: ContactProps }) => {
       <section className="mb-16 text-gray-800">
         <div className="flex flex-wrap">
           <div className="mb-6 w-full shrink-0 grow-0 basis-auto px-3 md:mb-0 md:w-6/12 lg:px-6">
-            <h2 className="mb-6 text-3xl font-bold uppercase text-primary-title-dark">
+            <h2 className="title-font mb-6 text-3xl font-semibold text-primary">
               {title}
             </h2>
             <div className="mb-6">{parse(details || '')}</div>

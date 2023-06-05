@@ -21,11 +21,9 @@ const Blog = async ({ params: { lng } }: Props) => {
       <Seo data={seo || {}} />
       <section className="bg-primary/[.08] pt-[60px] pb-[60px] dark:bg-gray-800">
         <div className="container">
-          <div className=" border-l-4 border-blue-500">
-            <h1 className="ml-4 text-2xl font-semibold text-gray-800 dark:text-white lg:text-3xl">
-              {title?.toUpperCase()}
-            </h1>
-          </div>
+          <h1 className="title-font text-2xl font-semibold text-primary dark:text-white lg:text-3xl">
+            {title?.toUpperCase()}
+          </h1>
           <div className="mt-12 lg:-mx-6 lg:flex lg:items-center">
             <Link
               href={`/blog/${latestBlog?.slug}`}
