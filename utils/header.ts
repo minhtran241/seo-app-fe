@@ -33,3 +33,14 @@ export const getFlagEmoji = (countryCode) =>
   String.fromCodePoint(
     ...[...countryCode.toUpperCase()].map((x) => 0x1f1a5 + x.charCodeAt())
   );
+
+export const getLanguageName = (countryCode) => {
+  const country = countryCode.toLowerCase();
+  let language = '';
+  if (country === 'gb') {
+    language = 'English';
+  } else if (country === 'vn') {
+    language = 'Tiếng Việt';
+  }
+  return language;
+};
