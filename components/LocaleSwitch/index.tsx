@@ -12,7 +12,7 @@ export default function LocaleSwitcher({ lng, currentPath }) {
 
   return (
     <>
-      <div className="">
+      <div className="p-2">
         <select
           id="languages-select"
           className="block w-full rounded border border-white bg-white p-1 text-sm text-gray-700 focus:border-primary dark:border-gray-600 dark:bg-gray-700 dark:text-white dark:placeholder-gray-400 dark:focus:border-blue-500 dark:focus:ring-blue-500"
