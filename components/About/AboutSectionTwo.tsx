@@ -11,7 +11,7 @@ const AboutSectionTwo = ({ data }: { data: any }) => {
     roundedImage = false,
   } = data || {};
   return (
-    <div className="container mx-auto px-4 pt-20 pb-10">
+    <div className="lg:mt-18 container mx-auto mt-8 mb-8 md:mt-8">
       <div className="flex flex-wrap items-center">
         <div className="ml-auto mr-auto w-full px-4 md:w-4/12">
           <Image
@@ -22,7 +22,7 @@ const AboutSectionTwo = ({ data }: { data: any }) => {
             height={1000}
           />
         </div>
-        <div className="ml-auto mr-auto w-full px-4 md:w-5/12">
+        <div className="lg:mt-18 ml-auto mr-auto mt-8 w-full px-4 md:mt-8 md:w-5/12">
           <div className="md:pr-12">
             <div className="mb-6 inline-flex h-16 w-16 items-center justify-center rounded-full bg-blue-300 p-3 text-center text-blue-600 shadow-lg">
               <FaRocket />
