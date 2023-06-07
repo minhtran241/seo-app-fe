@@ -15,7 +15,7 @@ const SingleBlog = ({ blog }: { blog: Blog }) => {
       >
         <div className="overflow-hidden rounded shadow-lg">
           <Link href={`/blog/${slug}`}>
-            <div className="relative h-[218px] w-full hover:max-h-screen">
+            <div className="relative h-[218px] w-full hover:max-h-screen ">
               <Image
                 className=""
                 src={getStrapiMedia(thumbnail)}

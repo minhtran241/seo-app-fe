@@ -73,17 +73,17 @@ const BlogDetailsPage = async ({ params }: SingleProps) => {
       <div
         className="w-full bg-cover bg-center"
         style={{
-          backgroundImage: `url(https://img.freepik.com/free-vector/white-background-with-blue-tech-hexagon_1017-19366.jpg?w=2000)`,
+          backgroundImage: `url(https://mobidev.biz/wp-content/uploads/2020/02/online-workplace-app-development-highlights-scaled.jpg)`,
         }}
       >
-        <div className="flex h-full w-full items-center justify-center bg-gray-600 bg-opacity-20 py-12">
+        <div className="flex h-full w-full items-center justify-center bg-primary bg-opacity-20 py-12">
           <div className="text-center">
             <div className="container mx-auto px-4">
               <div className="mx-auto max-w-5xl text-center">
-                <h1 className="text-5xl font-semibold text-gray-800">
+                <h1 className="text-5xl font-semibold text-white">
                   {blogAttrs?.title}
                 </h1>
-                <p className="mt-4 text-lg text-gray-700">
+                <p className="mt-4 text-lg text-white">
                   {blogAttrs?.description}
                 </p>
               </div>
@@ -154,21 +154,38 @@ const BlogDetailsPage = async ({ params }: SingleProps) => {
 
                   <div className="items-center justify-between sm:flex">
                     <div className="mb-5">
-                      {blogAttrs?.translator && (
+                      {blogAttrs?.translator && lng === 'en' && (
                         <h5 className="mb-3 text-sm font-medium text-gray-600 dark:text-gray-400">
                           Translator: {blogAttrs?.translator}
                         </h5>
                       )}
-                      {blogAttrs?.source && (
+                      {blogAttrs?.translator && lng === 'vi' && (
+                        <h5 className="mb-3 text-sm font-medium text-gray-600 dark:text-gray-400">
+                          Dịch giả: {blogAttrs?.translator}
+                        </h5>
+                      )}
+                      {blogAttrs?.source && lng === 'en' && (
                         <h5 className="mb-3 text-sm font-medium text-gray-600 dark:text-gray-400">
                           Source: {blogAttrs?.source}
                         </h5>
                       )}
+                      {blogAttrs?.source && lng === 'vi' && (
+                        <h5 className="mb-3 text-sm font-medium text-gray-600 dark:text-gray-400">
+                          Nguồn: {blogAttrs?.source}
+                        </h5>
+                      )}
                     </div>
                     <div className="mb-5">
-                      <h5 className="mb-3 text-sm font-medium text-gray-600 dark:text-gray-400 sm:text-right">
-                        Share this blog :
-                      </h5>
+                      {lng === 'en' && (
+                        <h5 className="mb-3 text-sm font-medium text-gray-600 dark:text-gray-400 sm:text-right">
+                          Share this blog :
+                        </h5>
+                      )}
+                      {lng === 'vi' && (
+                        <h5 className="mb-3 text-sm font-medium text-gray-600 dark:text-gray-400 sm:text-right">
+                          Chia sẻ bài viết :
+                        </h5>
+                      )}
                       <div className="flex items-center sm:justify-end">
                         <SharePost data={{ url: getURL(`/blog/${slug}`) }} />
                       </div>
