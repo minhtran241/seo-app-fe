@@ -6,7 +6,7 @@ import { getStrapiMedia } from '@/app/[lng]/api/urlBuilder';
 const Brands = ({ data }) => {
   const { title, description, brands } = data || {};
   return (
-    <section className="mb-10 bg-white dark:bg-gray-900">
+    <section className="brands mb-10 bg-white dark:bg-gray-900">
       <div className="container">
         <SectionTitle title={title} paragraph={description} center={true} />
         <div className="slider -mx-4">

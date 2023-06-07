@@ -51,6 +51,14 @@ const GET_HOME_PAGE: DocumentNode = gql`
           }
           categories {
             title
+            backgroundImage {
+              data {
+                attributes {
+                  url
+                  alternativeText
+                }
+              }
+            }
             categories(sort: "order:asc") {
               data {
                 attributes {
@@ -210,6 +218,14 @@ const GET_ABOUT_US_PAGE: DocumentNode = gql`
           features {
             title
             description
+            backgroundImage {
+              data {
+                attributes {
+                  url
+                  alternativeText
+                }
+              }
+            }
             features {
               name
               description

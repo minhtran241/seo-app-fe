@@ -15,6 +15,7 @@ export default async function Home({ params: { lng } }: Props) {
   const featureData = {
     title: homeData?.categories?.title,
     description: null,
+    backgroundImage: homeData?.categories?.backgroundImage,
     features: homeData?.categories?.categories?.data?.map(
       (el) => el?.attributes
     ),
@@ -24,9 +25,10 @@ export default async function Home({ params: { lng } }: Props) {
       <Seo data={homeData?.seo || {}} />
       <ScrollUp />
       <Hero data={homeData?.hero} />
-      <Features data={{ ...featureData, col: featureData?.features?.length }} />
       <AboutSectionTwo data={homeData?.sections[0]} />
       <Brands data={homeData?.brands} />
+
+      <Features data={{ ...featureData, col: featureData?.features?.length }} />
       <Blog data={homeData?.blogs} />
     </>
   );

@@ -1,3 +1,4 @@
+import { getStrapiMedia } from '@/app/[lng]/api/urlBuilder';
 import SectionTitle from '../Common/SectionTitle';
 import SingleFeature from './SingleFeature';
 
@@ -8,7 +9,7 @@ import SingleFeature from './SingleFeature';
 // };
 
 const Features = ({ data }) => {
-  const { title, description, features, col } = data || {};
+  const { title, description, backgroundImage, features, col } = data || {};
   const lgGridCols: number = features?.length || 2;
   let gridEle = <></>;
   if (col === 3)
@@ -36,10 +37,13 @@ const Features = ({ data }) => {
     <>
       <section
         id="features"
-        className="lg:py-18 bg-primary/[.08] py-8 dark:bg-gray-800 md:py-8"
+        className="lg:py-18 h-full w-full bg-primary/[.08] bg-cover bg-center py-8 dark:bg-gray-800 md:py-8"
+        style={{
+          backgroundImage: `url(${getStrapiMedia(backgroundImage)})`,
+        }}
       >
         <div className="container">
-          <SectionTitle title={title} paragraph={description} center />
+          <SectionTitle title={title} paragraph={description} center white />
           {gridEle}
         </div>
       </section>
