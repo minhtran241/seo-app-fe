@@ -23,11 +23,11 @@ const SectionTitle = ({
         style={{ maxWidth: width, marginBottom: mb }}
       >
         {white ? (
-          <h2 className="title-font mb-2 text-2xl font-semibold uppercase !leading-6 text-white dark:text-primary-title sm:text-xl md:text-[30px]">
+          <h2 className="title-font mb-2 text-2xl font-semibold uppercase !leading-relaxed text-white dark:text-primary-title sm:text-xl md:text-[30px]">
             {title}
           </h2>
         ) : (
-          <h2 className="title-font mb-2 text-2xl font-semibold uppercase !leading-6 text-primary dark:text-primary-title sm:text-xl md:text-[30px]">
+          <h2 className="title-font mb-2 text-2xl font-semibold uppercase !leading-relaxed text-primary dark:text-primary-title sm:text-xl md:text-[30px]">
             {title}
           </h2>
         )}

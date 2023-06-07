@@ -13,9 +13,9 @@ const SingleBlog = ({ blog }: { blog: Blog }) => {
         className="wow fadeInUp relative overflow-hidden"
         data-wow-delay=".1s"
       >
-        <div className="overflow-hidden rounded shadow-lg">
+        <div className="overflow-hidden">
           <Link href={`/blog/${slug}`}>
-            <div className="relative h-[218px] w-full hover:max-h-screen ">
+            <div className="relative h-[218px] w-full">
               <Image
                 className=""
                 src={getStrapiMedia(thumbnail)}

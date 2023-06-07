@@ -80,10 +80,10 @@ const BlogDetailsPage = async ({ params }: SingleProps) => {
           <div className="text-center">
             <div className="container mx-auto px-4">
               <div className="mx-auto max-w-5xl text-center">
-                <h1 className="text-5xl font-semibold text-white">
+                <h1 className="text-2xl font-semibold !leading-relaxed text-white dark:text-primary-title sm:text-xl md:text-[30px]">
                   {blogAttrs?.title}
                 </h1>
-                <p className="mt-4 text-lg text-white">
+                <p className="mt-4 text-base !leading-relaxed text-white dark:text-primary-title md:text-lg">
                   {blogAttrs?.description}
                 </p>
               </div>
