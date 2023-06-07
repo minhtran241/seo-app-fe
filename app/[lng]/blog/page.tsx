@@ -21,7 +21,7 @@ const Blog = async ({ params: { lng } }: Props) => {
       <Seo data={seo || {}} />
       <section className="bg-primary/[.08] pt-[60px] pb-[60px] dark:bg-gray-800">
         <div className="container">
-          <h1 className="title-font mb-2 text-2xl font-semibold uppercase !leading-6 text-primary dark:text-primary-title sm:text-xl md:text-[30px]">
+          <h1 className="title-font mb-2 text-2xl font-semibold uppercase !leading-6 text-primary transition duration-100 ease-in-out dark:text-primary-title sm:text-xl md:text-[30px]">
             {title?.toUpperCase()}
           </h1>
           <div className="mt-12 lg:-mx-6 lg:flex lg:items-center">
@@ -53,12 +53,22 @@ const Blog = async ({ params: { lng } }: Props) => {
               <p className="text-md md:text-md mt-3 text-gray-600 dark:text-gray-300">
                 {latestBlog?.description}
               </p>
-              <Link
-                href={`/blog/${latestBlog?.slug}`}
-                className="mt-2 inline-block font-bold text-blue-500 underline hover:text-blue-400"
-              >
-                Read more &rarr;
-              </Link>
+              {lng === 'en' && (
+                <Link
+                  href={`/blog/${latestBlog?.slug}`}
+                  className="mt-2 inline-block font-bold text-blue-500 underline hover:text-blue-400"
+                >
+                  Read more &rarr;
+                </Link>
+              )}
+              {lng === 'vi' && (
+                <Link
+                  href={`/blog/${latestBlog?.slug}`}
+                  className="mt-2 inline-block font-bold text-blue-500 underline hover:text-blue-400"
+                >
+                  Đọc thêm &rarr;
+                </Link>
+              )}
               <div className="mt-6 flex items-center">
                 <div className="">
                   <h1 className="text-sm text-gray-600 dark:text-gray-200">

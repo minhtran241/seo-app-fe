@@ -25,7 +25,7 @@ const SingleBlog = ({ blog }: { blog: Blog }) => {
                 }
                 fill
               />
-              <div className="absolute bottom-0 top-0 right-0 left-0 bg-gray-900 opacity-25 transition duration-300 hover:bg-transparent"></div>
+              {/* <div className="absolute bottom-0 top-0 right-0 left-0 bg-gray-900 opacity-25 transition duration-300 hover:bg-transparent"></div> */}
               <div className="absolute bottom-0 left-0 bg-blue-600 px-4 py-2 text-sm text-white transition duration-500 ease-in-out hover:bg-white hover:text-blue-600">
                 {authorName}
               </div>
@@ -44,7 +44,7 @@ const SingleBlog = ({ blog }: { blog: Blog }) => {
           <div className="py-4">
             <Link
               href={`/blog/${slug}`}
-              className="inline-block text-xl font-semibold transition duration-300 ease-in-out hover:text-blue-600"
+              className="inline-block text-xl font-semibold transition duration-100 ease-in-out hover:text-blue-600"
             >
               {title}
             </Link>
