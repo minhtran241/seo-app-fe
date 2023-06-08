@@ -148,7 +148,7 @@ const BlogDetailsPage = async ({ params }: SingleProps) => {
                     </div>
                   )} */}
 
-                  <div className="mb-8 text-lg text-black dark:text-white">
+                  <div className="blog-content mb-8 text-lg text-black dark:text-white">
                     {parse(content)}
                   </div>
 
