@@ -6,22 +6,28 @@ import Image from 'next/image';
 type AboutSectionOneProps = {
   title: string;
   description: string;
+  backgroundImage: any;
   media1: any;
   media2: any;
 };
 
 const AboutSectionOne = ({ data }: { data: AboutSectionOneProps }) => {
-  const { title, description, media1, media2 } = data;
+  const { title, description, backgroundImage, media1, media2 } = data;
   return (
-    <section className="bg-white dark:bg-gray-900">
+    <section
+      className="bg-white bg-cover bg-center dark:bg-gray-900"
+      style={{
+        backgroundImage: `url(${getStrapiMedia(backgroundImage)})`,
+      }}
+    >
       <div className="mx-auto max-w-screen-xl items-center gap-16 py-8 px-4 lg:grid lg:grid-cols-2 lg:py-16 lg:px-6">
         <div className="text-gray-700 dark:text-gray-400">
-          <h2 className="title-font mb-2 text-2xl font-semibold uppercase !leading-6 text-primary dark:text-primary-title sm:text-xl md:text-[30px]">
+          <h2 className="title-font mb-2 text-2xl font-semibold uppercase !leading-6 text-white dark:text-primary-title sm:text-xl md:text-[30px]">
             {title}
           </h2>
-          <div className="my-4 text-gray-700">{parse(description || '')}</div>
+          <div className="my-4 text-white">{parse(description || '')}</div>
         </div>
-        <div className="mt-8 grid grid-cols-2 gap-4">
+        {/* <div className="mt-8 grid grid-cols-2 gap-4">
           <Image
             className="w-full rounded-lg"
             src={getStrapiMedia(media1)}
@@ -36,7 +42,7 @@ const AboutSectionOne = ({ data }: { data: AboutSectionOneProps }) => {
             width={250}
             height={500}
           />
-        </div>
+        </div> */}
       </div>
     </section>
   );

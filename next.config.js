@@ -6,13 +6,7 @@ const nextConfig = {
   },
   images: {
     loader: 'default',
-    domains: [
-      'localhost',
-      '188.166.209.113',
-      'flagcdn.com',
-      'www.worldometers.info',
-      process.env.STRAPI_IMAGES_DOMAIN,
-    ],
+    domains: ['localhost', '188.166.209.113', process.env.STRAPI_IMAGES_DOMAIN],
   },
   // i18n: {
   //   defaultLocale: 'de',

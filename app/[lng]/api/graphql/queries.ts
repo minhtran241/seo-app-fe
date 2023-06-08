@@ -177,6 +177,14 @@ const GET_ABOUT_US_PAGE: DocumentNode = gql`
           }
           title
           description
+          backgroundImage {
+            data {
+              attributes {
+                url
+                alternativeText
+              }
+            }
+          }
           media1 {
             data {
               attributes {

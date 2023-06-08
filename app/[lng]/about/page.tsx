@@ -18,10 +18,13 @@ const AboutPage = async ({ params: { lng } }: Props) => {
         data={{
           title: aboutUsData?.title,
           description: aboutUsData?.description,
+          backgroundImage: aboutUsData?.backgroundImage,
           media1: aboutUsData?.media1,
           media2: aboutUsData?.media2,
         }}
       />
+      <Timeline data={aboutUsData?.formation} />
+      <Brands data={aboutUsData?.brands} />
       <Features
         data={{
           ...aboutUsData?.features,
@@ -29,9 +32,6 @@ const AboutPage = async ({ params: { lng } }: Props) => {
         }}
       />
       {/* <SocialProof data={aboutUsData?.socialProof} /> */}
-      <Timeline data={aboutUsData?.formation} />
-
-      <Brands data={aboutUsData?.brands} />
     </>
   );
 };
