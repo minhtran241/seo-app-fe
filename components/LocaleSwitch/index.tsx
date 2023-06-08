@@ -18,18 +18,13 @@ export default function LocaleSwitcher({ lng, currentPath }) {
           className="block w-full rounded border border-white bg-white p-1 text-sm text-gray-700 focus:border-primary dark:border-gray-600 dark:bg-gray-700 dark:text-white dark:placeholder-gray-400 dark:focus:border-blue-500 dark:focus:ring-blue-500"
           title={getLanguageName(countryCode[lng])}
           onChange={onSelectChange}
+          defaultValue={lng}
         >
-          {languages?.map((locale, i) => {
-            return locale === lng ? (
-              <option selected key={i} value={locale}>
-                {`${getLanguageName(countryCode[locale])}`}
-              </option>
-            ) : (
-              <option value={locale} key={i}>
-                {`${getLanguageName(countryCode[locale])}`}
-              </option>
-            );
-          })}
+          {languages?.map((locale, i) => (
+            <option value={locale} key={i}>
+              {`${getLanguageName(countryCode[locale])}`}
+            </option>
+          ))}
         </select>
       </div>
     </>

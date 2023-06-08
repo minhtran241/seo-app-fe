@@ -15,23 +15,23 @@ import {
 const SharePost = ({ data }: { data: { url: string } }) => {
   const { url } = data || {};
   const status: string = 'Check out this blog from Pama!';
-  const hashtag: string = 'pamaBlog';
+  const hashtag: string = 'pama';
   return (
     <>
       <FacebookShareButton url={url} quote={status} hashtag={hashtag}>
-        <FacebookIcon size={32} round className="mr-2" />
+        <FacebookIcon size={32} borderRadius={5} className="mr-2" />
       </FacebookShareButton>
       <TwitterShareButton url={url} title={status}>
-        <TwitterIcon size={32} round className="mr-2" />
+        <TwitterIcon size={32} borderRadius={5} className="mr-2" />
       </TwitterShareButton>
       <LinkedinShareButton url={url} title={status}>
-        <LinkedinIcon size={32} round className="mr-2" />
+        <LinkedinIcon size={32} borderRadius={5} className="mr-2" />
       </LinkedinShareButton>
       <PinterestShareButton url={url} media={status}>
-        <PinterestIcon size={32} round className="mr-2" />
+        <PinterestIcon size={32} borderRadius={5} className="mr-2" />
       </PinterestShareButton>
       <EmailShareButton url={url} subject={status}>
-        <EmailIcon size={32} round />
+        <EmailIcon size={32} borderRadius={5} />
       </EmailShareButton>
     </>
   );
