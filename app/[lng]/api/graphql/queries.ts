@@ -275,6 +275,7 @@ const GET_BLOG_POSTS: DocumentNode = gql`
       filters: { published: { eq: true } }
       locale: $locale
       sort: "publishedAt:desc"
+      pagination: { limit: 300 }
     ) {
       data {
         attributes {
