@@ -22,7 +22,7 @@ const Blog = async ({ params: { lng } }: Props) => {
       <section className="bg-primary/[.08] pt-[60px] pb-[60px] dark:bg-gray-800">
         <div className="container">
           <div className="title text-center">
-            <h1 className="title-primary mb-2 text-2xl font-semibold uppercase !leading-6 text-primary transition duration-100 ease-in-out dark:text-primary-title sm:text-xl md:text-[30px]">
+            <h1 className="title-primary mb-2 text-2xl !leading-6 text-primary dark:text-primary-title sm:text-xl md:text-[30px]">
               {title?.toUpperCase()}
             </h1>
           </div>

@@ -65,7 +65,7 @@ const SubDetail = ({ data }) => {
           <div className="container">
             <div className="-mx-4 flex flex-wrap items-center">
               <div className="w-full px-4 lg:w-1/2">
-                <div className="title mb-8">
+                <div className="title mb-4">
                   <h1 className="text-2xl text-primary-title-dark dark:text-primary-title lg:text-3xl">
                     {name}
                   </h1>
