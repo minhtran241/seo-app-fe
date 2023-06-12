@@ -64,6 +64,11 @@ strong {
   width: 100%;
 }
 
+.blog-content figure {
+  padding-bottom: 25px;
+  padding-top: 25px;
+}
+
 .blog-content blockquote {
   background: #f9f9f9;
   border-left: 10px solid #ccc;
@@ -86,6 +91,42 @@ strong {
 .blog-content table {
   margin-left: auto;
   margin-right: auto;
+}
+
+.blog-content h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  margin-bottom: 0.5625rem;
+  font-weight: 500;
+  line-height: 0.7;
+  color: #1d4cb1;
+}
+
+.blog-content h1 {
+  font-size: 2.4609375rem;
+}
+
+.blog-content h2 {
+  font-size: 1.96875rem;
+}
+
+.blog-content h3 {
+  font-size: 1.72265625rem;
+}
+
+.blog-content h4 {
+  font-size: 1.4765625rem;
+}
+
+.blog-content h5 {
+  font-size: 1.23046875rem;
+}
+
+.blog-content h6 {
+  font-size: 1.125rem;
 }
 
 figcaption {
