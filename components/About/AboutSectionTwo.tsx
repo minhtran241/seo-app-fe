@@ -23,11 +23,11 @@ const AboutSectionTwo = ({ data }: { data: any }) => {
           />
         </div>
         <div className="lg:mt-18 ml-auto mr-auto mt-8 w-full px-4 md:mt-8 md:w-5/12">
-          <div className="md:pr-12">
+          <div className="title md:pr-12">
             <div className="mb-6 inline-flex h-16 w-16 items-center justify-center rounded-full bg-blue-300 p-3 text-center text-blue-600 shadow-lg">
               <FaRocket />
             </div>
-            <h3 className="title-font mb-2 text-2xl font-semibold uppercase !leading-6 text-primary dark:text-primary-title sm:text-xl md:text-[30px]">
+            <h3 className="mb-2 text-2xl !leading-6 text-primary dark:text-primary-title sm:text-xl md:text-[30px]">
               {title}
             </h3>
             <p className="mt-4 text-lg leading-relaxed text-gray-700">

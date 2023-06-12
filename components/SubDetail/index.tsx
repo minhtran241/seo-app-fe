@@ -43,8 +43,8 @@ const SubDetail = ({ data }) => {
                 </div>
               )}
               <div className="w-full px-4 lg:w-1/2">
-                <div className="mb-8">
-                  <h1 className="title-font text-2xl font-semibold text-primary-title-dark dark:text-primary-title lg:text-3xl">
+                <div className="title mb-8">
+                  <h1 className="text-2xl text-primary-title-dark dark:text-primary-title lg:text-3xl">
                     {name}
                   </h1>
                 </div>
@@ -65,8 +65,8 @@ const SubDetail = ({ data }) => {
           <div className="container">
             <div className="-mx-4 flex flex-wrap items-center">
               <div className="w-full px-4 lg:w-1/2">
-                <div className="mb-8">
-                  <h1 className="title-font text-2xl font-semibold text-primary-title-dark dark:text-primary-title lg:text-3xl">
+                <div className="title mb-8">
+                  <h1 className="text-2xl text-primary-title-dark dark:text-primary-title lg:text-3xl">
                     {name}
                   </h1>
                 </div>

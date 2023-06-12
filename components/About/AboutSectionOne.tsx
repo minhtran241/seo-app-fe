@@ -21,8 +21,8 @@ const AboutSectionOne = ({ data }: { data: AboutSectionOneProps }) => {
       }}
     >
       <div className="mx-auto max-w-screen-xl items-center gap-16 py-8 px-4 lg:grid lg:grid-cols-2 lg:py-16 lg:px-6">
-        <div className="text-gray-700 dark:text-gray-400">
-          <h2 className="title-font mb-2 text-2xl font-semibold uppercase !leading-6 text-white dark:text-primary-title sm:text-xl md:text-[30px]">
+        <div className="title text-gray-700 dark:text-gray-400">
+          <h2 className="mb-2 text-2xl !leading-6 text-white dark:text-primary-title sm:text-xl md:text-[30px]">
             {title}
           </h2>
           <div className="my-4 text-white">{parse(description || '')}</div>
