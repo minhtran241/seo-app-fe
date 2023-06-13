@@ -8,75 +8,75 @@ strong {
 }
 
 // BLOG POST CONTENT STYLES
-.blog-content a:link {
+.rich-content a:link {
   @apply text-primary;
 }
 
-.blog-content a:visited {
+.rich-content a:visited {
   color: #551a8b;
 }
 
-.blog-content a:hover,
-.blog-content a:active {
+.rich-content a:hover,
+.rich-content a:active {
   color: #0000ee;
   text-decoration: underline;
 }
 
-.blog-content dd,
-.blog-content dt {
+.rich-content dd,
+.rich-content dt {
   line-height: 1.5;
 }
 
-.blog-content dt {
+.rich-content dt {
   font-weight: bold;
 }
 
-.blog-content li {
+.rich-content li {
   line-height: 1.5;
 }
 
-.blog-content ol {
+.rich-content ol {
   list-style: decimal inside;
 }
 
-.blog-content ol li {
+.rich-content ol li {
   padding-left: 2rem;
   background-position: 0 0;
   background-size: 1.6rem 1.6rem;
   background-repeat: no-repeat;
 }
 
-.blog-content ul {
+.rich-content ul {
   list-style: circle inside;
 }
 
-.blog-content ul li {
+.rich-content ul li {
   padding-left: 2rem;
   background-position: 0 0;
   background-size: 1.6rem 1.6rem;
   background-repeat: no-repeat;
 }
 
-.blog-content img {
+.rich-content img {
   display: block;
   margin-left: auto;
   margin-right: auto;
   width: 100%;
 }
 
-.blog-content figure {
+.rich-content figure {
   padding-bottom: 25px;
   padding-top: 25px;
 }
 
-.blog-content blockquote {
+.rich-content blockquote {
   background: #f9f9f9;
   border-left: 10px solid #ccc;
   margin: 1.5em 10px;
   padding: 0.5em 10px;
   quotes: '\201C''\201D''\2018''\2019';
 }
-.blog-content blockquote:before {
+.rich-content blockquote:before {
   color: #ccc;
   content: open-quote;
   font-size: 4em;
@@ -84,16 +84,16 @@ strong {
   margin-right: 0.25em;
   vertical-align: -0.4em;
 }
-.blog-content blockquote p {
+.rich-content blockquote p {
   display: inline;
 }
 
-.blog-content table {
+.rich-content table {
   margin-left: auto;
   margin-right: auto;
 }
 
-.blog-content h1,
+.rich-content h1,
 h2,
 h3,
 h4,
@@ -105,27 +105,27 @@ h6 {
   color: #1d4cb1;
 }
 
-.blog-content h1 {
+.rich-content h1 {
   font-size: 2.4609375rem;
 }
 
-.blog-content h2 {
+.rich-content h2 {
   font-size: 1.96875rem;
 }
 
-.blog-content h3 {
+.rich-content h3 {
   font-size: 1.72265625rem;
 }
 
-.blog-content h4 {
+.rich-content h4 {
   font-size: 1.4765625rem;
 }
 
-.blog-content h5 {
+.rich-content h5 {
   font-size: 1.23046875rem;
 }
 
-.blog-content h6 {
+.rich-content h6 {
   font-size: 1.125rem;
 }
 

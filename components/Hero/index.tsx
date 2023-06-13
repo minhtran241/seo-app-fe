@@ -25,8 +25,12 @@ const Hero = ({ data }) => {
           <div className="flex flex-wrap items-center">
             <div className="ml-auto mr-auto w-full px-4 text-center lg:w-6/12">
               <div className="">
-                <h1 className="text-5xl font-semibold text-white">{title}</h1>
-                <p className="mt-4 text-lg text-gray-300">{description}</p>
+                <h1 className="text-[30px] font-semibold text-white sm:text-xl md:text-5xl lg:!leading-snug">
+                  {title}
+                </h1>
+                <p className="mt-4 text-base text-gray-300 md:text-lg">
+                  {description}
+                </p>
               </div>
               <div className="mt-6">
                 {buttons?.map((button, i) => (

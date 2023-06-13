@@ -25,7 +25,9 @@ const AboutSectionOne = ({ data }: { data: AboutSectionOneProps }) => {
           <h2 className="mb-2 text-2xl !leading-6 text-white dark:text-primary-title sm:text-xl md:text-[30px]">
             {title}
           </h2>
-          <div className="my-4 text-white">{parse(description || '')}</div>
+          <div className="rich-content my-4 text-white">
+            {parse(description || '')}
+          </div>
         </div>
         {/* <div className="mt-8 grid grid-cols-2 gap-4">
           <Image

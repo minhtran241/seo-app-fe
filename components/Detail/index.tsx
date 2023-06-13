@@ -49,7 +49,7 @@ const Detail = ({ data }) => {
 
                 <div className="mb-4 md:-mx-4 md:flex md:items-start">
                   <div className="md:mx-4 md:mt-0">
-                    <div className="mt-3 text-gray-500 dark:text-gray-400">
+                    <div className="rich-content mt-3 text-gray-500 dark:text-gray-400">
                       {typeof description == 'string' ? parse(description) : ''}
                     </div>
                   </div>
@@ -71,7 +71,7 @@ const Detail = ({ data }) => {
 
                 <div className="mb-4 md:-mx-4 md:flex md:items-start">
                   <div className="md:mx-4 md:mt-0">
-                    <div className="mt-3 text-base font-medium leading-relaxed text-gray-500 dark:text-gray-400">
+                    <div className="rich-content mt-3 text-base font-medium leading-relaxed text-gray-500 dark:text-gray-400">
                       {typeof description == 'string' ? parse(description) : ''}
                     </div>
                   </div>
