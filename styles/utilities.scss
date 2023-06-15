@@ -99,34 +99,36 @@ h3,
 h4,
 h5,
 h6 {
-  margin-bottom: 12px;
-  font-weight: 500;
-  line-height: 0.7;
+  margin-bottom: 0.5em !important;
+  font-weight: 400 !important;
+  font-family: 'Kanit', sans-serif !important;
+  line-height: 1.2 !important;
+  text-transform: none;
   color: #1d4cb1;
 }
 
 .rich-content h1 {
-  font-size: 2.4609375rem;
+  font-size: 2.4609375rem !important;
 }
 
 .rich-content h2 {
-  font-size: 1.96875rem;
+  font-size: 1.96875rem !important;
 }
 
 .rich-content h3 {
-  font-size: 1.72265625rem;
+  font-size: 1.72265625rem !important;
 }
 
 .rich-content h4 {
-  font-size: 1.4765625rem;
+  font-size: 1.4765625rem !important;
 }
 
 .rich-content h5 {
-  font-size: 1.23046875rem;
+  font-size: 1.23046875rem !important;
 }
 
 .rich-content h6 {
-  font-size: 1.125rem;
+  font-size: 1.125rem !important;
 }
 
 figcaption {
