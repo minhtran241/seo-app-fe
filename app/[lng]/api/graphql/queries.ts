@@ -358,6 +358,14 @@ const GET_BLOG_POST: DocumentNode = gql`
               }
             }
           }
+          coverImage {
+            data {
+              attributes {
+                url
+                alternativeText
+              }
+            }
+          }
           publishedAt
           content
           relatedBlogs {

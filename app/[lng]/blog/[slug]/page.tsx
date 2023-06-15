@@ -21,6 +21,7 @@ type SingleBlog = {
   title: string;
   description: string;
   thumbnail: any;
+  coverImage: any;
   views: number;
   author: any;
   publishedAt: string;
@@ -58,6 +59,9 @@ const BlogDetailsPage = async ({ params }: SingleProps) => {
       'src="',
       `src="${process.env.STRAPI_ASSETS_BASE_URL}`
     ) || '';
+  const coverImageUrl = blogAttrs?.coverImage?.data
+    ? getStrapiMedia(blogAttrs?.coverImage)
+    : 'https://mobidev.biz/wp-content/uploads/2020/02/online-workplace-app-development-highlights-scaled.jpg';
 
   if (!blogAttrs) {
     notFound();
@@ -73,14 +77,14 @@ const BlogDetailsPage = async ({ params }: SingleProps) => {
       <div
         className="w-full bg-cover bg-center"
         style={{
-          backgroundImage: `url(https://mobidev.biz/wp-content/uploads/2020/02/online-workplace-app-development-highlights-scaled.jpg)`,
+          backgroundImage: `url(${coverImageUrl})`,
         }}
       >
         <div className="flex h-full w-full items-center justify-center bg-primary bg-opacity-20 py-12">
           <div className="text-center">
             <div className="container mx-auto px-4">
               <div className="mx-auto max-w-5xl text-center">
-                <h1 className="text-2xl font-semibold leading-snug text-white dark:text-primary-title sm:text-xl md:text-[30px] lg:!leading-relaxed">
+                <h1 className="text-2xl font-semibold uppercase leading-snug text-white dark:text-primary-title sm:text-xl md:text-[30px] lg:!leading-relaxed">
                   {blogAttrs?.title}
                 </h1>
                 <p className="mt-4 text-base !leading-relaxed text-white dark:text-primary-title md:text-lg">
