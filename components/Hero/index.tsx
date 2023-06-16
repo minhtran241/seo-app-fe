@@ -33,17 +33,18 @@ const Hero = ({ data }) => {
                 </p>
               </div>
               <div className="mt-6">
-                {buttons?.map((button, i) => (
-                  <button
-                    type="button"
-                    className="mr-4 mb-4 border border-white bg-white px-8 py-3 text-base font-bold uppercase text-gray-900 shadow-md transition duration-300 ease-in-out hover:bg-transparent hover:text-white focus:outline-none focus:ring-4 focus:ring-gray-200"
-                    key={i}
-                  >
-                    <Link href={button?.link} target="_blank">
-                      {button?.label}
-                    </Link>
-                  </button>
-                ))}
+                {buttons?.length > 0 &&
+                  buttons?.map((button, i) => (
+                    <button
+                      type="button"
+                      className="mr-4 mb-4 border border-white bg-white px-8 py-3 text-base font-bold uppercase text-gray-900 shadow-md transition duration-300 ease-in-out hover:bg-transparent hover:text-white focus:outline-none focus:ring-4 focus:ring-gray-200"
+                      key={i}
+                    >
+                      <Link href={button?.link || '/'} target="_blank">
+                        {button?.label}
+                      </Link>
+                    </button>
+                  ))}
               </div>
             </div>
           </div>

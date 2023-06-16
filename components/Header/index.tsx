@@ -60,10 +60,10 @@ const Header = ({ params: { lng } }: Props) => {
           >
             <Dropdown.Item
               id="mega-menu-full-cta-dropdown"
-              className=" border-gray-700 bg-white shadow-sm dark:bg-gray-900"
+              className="border-b border-gray-200 bg-white shadow-sm dark:bg-gray-900"
               title="Products / Sản phẩm"
             >
-              <div className="mx-auto grid max-w-screen-xl px-4 text-gray-700 dark:text-white md:grid-cols-4 md:px-6">
+              <div className="mx-0 grid max-w-screen-xl px-4 text-gray-700 dark:text-white md:grid-cols-4 md:px-6">
                 {headerAttributes?.groupedByCategory?.categories &&
                   headerAttributes?.groupedByCategory?.categories?.data?.map(
                     (category, i) => (
@@ -100,12 +100,12 @@ const Header = ({ params: { lng } }: Props) => {
               className=" border-gray-700 bg-white shadow-sm dark:bg-gray-900"
               title="Solutions / Giải pháp"
             >
-              <div className="mx-auto grid max-w-screen-xl px-4 text-gray-700 dark:text-white md:grid-cols-4 md:px-6">
+              <div className="mx-0 grid max-w-screen-xl px-4 text-gray-700 dark:text-white md:grid-cols-4 md:px-6">
                 {headerAttributes?.groupedByCategory?.categories &&
                   headerAttributes?.groupedByCategory?.categories?.data?.map(
                     (category, i) => (
                       <div key={i} className="px-2 pb-3">
-                        <div className="items-center pb-2 font-semibold uppercase text-primary-title-dark dark:text-secondary">
+                        <div className="items-center py-2 font-semibold uppercase text-primary-title-dark dark:text-secondary">
                           {category?.attributes?.name}
                         </div>
                         <ul

@@ -59,7 +59,7 @@ const ProductDetailsPage = async ({ params }: SingleProps) => {
           title: name,
           description: description,
           media: thumbnail,
-          buttons: [{ label: name, link: source }],
+          buttons: source ? [{ label: name, link: source }] : [],
         }}
       />
       <section className="overflow-hidden bg-white pt-[35px] pb-[60px] dark:bg-gray-800">
