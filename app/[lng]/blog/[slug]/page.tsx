@@ -118,7 +118,7 @@ const BlogDetailsPage = async ({ params }: SingleProps) => {
                 {/* <h2 className="mb-8 text-3xl font-bold leading-tight text-primary-title-dark dark:text-primary-title sm:text-4xl sm:leading-tight">
                   {blogAttrs?.title}
                 </h2> */}
-                <div className="mb-10 flex flex-wrap items-center justify-between border-b border-[#e9e9e9] pb-[13px] dark:border-white dark:border-opacity-10">
+                <div className="flex flex-wrap items-center justify-between ">
                   <div className="flex flex-wrap items-center">
                     <div className="mb-5 flex items-center">
                       {blogAttrs?.author?.data?.attributes?.fullname && (
@@ -165,9 +165,9 @@ const BlogDetailsPage = async ({ params }: SingleProps) => {
                   <div className="mb-5">
                     <SharePost data={{ url: getURL(`/blog/${slug}`) }} />
                   </div>
-                  <div className="mb-5 text-justify text-lg font-light italic text-primary">
-                    {blogAttrs?.description}
-                  </div>
+                </div>
+                <div className="mb-5 border-b border-[#e9e9e9] pb-[20px] text-justify text-lg font-light italic text-primary dark:border-white dark:border-opacity-10">
+                  {blogAttrs?.description}
                 </div>
                 <div>
                   {/* {blogAttrs?.description && (
@@ -191,7 +191,7 @@ const BlogDetailsPage = async ({ params }: SingleProps) => {
                     </div>
                   )} */}
 
-                  <div className="rich-content mb-8 text-lg text-black dark:text-white">
+                  <div className="rich-content mb-8 pt-[5px] text-lg text-black dark:text-white">
                     {parse(content)}
                   </div>
 
