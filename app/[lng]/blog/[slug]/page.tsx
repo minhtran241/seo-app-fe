@@ -92,9 +92,10 @@ const BlogDetailsPage = async ({ params }: SingleProps) => {
                   {blogAttrs?.description}
                 </p> */}
               </div>
-              <div className="publishDate mx-auto max-w-2xl text-center">
+              <div className="publishDate mx-auto max-w-5xl text-center">
                 {' '}
-                <p className=" mt-4 font-thin uppercase !leading-relaxed text-white dark:text-primary-title">
+                <p className="mt-4 font-thin uppercase !leading-relaxed text-white dark:text-primary-title">
+                  ─{' '}
                   {new Date(blogAttrs?.publishedAt).toLocaleDateString(
                     dateFormatCode[lng],
                     {
@@ -103,14 +104,15 @@ const BlogDetailsPage = async ({ params }: SingleProps) => {
                       month: 'long',
                       day: 'numeric',
                     }
-                  )}
+                  )}{' '}
+                  ─
                 </p>
               </div>
             </div>
           </div>
         </div>
       </div>
-      <section className="bg-white pt-[60px] pb-[80px] dark:bg-gray-800">
+      <section className="bg-white pt-[40px] pb-[80px] dark:bg-gray-800">
         <div className="container">
           <div className="-mx-4 flex flex-wrap justify-center">
             <div className="w-full px-4 lg:w-8/12">
