@@ -1,7 +1,7 @@
 import SharePost from '@/components/Blog/SharePost';
 import parse from 'html-react-parser';
 import { notFound } from 'next/navigation';
-import { FaCalendar, FaUser } from 'react-icons/fa';
+import { ImPencil2 } from 'react-icons/im';
 // import { useMutation } from '@apollo/client';
 import React from 'react';
 import { apolloClient } from '../../api/apollo-client';
@@ -81,14 +81,25 @@ const BlogDetailsPage = async ({ params }: SingleProps) => {
         }}
       >
         <div className="flex h-full w-full items-center justify-center bg-primary bg-opacity-20 py-12">
-          <div className="text-center">
+          <div className="py-8 text-center">
             <div className="container mx-auto px-4">
               <div className="mx-auto max-w-5xl text-center">
-                <h1 className="text-2xl font-semibold uppercase leading-snug text-white dark:text-primary-title sm:text-xl md:text-[30px] lg:!leading-relaxed">
+                <h1 className="text-2xl font-light uppercase leading-snug text-white dark:text-primary-title sm:text-xl md:text-[30px] lg:!leading-relaxed">
                   {blogAttrs?.title}
                 </h1>
-                <p className="mt-4 text-base !leading-relaxed text-white dark:text-primary-title md:text-lg">
+                {/* <p className="mt-4 text-base !leading-relaxed text-white dark:text-primary-title md:text-lg">
                   {blogAttrs?.description}
+                </p> */}
+                <p className="mt-4 font-thin uppercase !leading-relaxed text-white dark:text-primary-title">
+                  {new Date(blogAttrs?.publishedAt).toLocaleDateString(
+                    'en-US',
+                    {
+                      weekday: 'long',
+                      year: 'numeric',
+                      month: 'long',
+                      day: 'numeric',
+                    }
+                  )}
                 </p>
               </div>
             </div>
@@ -103,21 +114,35 @@ const BlogDetailsPage = async ({ params }: SingleProps) => {
                 {/* <h2 className="mb-8 text-3xl font-bold leading-tight text-primary-title-dark dark:text-primary-title sm:text-4xl sm:leading-tight">
                   {blogAttrs?.title}
                 </h2> */}
-                <div className="mb-10 flex flex-wrap items-center justify-between border-b border-body-color border-opacity-10 pb-4 dark:border-white dark:border-opacity-10">
+                <div className="mb-10 flex flex-wrap items-center justify-between border-b border-[#e9e9e9] pb-[13px] dark:border-white dark:border-opacity-10">
                   <div className="flex flex-wrap items-center">
                     <div className="mb-5 flex items-center">
-                      <p className="mr-5  flex items-center text-base font-medium text-gray-600 dark:text-gray-400">
-                        <span className="mr-2 text-primary">
-                          <FaUser />
-                        </span>
-                        {blogAttrs?.author?.data?.attributes?.fullname}
-                      </p>
-                      <p className="mr-5 flex items-center text-base font-medium text-gray-600 dark:text-gray-400">
+                      {blogAttrs?.author?.data?.attributes?.fullname && (
+                        <p className="mr-5 flex  items-center text-base font-light text-gray-800 dark:text-gray-400">
+                          <span className="mr-2 text-gray-400">
+                            {' '}
+                            <ImPencil2 />
+                          </span>
+                          <span className="mr-2 text-gray-400">
+                            Written by{' '}
+                          </span>
+                          {blogAttrs?.author?.data?.attributes?.fullname}
+                        </p>
+                      )}
+                      {/* <p className="mr-5 flex items-center text-base font-medium italic text-gray-800 dark:text-gray-400">
                         <span className="mr-2 text-primary">
                           <FaCalendar />
                         </span>
-                        {new Date(blogAttrs?.publishedAt).toLocaleDateString()}
-                      </p>
+                        {new Date(blogAttrs?.publishedAt).toLocaleDateString(
+                          'en-US',
+                          {
+                            weekday: 'long',
+                            year: 'numeric',
+                            month: 'long',
+                            day: 'numeric',
+                          }
+                        )}
+                      </p> */}
                       {/* <p className="flex items-center text-base font-medium text-gray-500 dark:text-gray-400">
                         <span className="mr-2 text-primary">
                           <FaEye />
@@ -128,6 +153,9 @@ const BlogDetailsPage = async ({ params }: SingleProps) => {
                   </div>
                   <div className="mb-5">
                     <SharePost data={{ url: getURL(`/blog/${slug}`) }} />
+                  </div>
+                  <div className="mb-5 text-justify text-lg font-light italic text-primary">
+                    {blogAttrs?.description}
                   </div>
                 </div>
                 <div>

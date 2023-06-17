@@ -8,6 +8,10 @@ strong {
 }
 
 // BLOG POST CONTENT STYLES
+.rich-content > * {
+  text-align: justify !important;
+}
+
 .rich-content a:link {
   @apply text-primary;
 }
@@ -94,11 +98,11 @@ strong {
 }
 
 .rich-content h1,
-h2,
-h3,
-h4,
-h5,
-h6 {
+.rich-content h2,
+.rich-content h3,
+.rich-content h4,
+.rich-content h5,
+.rich-content h6 {
   margin-bottom: 0.5em !important;
   font-weight: 400 !important;
   font-family: 'Kanit', sans-serif !important;
