@@ -86,7 +86,7 @@ const Blog = async ({ params: { lng } }: Props) => {
           <div className="grid grid-cols-1 gap-x-8 gap-y-10 pt-6 md:grid-cols-2 md:gap-x-6 lg:gap-x-8 xl:grid-cols-3">
             {otherBlogs?.map(({ attributes }, i) => (
               <div key={i} className="w-full">
-                <SingleBlog blog={attributes} />
+                <SingleBlog blog={attributes} lng={lng} />
               </div>
             ))}
           </div>

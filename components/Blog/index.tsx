@@ -1,7 +1,7 @@
 import SectionTitle from '../Common/SectionTitle';
 import SingleBlog from './SingleBlog';
 
-const Blog = ({ data }) => {
+const Blog = ({ data, lng }) => {
   const { title, blogs } = data || {};
   return (
     <section
@@ -13,7 +13,7 @@ const Blog = ({ data }) => {
         <div className="grid grid-cols-1 gap-x-8 gap-y-10 md:grid-cols-2 md:gap-x-6 lg:gap-x-8 xl:grid-cols-3">
           {blogs?.data.map(({ attributes }, i) => (
             <div key={i} className="w-full">
-              <SingleBlog blog={attributes} />
+              <SingleBlog blog={attributes} lng={lng} />
             </div>
           ))}
         </div>

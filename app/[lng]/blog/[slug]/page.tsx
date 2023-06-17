@@ -14,6 +14,7 @@ import { SingleProps } from '@/types/lng';
 import getURL from '@/utils/blog/getURL';
 import Blog from '@/components/Blog';
 import Seo from '@/components/Seo';
+import { dateFormatCode } from '@/utils/header';
 
 type SingleBlog = {
   id: string;
@@ -92,7 +93,7 @@ const BlogDetailsPage = async ({ params }: SingleProps) => {
                 </p> */}
                 <p className="mt-4 font-thin uppercase !leading-relaxed text-white dark:text-primary-title">
                   {new Date(blogAttrs?.publishedAt).toLocaleDateString(
-                    'en-US',
+                    dateFormatCode[lng],
                     {
                       weekday: 'long',
                       year: 'numeric',
@@ -123,9 +124,16 @@ const BlogDetailsPage = async ({ params }: SingleProps) => {
                             {' '}
                             <ImPencil2 />
                           </span>
-                          <span className="mr-2 text-gray-400">
-                            Written by{' '}
-                          </span>
+                          {lng === 'en' && (
+                            <span className="mr-2 text-gray-400">
+                              Written by{' '}
+                            </span>
+                          )}
+                          {lng === 'vi' && (
+                            <span className="mr-2 text-gray-400">
+                              Được viết bởi{' '}
+                            </span>
+                          )}
                           {blogAttrs?.author?.data?.attributes?.fullname}
                         </p>
                       )}
@@ -230,7 +238,7 @@ const BlogDetailsPage = async ({ params }: SingleProps) => {
         </div>
       </section>
       {blogAttrs?.relatedBlogs?.blog?.length > 0 && (
-        <Blog data={blogAttrs?.relatedBlogs} />
+        <Blog data={blogAttrs?.relatedBlogs} lng={lng} />
       )}
     </>
   );

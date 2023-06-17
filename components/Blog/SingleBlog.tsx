@@ -1,9 +1,10 @@
 import { getStrapiMedia } from '@/app/[lng]/api/urlBuilder';
 import { Blog } from '@/types/blog';
+import { dateFormatCode } from '@/utils/header';
 import Image from 'next/image';
 import Link from 'next/link';
 
-const SingleBlog = ({ blog }: { blog: Blog }) => {
+const SingleBlog = ({ blog, lng = 'en' }: { blog: Blog; lng: string }) => {
   const { title, slug, description, thumbnail, publishedAt, author } = blog;
   const authorName: string = author?.data?.attributes?.fullname;
 
@@ -29,12 +30,12 @@ const SingleBlog = ({ blog }: { blog: Blog }) => {
               <div className="absolute bottom-0 left-0 bg-blue-600 px-4 py-2 text-sm text-white transition duration-500 ease-in-out hover:bg-white hover:text-blue-600">
                 {authorName}
               </div>
-              <div className="absolute top-0 right-0 mt-3 mr-3 flex h-16 w-16 flex-col items-center justify-center rounded-full bg-blue-600 px-4 text-sm text-white transition duration-500 ease-in-out hover:bg-white hover:text-blue-600">
+              <div className="absolute top-0 right-0 mt-3 mr-3 flex h-[75px] w-[75px] flex-col items-center justify-center rounded-full bg-blue-600 px-4 text-sm text-white transition duration-500 ease-in-out hover:bg-white hover:text-blue-600">
                 <span className="font-bold">
                   {new Date(publishedAt).getDate()}
                 </span>
                 <small>
-                  {new Date(publishedAt).toLocaleString('default', {
+                  {new Date(publishedAt).toLocaleString(dateFormatCode[lng], {
                     month: 'long',
                   })}
                 </small>

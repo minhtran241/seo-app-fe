@@ -28,6 +28,7 @@ export const getCurrentPath = (pathname: string): string => {
 };
 
 export const countryCode = { en: 'gb', vi: 'vn' };
+export const dateFormatCode = { en: 'en-GB', vi: 'vi-VN' };
 
 export const getFlagEmoji = (countryCode) =>
   String.fromCodePoint(
