@@ -143,3 +143,22 @@ figcaption {
   padding: 5px 10px;
   text-align: center;
 }
+
+.publishDate p {
+  text-align: center;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  display: grid;
+  grid-template-columns: 1fr auto 1fr;
+  grid-template-rows: 1px 0;
+  grid-gap: 22px;
+  position: relative;
+}
+
+.publishDate p:after,
+.publishDate p:before {
+  content: ' ';
+  display: block;
+  border-bottom: 1px solid #ccc;
+  background-color: #f8f8f8;
+}

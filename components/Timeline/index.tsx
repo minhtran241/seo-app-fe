@@ -66,7 +66,7 @@ const Milestones = ({ data }) => {
                         <Timeline.Title className="font-semibold text-primary">
                           {milestone?.name}
                         </Timeline.Title>
-                        <Timeline.Body className="text-gray-700">
+                        <Timeline.Body className="text-justify text-gray-700">
                           {milestone?.description}
                         </Timeline.Body>
                       </Timeline.Content>

@@ -85,13 +85,16 @@ const BlogDetailsPage = async ({ params }: SingleProps) => {
           <div className="py-8 text-center">
             <div className="container mx-auto px-4">
               <div className="mx-auto max-w-5xl text-center">
-                <h1 className="text-2xl font-light uppercase leading-snug text-white dark:text-primary-title sm:text-xl md:text-[30px] lg:!leading-relaxed">
+                <h1 className="text-2xl font-extralight uppercase leading-snug text-white dark:text-primary-title sm:text-xl md:text-[30px] lg:!leading-relaxed">
                   {blogAttrs?.title}
                 </h1>
                 {/* <p className="mt-4 text-base !leading-relaxed text-white dark:text-primary-title md:text-lg">
                   {blogAttrs?.description}
                 </p> */}
-                <p className="mt-4 font-thin uppercase !leading-relaxed text-white dark:text-primary-title">
+              </div>
+              <div className="publishDate mx-auto max-w-2xl text-center">
+                {' '}
+                <p className=" mt-4 font-thin uppercase !leading-relaxed text-white dark:text-primary-title">
                   {new Date(blogAttrs?.publishedAt).toLocaleDateString(
                     dateFormatCode[lng],
                     {
