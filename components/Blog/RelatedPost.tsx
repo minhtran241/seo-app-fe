@@ -6,6 +6,7 @@ const RelatedPost = ({
   slug,
   title,
 }: {
+	
   image: string;
   slug: string;
   title: string;

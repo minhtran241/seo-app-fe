@@ -9,6 +9,8 @@ import { getStrapiMedia } from '../api/urlBuilder';
 import Image from 'next/image';
 import Link from 'next/link';
 import Seo from '@/components/Seo';
+import { ImPencil2 } from 'react-icons/im';
+import { dateFormatCode } from '@/utils/header';
 
 const Blog = async ({ params: { lng } }: Props) => {
   preload(lng);
@@ -19,7 +21,7 @@ const Blog = async ({ params: { lng } }: Props) => {
   return (
     <>
       <Seo data={seo || {}} />
-      <section className="bg-primary/[.08] pt-[60px] pb-[60px] dark:bg-gray-800">
+      <section className="bg-white pt-[60px] pb-[60px] dark:bg-gray-800">
         <div className="container">
           <div className="title text-center">
             <h1 className="title-primary mb-2 text-2xl !leading-6 text-primary dark:text-primary-title sm:text-xl md:text-[30px]">
@@ -44,7 +46,15 @@ const Blog = async ({ params: { lng } }: Props) => {
             </Link>
             <div className="mt-6 lg:mx-6 lg:mt-0 lg:w-1/2 ">
               <p className="text-sm font-semibold uppercase text-blue-500">
-                {new Date(latestBlog?.publishedAt).toLocaleDateString()}
+                {new Date(latestBlog?.publishedAt).toLocaleDateString(
+                  dateFormatCode[lng],
+                  {
+                    weekday: 'long',
+                    year: 'numeric',
+                    month: 'long',
+                    day: 'numeric',
+                  }
+                )}
               </p>
               <Link
                 href={`/blog/${latestBlog?.slug}`}
@@ -52,7 +62,7 @@ const Blog = async ({ params: { lng } }: Props) => {
               >
                 {latestBlog?.title}
               </Link>
-              <p className="text-md md:text-md mt-3 text-gray-600 dark:text-gray-300">
+              <p className="text-md md:text-md mt-3 text-justify text-gray-600 dark:text-gray-300">
                 {latestBlog?.description}
               </p>
               {lng === 'en' && (
@@ -72,12 +82,13 @@ const Blog = async ({ params: { lng } }: Props) => {
                 </Link>
               )}
               <div className="mt-6 flex items-center">
-                <div className="">
-                  <h1 className="text-sm text-gray-600 dark:text-gray-200">
-                    {latestBlog?.author?.data?.attributes?.fullname ||
-                      'Administrator'}
-                  </h1>
-                </div>
+                <span className="mr-2 text-sm !text-blue-500 dark:text-gray-200">
+                  <ImPencil2 />
+                </span>
+                <h1 className="text-sm text-gray-600 dark:text-gray-200">
+                  {latestBlog?.author?.data?.attributes?.fullname ||
+                    'Administrator'}
+                </h1>
               </div>
             </div>
           </div>

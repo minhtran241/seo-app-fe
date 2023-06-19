@@ -30,11 +30,13 @@ const Footer = ({ params: { lng } }: Props) => {
                       footerAttributes?.logo?.data?.attributes
                         ?.alternativeText || 'Pama Logo'
                     }
-                    width={200}
-                    height={48}
+                    width={140}
+                    height={20}
                   />
                 </Link>
-                <p className="text-gray-600">{footerAttributes?.text}</p>
+                <p className="text-justify text-gray-600">
+                  {footerAttributes?.text}
+                </p>
               </div>
               <div
                 className={`ml-12 grid grid-cols-3 gap-2 space-x-4 sm:grid-cols-3 sm:gap-1`}
