@@ -12,10 +12,10 @@ export default function LocaleSwitcher({ lng, currentPath }) {
 
   return (
     <>
-      <div className="p-2">
+      <div className="py-2">
         <select
           id="languages-select"
-          className="block w-full rounded border border-white bg-white p-1 text-sm text-gray-700 focus:border-primary dark:border-gray-600 dark:bg-gray-700 dark:text-white dark:placeholder-gray-400 dark:focus:border-blue-500 dark:focus:ring-blue-500"
+          className="block w-full overflow-hidden rounded-none border border-primary bg-primary py-1 text-sm text-white focus:border-primary dark:border-gray-600 dark:bg-gray-700 dark:text-white dark:placeholder-gray-400 dark:focus:border-blue-500 dark:focus:ring-blue-500"
           title={getLanguageName(countryCode[lng])}
           onChange={onSelectChange}
           defaultValue={lng}

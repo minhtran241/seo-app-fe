@@ -2,18 +2,10 @@ import Image from 'next/image';
 import Link from 'next/link';
 // import ThemeToggler from './ThemeToggler';
 import { Dropdown, Navbar } from 'flowbite-react';
-import {
-  countryCode,
-  getCurrentPath,
-  getFlagEmoji,
-  getHeaderDataCache,
-  preload,
-} from '@/utils/header';
+import { getCurrentPath, getHeaderDataCache, preload } from '@/utils/header';
 import { useEffect, useState } from 'react';
-import { Trans } from 'react-i18next/TransWithoutContext';
 import { Header } from '@/types/header';
 import { getStrapiMedia } from '@/app/[lng]/api/urlBuilder';
-import { languages } from '@/app/i18n/settings';
 import { usePathname } from 'next/navigation';
 import { Props } from '@/types/lng';
 import LocaleSwitcher from '../LocaleSwitch';
@@ -33,7 +25,7 @@ const Header = ({ params: { lng } }: Props) => {
     return (
       <Navbar
         rounded={false}
-        className="wow fadeInUp z-10 bg-white dark:bg-gray-900"
+        className="wow fadeInUp z-10 bg-primary text-white dark:bg-gray-900"
       >
         <Navbar.Brand href="/">
           <Image
@@ -43,17 +35,17 @@ const Header = ({ params: { lng } }: Props) => {
               'Pama Logo'
             }
             width={140}
-            height={30}
+            height={20}
             className="w-full"
           />
         </Navbar.Brand>
         <Navbar.Toggle />
-        <Navbar.Collapse className="">
+        <Navbar.Collapse className="text-white">
           <Dropdown
             id="mega-menu-full-cta-dropdown-button"
             data-collapse-toggle="mega-menu-full-cta-dropdown"
             data-dropdown-placement="bottom"
-            className=" "
+            className="!text-white"
             arrowIcon={true}
             label={headerAttributes?.groupedByCategory?.title?.toUpperCase()}
             inline={true}
@@ -82,7 +74,7 @@ const Header = ({ params: { lng } }: Props) => {
                                 <li key={i}>
                                   <Link
                                     href={`/product/${product?.attributes?.slug}`}
-                                    className="font-medium hover:text-primary dark:hover:text-blue-500"
+                                    className="font-medium hover:text-primary hover:underline dark:hover:text-blue-500"
                                   >
                                     {product?.attributes?.name}
                                   </Link>
@@ -119,7 +111,7 @@ const Header = ({ params: { lng } }: Props) => {
                                 <li key={i}>
                                   <Link
                                     href={`/solution/${solution?.attributes?.slug}`}
-                                    className="font-medium hover:text-primary dark:hover:text-blue-500"
+                                    className="font-medium hover:text-primary hover:underline dark:hover:text-blue-500"
                                   >
                                     {solution?.attributes?.name}
                                   </Link>
@@ -133,26 +125,23 @@ const Header = ({ params: { lng } }: Props) => {
               </div>
             </Dropdown.Item>
           </Dropdown>
-
           {headerAttributes?.navs?.map((nav, i) => {
-            return currentPath == '' && nav?.path == '/' ? (
-              <Navbar.Link
+            return nav.path === currentPath ? (
+              <Link
                 key={i}
                 href={`/${lng}${nav.path}`}
-                active={true}
-                className="bg-primary uppercase"
+                className="uppercase text-white underline"
               >
                 {nav.name}
-              </Navbar.Link>
+              </Link>
             ) : (
-              <Navbar.Link
+              <Link
                 key={i}
                 href={`/${lng}${nav.path}`}
-                active={nav.path === currentPath}
-                className="uppercase"
+                className="uppercase text-white hover:underline"
               >
                 {nav.name}
-              </Navbar.Link>
+              </Link>
             );
           })}
         </Navbar.Collapse>
