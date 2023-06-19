@@ -126,7 +126,8 @@ const Header = ({ params: { lng } }: Props) => {
             </Dropdown.Item>
           </Dropdown>
           {headerAttributes?.navs?.map((nav, i) => {
-            return nav.path === currentPath ? (
+            return nav.path === currentPath ||
+              (nav.path === '/' && currentPath === '') ? (
               <Link
                 key={i}
                 href={`/${lng}${nav.path}`}
