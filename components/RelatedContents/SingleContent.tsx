@@ -37,16 +37,16 @@ const SingleContent = ({
             />
           </Link>
         )}
-        <div className="py-3 sm:py-6 md:py-6 xl:py-6">
+        <div className="py-4">
           <p>
             <Link
               href={`/${type}/${slug}`}
-              className="mb-2 block text-lg font-bold text-black hover:text-primary dark:text-white dark:hover:text-primary sm:text-xl"
+              className="block text-lg font-bold text-black hover:text-primary dark:text-white dark:hover:text-primary sm:text-xl"
             >
               {name}
             </Link>
           </p>
-          <p className="mb-6 pb-6 text-base text-justify text-gray-600 dark:text-gray-400">
+          <p className="mb-6 pb-6 text-justify text-base text-gray-600 dark:text-gray-400">
             {description?.length > 150
               ? `${description.substring(0, 150)}...`
               : description}
