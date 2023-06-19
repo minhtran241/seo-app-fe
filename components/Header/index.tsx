@@ -25,7 +25,7 @@ const Header = ({ params: { lng } }: Props) => {
     return (
       <Navbar
         rounded={false}
-        className="wow fadeInUp z-10 bg-primary text-white dark:bg-gray-900"
+        className="wow fadeInUp z-10 !bg-primary text-white dark:bg-gray-900"
       >
         <Navbar.Brand href="/">
           <Image
