@@ -28,7 +28,7 @@ export default async function Home({ params: { lng } }: Props) {
       <AboutSectionTwo data={homeData?.sections[0]} />
       <Brands data={homeData?.brands} />
       <Features data={{ ...featureData, col: featureData?.features?.length }} />
-      <Blog data={homeData?.blogs} lng={lng} />
+      <Blog data={homeData?.blogs} lng={lng} isHomePage={true} />
     </>
   );
 }

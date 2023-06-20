@@ -1,12 +1,16 @@
 import SectionTitle from '../Common/SectionTitle';
 import SingleBlog from './SingleBlog';
 
-const Blog = ({ data, lng }) => {
+const Blog = ({ data, lng, isHomePage }) => {
   const { title, blogs } = data || {};
   return (
     <section
       id="blog"
-      className="lg:py-15 border-t-4 border-primary bg-secondary py-5 dark:border-blue-300 dark:bg-gray-900 md:py-5"
+      className={
+        isHomePage
+          ? 'lg:py-15 bg-white py-5 dark:border-blue-300 dark:bg-gray-900 md:py-5'
+          : 'lg:py-15 border-t-4 border-primary bg-secondary py-5 dark:border-blue-300 dark:bg-gray-900 md:py-5'
+      }
     >
       <div className="container">
         <SectionTitle title={title} paragraph={null} center />

@@ -18,7 +18,7 @@ const Footer = ({ params: { lng } }: Props) => {
   if (footerAttributes) {
     return (
       <>
-        <footer className="border border-gray-300 bg-primary p-4 dark:bg-gray-800 sm:p-6">
+        <footer className="bg-primary p-4 dark:bg-gray-800 sm:p-6">
           <div className="container mx-auto">
             <div className="md:flex md:justify-between">
               <div className="mb-6 max-w-[360px] md:mb-0">
