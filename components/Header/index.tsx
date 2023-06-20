@@ -34,9 +34,9 @@ const Header = ({ params: { lng } }: Props) => {
               headerAttributes?.logo?.data?.attributes?.alternativeText ||
               'Pama Logo'
             }
-            width={70}
-            height={10}
-            className="w-full"
+            width={110}
+            height={20}
+            // className="w-full"
           />
         </Navbar.Brand>
         <Navbar.Toggle />

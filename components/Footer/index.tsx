@@ -30,7 +30,7 @@ const Footer = ({ params: { lng } }: Props) => {
                       footerAttributes?.logo?.data?.attributes
                         ?.alternativeText || 'Pama Logo'
                     }
-                    width={140}
+                    width={110}
                     height={20}
                   />
                 </Link>
