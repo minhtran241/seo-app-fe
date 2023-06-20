@@ -18,7 +18,7 @@ const Footer = ({ params: { lng } }: Props) => {
   if (footerAttributes) {
     return (
       <>
-        <footer className="border border-gray-300 bg-secondary/60 p-4 dark:bg-gray-800 sm:p-6">
+        <footer className="border border-gray-300 bg-primary p-4 dark:bg-gray-800 sm:p-6">
           <div className="container mx-auto">
             <div className="md:flex md:justify-between">
               <div className="mb-6 max-w-[360px] md:mb-0">
@@ -34,7 +34,7 @@ const Footer = ({ params: { lng } }: Props) => {
                     height={20}
                   />
                 </Link>
-                <p className="text-justify text-gray-600">
+                <p className="text-justify text-white">
                   {footerAttributes?.text}
                 </p>
               </div>
@@ -43,16 +43,16 @@ const Footer = ({ params: { lng } }: Props) => {
               >
                 {footerAttributes?.sections.map(({ name, Navs }, i) => (
                   <div key={i}>
-                    <h2 className="text-md mb-2 font-bold text-black">
+                    <h2 className="text-md mb-1 font-bold text-white">
                       {name}
                     </h2>
-                    <span className="mb-3 inline-block w-10 border-t border-solid border-black"></span>
-                    <ul className="text-black dark:text-gray-400">
+                    <span className="mb-3 inline-block w-10 border-t border-solid border-white"></span>
+                    <ul className="text-white/90 dark:text-gray-400">
                       {Navs?.map(({ name, path }, i) => (
                         <li className="mb-1" key={i}>
                           <Link
                             href={path}
-                            className="text-gray-600 hover:text-primary"
+                            className="text-white/90 hover:text-white hover:underline"
                           >
                             {name}
                           </Link>
@@ -65,23 +65,27 @@ const Footer = ({ params: { lng } }: Props) => {
             </div>
             <hr className="my-6 border-gray-200 dark:border-gray-700 sm:mx-auto lg:my-8" />
             <div className="sm:flex sm:items-center sm:justify-between">
-              <span className="text-sm text-black dark:text-gray-400 sm:text-center">
+              <span className="text-sm text-white dark:text-gray-400 sm:text-center">
                 © {new Date().getFullYear()}{' '}
-                <a href="/" className="hover:text-primary hover:underline">
-                  Pama™
+                <a
+                  href="/"
+                  className="font-semibold hover:text-white hover:underline"
+                >
+                  Pama™.
                 </a>
-                . All Rights Reserved.
+                {lng === 'en' && ' All rights reserved.'}
+                {lng === 'vi' && ' Đã đăng ký Bản quyền.'}
               </span>
               <div className="mt-4 flex space-x-4 sm:mt-0 sm:justify-center">
                 <Link
                   href={footerAttributes?.facebookLink || '/'}
-                  className="text-black hover:text-primary dark:hover:text-black"
+                  className="text-white/90 hover:text-white dark:hover:text-white"
                 >
                   <FaFacebookF className="h-4 w-4" />
                 </Link>
                 <Link
                   href={footerAttributes?.websiteLink || '/'}
-                  className="text-black hover:text-primary dark:hover:text-black"
+                  className="text-white/90 hover:text-white dark:hover:text-white"
                 >
                   <FaGlobe className="h-4 w-4" />
                 </Link>

@@ -109,7 +109,7 @@ const BlogDetailsPage = async ({ params }: SingleProps) => {
           </div>
         </div>
       </div>
-      <section className="bg-white pt-[40px] pb-[80px] dark:bg-gray-800">
+      <section className="bg-white py-[40px] dark:bg-gray-800">
         <div className="container">
           <div className="-mx-4 flex flex-wrap justify-center">
             <div className="w-full px-4 lg:w-8/12">
