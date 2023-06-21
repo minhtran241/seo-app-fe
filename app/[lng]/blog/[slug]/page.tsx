@@ -62,7 +62,7 @@ const BlogDetailsPage = async ({ params }: SingleProps) => {
     ) || '';
   const coverImageUrl = blogAttrs?.coverImage?.data
     ? getStrapiMedia(blogAttrs?.coverImage)
-    : 'https://mobidev.biz/wp-content/uploads/2020/02/online-workplace-app-development-highlights-scaled.jpg';
+    : 'https://img.freepik.com/free-photo/standard-quality-control-collage-concept_23-2149595849.jpg?w=2000&t=st=1687318153~exp=1687318753~hmac=5dd0c2c5c75fdadb0dd2d2e37c831a0471df11dace4b7ab1f65eb964c8c84d56';
 
   if (!blogAttrs) {
     notFound();
@@ -76,12 +76,21 @@ const BlogDetailsPage = async ({ params }: SingleProps) => {
     <>
       <Seo data={blogAttrs?.seo || {}} />
       <div
-        className="w-full bg-cover bg-center"
-        style={{
-          backgroundImage: `url(${coverImageUrl})`,
-        }}
+        className="relative flex content-center items-center justify-center pt-16 pb-32"
+        style={{ minHeight: '55vh' }}
       >
-        <div className="flex h-full w-full items-center justify-center bg-primary bg-opacity-20 py-12">
+        <div
+          className="absolute top-0 h-full w-full bg-cover bg-center bg-no-repeat"
+          style={{
+            backgroundImage: `url(${coverImageUrl})`,
+          }}
+        >
+          <span
+            id="blackOverlay"
+            className="absolute h-full w-full bg-black opacity-75"
+          ></span>
+        </div>
+        <div className="relative flex items-center justify-center py-12">
           <div className="py-8 text-center">
             <div className="container mx-auto px-4">
               <div className="mx-auto max-w-5xl text-center">
