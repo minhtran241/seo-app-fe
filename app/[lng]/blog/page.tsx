@@ -9,8 +9,9 @@ import { getStrapiMedia } from '../api/urlBuilder';
 import Image from 'next/image';
 import Link from 'next/link';
 import Seo from '@/components/Seo';
-import { ImPencil2 } from 'react-icons/im';
+import { FaClock } from 'react-icons/fa';
 import { dateFormatCode } from '@/utils/header';
+import { getReadingTime } from '@/utils/blog/readingTime';
 
 const Blog = async ({ params: { lng } }: Props) => {
   preload(lng);
@@ -83,11 +84,13 @@ const Blog = async ({ params: { lng } }: Props) => {
               )}
               <div className="mt-6 flex items-center">
                 <span className="mr-2 text-sm !text-blue-500 dark:text-gray-200">
-                  <ImPencil2 />
+                  <FaClock />
                 </span>
                 <h1 className="text-sm text-gray-600 dark:text-gray-200">
-                  {latestBlog?.author?.data?.attributes?.fullname ||
-                    'Administrator'}
+                  {lng === 'en' &&
+                    `${getReadingTime(latestBlog?.content)} min read`}
+                  {lng === 'vi' &&
+                    `${getReadingTime(latestBlog?.content)} phút đọc`}
                 </h1>
               </div>
             </div>

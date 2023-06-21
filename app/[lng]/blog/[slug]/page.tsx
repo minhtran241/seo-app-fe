@@ -15,6 +15,8 @@ import getURL from '@/utils/blog/getURL';
 import Blog from '@/components/Blog';
 import Seo from '@/components/Seo';
 import { dateFormatCode } from '@/utils/header';
+import { FaClock } from 'react-icons/fa';
+import { getReadingTime } from '@/utils/blog/readingTime';
 
 type SingleBlog = {
   id: string;
@@ -60,11 +62,12 @@ const BlogDetailsPage = async ({ params }: SingleProps) => {
       'src="',
       `src="${process.env.STRAPI_ASSETS_BASE_URL}`
     ) || '';
+  const readingTime = content ? getReadingTime(content) : 0;
   const coverImageUrl = blogAttrs?.coverImage?.data
     ? getStrapiMedia(blogAttrs?.coverImage)
     : 'https://img.freepik.com/free-photo/standard-quality-control-collage-concept_23-2149595849.jpg?w=2000&t=st=1687318153~exp=1687318753~hmac=5dd0c2c5c75fdadb0dd2d2e37c831a0471df11dace4b7ab1f65eb964c8c84d56';
 
-  if (!blogAttrs) {
+  if (!blogAttrs || !blogAttrs?.content) {
     notFound();
     return null;
   }
@@ -129,7 +132,7 @@ const BlogDetailsPage = async ({ params }: SingleProps) => {
                 <div className="flex flex-wrap items-center justify-between ">
                   <div className="flex flex-wrap items-center">
                     <div className="mb-5 flex items-center">
-                      {blogAttrs?.author?.data?.attributes?.fullname && (
+                      {/* {blogAttrs?.author?.data?.attributes?.fullname && (
                         <p className="mr-5 flex  items-center text-base font-light text-gray-800 dark:text-gray-400">
                           <span className="mr-2 text-gray-400">
                             {' '}
@@ -146,6 +149,28 @@ const BlogDetailsPage = async ({ params }: SingleProps) => {
                             </span>
                           )}
                           {blogAttrs?.author?.data?.attributes?.fullname}
+                        </p>
+                      )} */}
+                      {content?.length > 0 && (
+                        <p className="mr-5 flex  items-center text-base font-light text-black dark:text-gray-400">
+                          <span className="mr-2 text-gray-400">
+                            {' '}
+                            <FaClock />
+                          </span>
+                          {lng === 'en' && (
+                            <span className="mr-2 text-gray-500">
+                              Estimated reading time:
+                            </span>
+                          )}
+                          {lng === 'vi' && (
+                            <span className="mr-2 text-gray-500">
+                              Ước tính thời gian đọc:
+                            </span>
+                          )}
+                          {readingTime}{' '}
+                          {lng === 'en' && readingTime > 1 && 'minutes'}
+                          {lng === 'en' && readingTime <= 1 && 'minute'}
+                          {lng === 'vi' && 'phút'}
                         </p>
                       )}
                       {/* <p className="mr-5 flex items-center text-base font-medium italic text-gray-800 dark:text-gray-400">

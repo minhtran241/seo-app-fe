@@ -290,6 +290,7 @@ const GET_BLOG_POSTS: DocumentNode = gql`
             }
           }
           description
+          content
           publishedAt
           author {
             data {

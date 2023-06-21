@@ -142,7 +142,11 @@ const Custom404 = () => {
                 </p>
                 <Link
                   href="/"
-                  className="rounded-md bg-primary py-3 px-8 text-base font-bold text-white shadow-signUp duration-300 hover:bg-white hover:text-primary md:px-9 lg:px-8 xl:px-9"
+                  className="rounded bg-primary py-3 px-8
+									text-base font-bold
+									text-white
+									shadow-signUp
+									duration-300 hover:bg-primary-title-dark hover:shadow-lg focus:bg-primary-title-dark focus:shadow-lg focus:outline-none focus:ring-0 active:bg-blue-800 active:shadow-lg md:px-9 lg:px-8 xl:px-9"
                 >
                   Back to Homepage
                 </Link>

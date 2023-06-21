@@ -1,12 +1,16 @@
 import { getStrapiMedia } from '@/app/[lng]/api/urlBuilder';
 import { Blog } from '@/types/blog';
+import { getReadingTime } from '@/utils/blog/readingTime';
 import { dateFormatCode } from '@/utils/header';
 import Image from 'next/image';
 import Link from 'next/link';
+import { FaClock } from 'react-icons/fa';
 
 const SingleBlog = ({ blog, lng = 'en' }: { blog: Blog; lng: string }) => {
-  const { title, slug, description, thumbnail, publishedAt, author } = blog;
+  const { title, slug, description, content, thumbnail, publishedAt, author } =
+    blog;
   const authorName: string = author?.data?.attributes?.fullname;
+  const readingTime = getReadingTime(content);
 
   return (
     <>
@@ -27,8 +31,15 @@ const SingleBlog = ({ blog, lng = 'en' }: { blog: Blog; lng: string }) => {
                 fill
               />
               {/* <div className="absolute bottom-0 top-0 right-0 left-0 bg-gray-900 opacity-25 transition duration-300 hover:bg-transparent"></div> */}
-              <div className="absolute bottom-0 left-0 bg-blue-600 px-4 py-2 text-sm text-white transition duration-500 ease-in-out hover:bg-white hover:text-blue-600">
-                {authorName}
+              <div className="absolute bottom-0 left-0 flex items-center bg-blue-600 px-4 py-2 text-sm text-white transition duration-500 ease-in-out hover:bg-white hover:text-blue-600">
+                <span className="mr-2">
+                  <FaClock />
+                </span>
+                {/* <p>{authorName}</p> */}
+                <p>
+                  {lng === 'en' && `${readingTime} min read`}
+                  {lng === 'vi' && `${readingTime} phút đọc`}
+                </p>
               </div>
               <div className="absolute top-0 right-0 mt-3 mr-3 flex h-[75px] w-[75px] flex-col items-center justify-center rounded-full bg-blue-600 px-4 text-sm text-white transition duration-500 ease-in-out hover:bg-white hover:text-blue-600">
                 <span className="font-bold">
