@@ -7,5 +7,5 @@ export const getReadingTime = (content: string) => {
 };
 
 function getWordCount(content: string) {
-  return content.match(/\w+/g).length;
+  return content ? content.match(/\w+/g)?.length : 0;
 }

@@ -116,6 +116,7 @@ const GET_HOME_PAGE: DocumentNode = gql`
                 attributes {
                   title
                   description
+                  content
                   slug
                   thumbnail {
                     data {
