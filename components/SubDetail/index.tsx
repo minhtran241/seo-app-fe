@@ -8,10 +8,10 @@ const SubDetail = ({ data }) => {
     <>
       {reversed ? (
         <section className="lg:py-15 py-5 md:py-5">
-          <div className="container mx-auto">
-            <div className="-mx-4 flex flex-wrap items-center">
+          <div className="mx-auto">
+            <div className="flex flex-wrap items-center">
               {media && (
-                <div className="w-full pr-4 lg:w-1/2">
+                <div className="w-full sm:px-0 md:px-6 lg:w-1/2 lg:px-6">
                   <div
                     className="wow fadeInUp relative mb-12 max-w-[500px] text-center lg:m-0"
                     data-wow-delay=".15s"
@@ -42,7 +42,7 @@ const SubDetail = ({ data }) => {
                   </div>
                 </div>
               )}
-              <div className="w-full pl-4 lg:w-1/2">
+              <div className="w-full sm:px-0 md:px-6 lg:w-1/2 lg:px-6">
                 <div className="title mb-8">
                   <h1 className="text-2xl text-primary-title-dark dark:text-primary-title lg:text-3xl">
                     {name}
@@ -62,9 +62,9 @@ const SubDetail = ({ data }) => {
         </section>
       ) : (
         <section className="lg:py-17  py-7 md:py-7">
-          <div className="container">
-            <div className="-mx-4 flex flex-wrap items-center">
-              <div className="w-full pr-4 lg:w-1/2">
+          <div className="">
+            <div className="flex flex-wrap items-center">
+              <div className="w-full sm:px-0 md:px-6 lg:w-1/2 lg:px-6">
                 <div className="title mb-4">
                   <h1 className="text-2xl text-primary-title-dark dark:text-primary-title lg:text-3xl">
                     {name}
@@ -79,7 +79,7 @@ const SubDetail = ({ data }) => {
                 </div>
               </div>
               {media && (
-                <div className="w-full pl-4 lg:w-1/2">
+                <div className="w-full sm:px-0 md:px-6 lg:w-1/2 lg:px-6">
                   <div
                     className="wow fadeInUp relative mb-12 max-w-[500px] text-center lg:m-0"
                     data-wow-delay=".15s"
