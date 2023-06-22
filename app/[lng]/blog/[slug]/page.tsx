@@ -65,7 +65,7 @@ const BlogDetailsPage = async ({ params }: SingleProps) => {
   const readingTime = content ? getReadingTime(content) : 0;
   const coverImageUrl = blogAttrs?.coverImage?.data
     ? getStrapiMedia(blogAttrs?.coverImage)
-    : 'https://images.unsplash.com/photo-1605561202544-b77ba4584114?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=4331&q=80';
+    : 'https://media.kingston.com/kingston/hero/ktc-hero-blog-data-security-staying-secure-digitised-world-md.jpg';
 
   if (!blogAttrs || !blogAttrs?.content) {
     notFound();
