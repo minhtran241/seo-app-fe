@@ -15,12 +15,23 @@ const AboutSectionOne = ({ data }: { data: AboutSectionOneProps }) => {
   const { title, description, backgroundImage, media1, media2 } = data;
   return (
     <section
-      className="bg-white bg-cover bg-center dark:bg-gray-900"
-      style={{
-        backgroundImage: `url(${getStrapiMedia(backgroundImage)})`,
-      }}
+      className="relative flex bg-white dark:bg-gray-900"
+      // style={{
+      //   backgroundImage: `url(${getStrapiMedia(backgroundImage)})`,
+      // }}
     >
-      <div className="mx-auto max-w-screen-xl items-center gap-16 py-8 px-4 lg:grid lg:grid-cols-2 lg:py-16 lg:px-6">
+      <div
+        className="absolute top-0 h-full w-full bg-cover bg-center"
+        style={{
+          backgroundImage: `url(${getStrapiMedia(backgroundImage)})`,
+        }}
+      >
+        <span
+          id="blackOverlay"
+          className="absolute h-full w-full bg-black opacity-75"
+        ></span>
+      </div>
+      <div className="relative mx-auto max-w-screen-xl items-center gap-16 py-8 px-4 lg:grid lg:grid-cols-2 lg:py-16 lg:px-6">
         <div className="title text-gray-700 dark:text-gray-400">
           <h2 className="mb-2 text-2xl !leading-6 text-white dark:text-primary-title sm:text-xl md:text-[30px]">
             {title}

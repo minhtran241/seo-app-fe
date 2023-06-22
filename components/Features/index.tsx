@@ -37,12 +37,23 @@ const Features = ({ data }) => {
     <>
       <section
         id="features"
-        className="lg:py-18 h-full w-full bg-primary/[.08] bg-cover bg-center py-8 dark:bg-gray-800 md:py-8"
-        style={{
-          backgroundImage: `url(${getStrapiMedia(backgroundImage)})`,
-        }}
+        className="lg:py-18 relative flex bg-primary/[.08] py-8 dark:bg-gray-800 md:py-8"
+        // style={{
+        //   backgroundImage: `url(${getStrapiMedia(backgroundImage)})`,
+        // }}
       >
-        <div className="container">
+        <div
+          className="absolute top-0 h-full w-full bg-cover bg-center "
+          style={{
+            backgroundImage: `url(${getStrapiMedia(backgroundImage)})`,
+          }}
+        >
+          <span
+            id="blackOverlay"
+            className="absolute h-full w-full bg-black opacity-75"
+          ></span>
+        </div>
+        <div className="container relative">
           <SectionTitle title={title} paragraph={description} center white />
           {gridEle}
         </div>
