@@ -8,7 +8,7 @@ const SingleFeature = ({ data }) => {
 
   return (
     <div
-      className="feature-card rounded bg-white p-5 pb-8 text-center"
+      className="feature-card bg-white p-5 pb-8 text-center"
       key={`feature-${i}`}
     >
       {feature?.media && (

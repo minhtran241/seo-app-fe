@@ -164,7 +164,7 @@ const BlogDetailsPage = async ({ params }: SingleProps) => {
                           )}
                           {lng === 'vi' && (
                             <span className="mr-2 text-gray-500">
-                              Ước tính thời gian đọc:
+                              Thời gian đọc ước tính:
                             </span>
                           )}
                           {readingTime}{' '}

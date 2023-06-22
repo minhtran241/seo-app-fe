@@ -5,17 +5,20 @@
 
 .feature-card {
   cursor: pointer;
-  transition: all 0.3s ease;
-}
-
-.feature-card {
-  transition: all 0.3s ease;
+  transition: all 0.25s ease-in;
+  border-bottom: 5px solid transparent;
 }
 
 .feature-card:hover {
-  transform: scale(1.05);
-  @apply shadow;
+  transform: translateY(-5px);
+  border: none;
+  border-bottom: 5px solid #0054A6;
 }
+
+// .feature-card:hover {
+//   transform: scale(1.05);
+//   @apply shadow;
+// }
 
 $animationSpeed: 40s;
 
