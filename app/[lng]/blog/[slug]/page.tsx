@@ -65,7 +65,7 @@ const BlogDetailsPage = async ({ params }: SingleProps) => {
   const readingTime = content ? getReadingTime(content) : 0;
   const coverImageUrl = blogAttrs?.coverImage?.data
     ? getStrapiMedia(blogAttrs?.coverImage)
-    : 'https://img.freepik.com/free-photo/standard-quality-control-collage-concept_23-2149595849.jpg?w=2000&t=st=1687318153~exp=1687318753~hmac=5dd0c2c5c75fdadb0dd2d2e37c831a0471df11dace4b7ab1f65eb964c8c84d56';
+    : 'https://images.unsplash.com/photo-1605561202544-b77ba4584114?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=4331&q=80';
 
   if (!blogAttrs || !blogAttrs?.content) {
     notFound();
