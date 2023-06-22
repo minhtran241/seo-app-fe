@@ -377,6 +377,7 @@ const GET_BLOG_POST: DocumentNode = gql`
                 attributes {
                   title
                   description
+									content
                   slug
                   thumbnail {
                     data {
