@@ -3,7 +3,8 @@ import parse from 'html-react-parser';
 import ContactForm from './ContactForm';
 
 const ContactSection = ({ data }: { data: ContactProps }) => {
-  const { title, details, form, announcement } = data;
+  const { title, details, form } = data;
+  console.log(data);
   return (
     <div className="container mt-16 w-full shrink-0 grow-0 basis-auto">
       <section className="mb-16 text-gray-800">
@@ -13,7 +14,7 @@ const ContactSection = ({ data }: { data: ContactProps }) => {
             <div className="rich-content mb-6">{parse(details || '')}</div>
           </div>
           <div className="mb-12 w-full shrink-0 grow-0 basis-auto px-3 md:mb-0 md:w-6/12 lg:px-6">
-            <ContactForm data={{ form: form, announcement: announcement }} />
+            <ContactForm data={{ form: form }} />
           </div>
         </div>
       </section>

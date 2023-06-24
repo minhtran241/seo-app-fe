@@ -6,16 +6,16 @@ import ReCAPTCHA from 'react-google-recaptcha';
 
 const ContactForm = ({ data }) => {
   const siteKey: string = process.env.GOOGLE_RECAPTCHA_SITE_KEY;
-  const { form, announcement } = data;
+  const { form } = data;
   const [state, handleSubmit] = useForm('mayzzaqv');
   if (state.succeeded) {
     return (
       <div
-        className="border-t border-b border-blue-500 bg-blue-100 px-4 py-3 text-blue-700"
+        className="border-b border-t border-blue-500 bg-blue-100 px-4 py-3 text-blue-700"
         role="alert"
       >
-        <p className="font-bold">{announcement?.title}</p>
-        <p className="text-sm">{announcement?.message}</p>
+        <p className="font-bold">{form?.announcement?.title}</p>
+        <p className="text-sm text-gray-700">{form?.announcement?.message}</p>
       </div>
     );
   }
@@ -43,7 +43,10 @@ const ContactForm = ({ data }) => {
         </div>
       ))}{' '}
       <div className="my-6">
-        <ReCAPTCHA size="normal" sitekey="6LelaUgmAAAAAIpGyEDmhDk8aF7AN-H2lSYPj12k" />
+        <ReCAPTCHA
+          size="normal"
+          sitekey="6LelaUgmAAAAAIpGyEDmhDk8aF7AN-H2lSYPj12k"
+        />
       </div>
       <button
         type="submit"
