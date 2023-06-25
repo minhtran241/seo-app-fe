@@ -7,9 +7,8 @@ import Link from 'next/link';
 import { FaClock } from 'react-icons/fa';
 
 const SingleBlog = ({ blog, lng = 'en' }: { blog: Blog; lng: string }) => {
-  const { title, slug, description, content, thumbnail, publishedAt, author } =
-    blog;
-  const authorName: string = author?.data?.attributes?.fullname;
+  const { title, slug, description, content, thumbnail, publishedAt } = blog;
+  // const authorName: string = author?.data?.attributes?.fullname;
   const readingTime = getReadingTime(content);
 
   return (
@@ -41,7 +40,7 @@ const SingleBlog = ({ blog, lng = 'en' }: { blog: Blog; lng: string }) => {
                   {lng === 'vi' && `${readingTime} phút đọc`}
                 </p>
               </div>
-              <div className="absolute top-0 right-0 mt-3 mr-3 flex h-[75px] w-[75px] flex-col items-center justify-center rounded-full bg-blue-600 px-4 text-sm text-white transition duration-500 ease-in-out hover:bg-white hover:text-blue-600">
+              <div className="absolute right-0 top-0 mr-3 mt-3 flex h-[75px] w-[75px] flex-col items-center justify-center rounded-full bg-blue-600 px-4 text-sm text-white transition duration-500 ease-in-out hover:bg-white hover:text-blue-600">
                 <span className="font-bold">
                   {new Date(publishedAt).getDate()}
                 </span>

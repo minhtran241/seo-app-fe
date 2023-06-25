@@ -79,7 +79,7 @@ const BlogDetailsPage = async ({ params }: SingleProps) => {
     <>
       <Seo data={blogAttrs?.seo || {}} />
       <div
-        className="relative flex content-center items-center justify-center pt-16 pb-32"
+        className="relative flex content-center items-center justify-center pb-32 pt-16"
         style={{ minHeight: '55vh' }}
       >
         <div

@@ -22,7 +22,7 @@ const Blog = async ({ params: { lng } }: Props) => {
   return (
     <>
       <Seo data={seo || {}} />
-      <section className="bg-white pt-[60px] pb-[60px] dark:bg-gray-800">
+      <section className="bg-white pb-[60px] pt-[60px] dark:bg-gray-800">
         <div className="container">
           <div className="title text-center">
             <h1 className="title-primary mb-2 text-2xl !leading-6 text-primary dark:text-primary-title sm:text-xl md:text-[30px]">
@@ -86,7 +86,7 @@ const Blog = async ({ params: { lng } }: Props) => {
                 <span className="mr-2 text-sm !text-blue-500 dark:text-gray-200">
                   <FaClock />
                 </span>
-                <h1 className="text-sm text-gray-600 dark:text-gray-200">
+                <h1 className="text-sm !text-blue-500 dark:text-gray-200">
                   {lng === 'en' &&
                     `${getReadingTime(latestBlog?.content)} min read`}
                   {lng === 'vi' &&

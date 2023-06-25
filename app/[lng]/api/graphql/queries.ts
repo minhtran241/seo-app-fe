@@ -186,28 +186,6 @@ const GET_ABOUT_US_PAGE: DocumentNode = gql`
               }
             }
           }
-          media1 {
-            data {
-              attributes {
-                url
-                alternativeText
-              }
-            }
-          }
-          media2 {
-            data {
-              attributes {
-                url
-                alternativeText
-              }
-            }
-          }
-          socialProof {
-            proofs(sort: "order:asc") {
-              title
-              description
-            }
-          }
           formation {
             title
             milestones(sort: "order:asc") {
@@ -340,7 +318,6 @@ const GET_BLOG_POST: DocumentNode = gql`
             }
           }
           title
-          slug
           translator
           source
           views
@@ -377,7 +354,7 @@ const GET_BLOG_POST: DocumentNode = gql`
                 attributes {
                   title
                   description
-									content
+                  content
                   slug
                   thumbnail {
                     data {
@@ -810,6 +787,143 @@ const GET_CONTACT_PAGE: DocumentNode = gql`
   }
 `;
 
+const GET_CASE_STUDIES: DocumentNode = gql`
+  query ($locale: I18NLocaleCode) {
+    caseStudies(
+      filters: { published: { eq: true } }
+      locale: $locale
+      sort: "publishedAt:desc"
+      pagination: { limit: 1000 }
+    ) {
+      data {
+        attributes {
+          title
+          slug
+          product {
+            data {
+              attributes {
+                name
+                slug
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+`;
+
+const GET_CASE_STUDY_PAGE: DocumentNode = gql`
+  query ($locale: I18NLocaleCode) {
+    caseStudyPage(locale: $locale) {
+      data {
+        attributes {
+          seo {
+            metaTitle
+            metaDescription
+            metaImage {
+              data {
+                attributes {
+                  url
+                }
+              }
+            }
+            keywords
+            metaViewport
+            metaRobots
+            canonicalURL
+            metaSocial {
+              socialNetwork
+              title
+              description
+              image {
+                data {
+                  attributes {
+                    url
+                  }
+                }
+              }
+            }
+          }
+          title
+        }
+      }
+    }
+  }
+`;
+
+const GET_CASE_STUDY: DocumentNode = gql`
+  query ($locale: I18NLocaleCode, $slug: String!) {
+    caseStudies(filters: { slug: { eq: $slug } }, locale: $locale) {
+      data {
+        id
+        attributes {
+          seo {
+            metaTitle
+            metaDescription
+            metaImage {
+              data {
+                attributes {
+                  url
+                }
+              }
+            }
+            keywords
+            metaViewport
+            metaRobots
+            canonicalURL
+            metaSocial {
+              socialNetwork
+              title
+              description
+              image {
+                data {
+                  attributes {
+                    url
+                  }
+                }
+              }
+            }
+          }
+          title
+          link
+          source
+          product {
+            data {
+              attributes {
+                name
+                slug
+              }
+            }
+          }
+          description
+          content
+          relatedCaseStudies {
+            title
+            case_studies {
+              data {
+                attributes {
+                  title
+                  description
+                  slug
+                  product {
+                    data {
+                      attributes {
+                        name
+                        slug
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+`;
+
 export {
   GET_HOME_PAGE,
   GET_ABOUT_US_PAGE,
@@ -824,4 +938,7 @@ export {
   UPDATE_BLOG_POST_VIEWS,
   GET_BLOG_PAGE,
   GET_CONTACT_PAGE,
+  GET_CASE_STUDIES,
+  GET_CASE_STUDY,
+  GET_CASE_STUDY_PAGE,
 };

@@ -4,7 +4,6 @@ import ContactForm from './ContactForm';
 
 const ContactSection = ({ data }: { data: ContactProps }) => {
   const { title, details, form } = data;
-  console.log(data);
   return (
     <div className="container mt-16 w-full shrink-0 grow-0 basis-auto">
       <section className="mb-16 text-gray-800">
