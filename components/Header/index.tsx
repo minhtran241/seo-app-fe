@@ -126,22 +126,22 @@ const Header = ({ params: { lng } }: Props) => {
             </Dropdown.Item>
           </Dropdown>
           {headerAttributes?.navs?.map((nav, i) => {
-            return nav.path === currentPath ||
-              (nav.path === '/' && currentPath === '') ? (
+            return (currentPath?.includes(nav?.path) && nav?.path != '/') ||
+              (nav?.path === '/' && currentPath === '') ? (
               <Link
                 key={i}
-                href={`/${lng}${nav.path}`}
+                href={`/${lng}${nav?.path}`}
                 className="uppercase text-white underline"
               >
-                {nav.name}
+                {nav?.name}
               </Link>
             ) : (
               <Link
                 key={i}
-                href={`/${lng}${nav.path}`}
+                href={`/${lng}${nav?.path}`}
                 className="uppercase text-white hover:underline"
               >
-                {nav.name}
+                {nav?.name}
               </Link>
             );
           })}
