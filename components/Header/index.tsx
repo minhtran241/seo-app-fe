@@ -74,7 +74,13 @@ const Header = ({ params: { lng } }: Props) => {
                                 <li key={i}>
                                   <Link
                                     href={`/product/${product?.attributes?.slug}`}
-                                    className="font-medium hover:text-primary hover:underline dark:hover:text-blue-500"
+                                    className={`${
+                                      currentPath?.includes(
+                                        product?.attributes?.slug
+                                      )
+                                        ? 'font-medium text-primary underline'
+                                        : 'font-medium hover:text-primary hover:underline dark:hover:text-blue-500'
+                                    }`}
                                   >
                                     {product?.attributes?.name}
                                   </Link>
