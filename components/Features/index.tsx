@@ -48,10 +48,10 @@ const Features = ({ data }) => {
             backgroundImage: `url(${getStrapiMedia(backgroundImage)})`,
           }}
         >
-          <span
+          {/* <span
             id="blackOverlay"
             className="absolute h-full w-full bg-black opacity-75"
-          ></span>
+          ></span> */}
         </div>
         <div className="container relative">
           <SectionTitle title={title} paragraph={description} center white />

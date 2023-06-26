@@ -26,10 +26,10 @@ const AboutSectionOne = ({ data }: { data: AboutSectionOneProps }) => {
           backgroundImage: `url(${getStrapiMedia(backgroundImage)})`,
         }}
       >
-        <span
+        {/* <span
           id="blackOverlay"
           className="absolute h-full w-full bg-black opacity-75"
-        ></span>
+        ></span> */}
       </div>
       <div className="relative mx-auto max-w-screen-xl items-center gap-16 py-8 px-4 lg:grid lg:grid-cols-2 lg:py-16 lg:px-6">
         <div className="title text-gray-700 dark:text-gray-400">
