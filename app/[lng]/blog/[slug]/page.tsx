@@ -1,7 +1,6 @@
 import SharePost from '@/components/Blog/SharePost';
 import parse from 'html-react-parser';
 import { notFound } from 'next/navigation';
-import { ImPencil2 } from 'react-icons/im';
 // import { useMutation } from '@apollo/client';
 import React from 'react';
 import { apolloClient } from '../../api/apollo-client';
@@ -9,7 +8,7 @@ import {
   GET_BLOG_POST,
   // UPDATE_BLOG_POST_VIEWS,
 } from '../../api/graphql/queries';
-import { getStrapiMedia } from '../../api/urlBuilder';
+import { getStrapiMedia, getStrapiURL } from '../../api/urlBuilder';
 import { SingleProps } from '@/types/lng';
 import getURL from '@/utils/blog/getURL';
 import Blog from '@/components/Blog';
@@ -34,6 +33,8 @@ type SingleBlog = {
   relatedBlogs: any;
 };
 
+const defaultBlogCoverImageURL: string = '/uploads/default_blog_997d80bd0b.jpg';
+
 const getBlog = async (lng: string, slug: string): Promise<SingleBlog> => {
   const { data } = await apolloClient.query({
     query: GET_BLOG_POST,
@@ -57,6 +58,7 @@ const getBlog = async (lng: string, slug: string): Promise<SingleBlog> => {
 const BlogDetailsPage = async ({ params }: SingleProps) => {
   const { lng, slug } = params;
   const blogAttrs = await getBlog(lng, slug);
+  console.log(blogAttrs?.coverImage);
   const content: string =
     blogAttrs?.content?.replaceAll(
       'src="',
@@ -65,7 +67,7 @@ const BlogDetailsPage = async ({ params }: SingleProps) => {
   const readingTime = content ? getReadingTime(content) : 0;
   const coverImageUrl = blogAttrs?.coverImage?.data
     ? getStrapiMedia(blogAttrs?.coverImage)
-    : 'https://media.kingston.com/kingston/hero/ktc-hero-blog-data-security-staying-secure-digitised-world-md.jpg';
+    : getStrapiURL(defaultBlogCoverImageURL);
 
   if (!blogAttrs || !blogAttrs?.content) {
     notFound();
