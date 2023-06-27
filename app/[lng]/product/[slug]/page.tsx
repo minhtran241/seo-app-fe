@@ -1,7 +1,7 @@
 import SubDetail from '@/components/SubDetail';
 import { apolloClient } from '../../api/apollo-client';
 import { GET_PRODUCT_DETAILS } from '../../api/graphql/queries';
-import { notFound } from 'next/navigation';
+import { redirect } from 'next/navigation';
 import { SingleProps } from '@/types/lng';
 import RelatedContents from '@/components/RelatedContents';
 import Hero from '@/components/Hero';
@@ -45,8 +45,7 @@ const ProductDetailsPage = async ({ params }: SingleProps) => {
   // const relatedSolutions = await getRelatedSolutions(lng, slug);
 
   if (!productAttrs) {
-    notFound();
-    return null;
+    return redirect('/');
   }
   const { seo, name, description, thumbnail, source, contents } =
     productAttrs || {};
@@ -62,7 +61,7 @@ const ProductDetailsPage = async ({ params }: SingleProps) => {
           buttons: source ? [{ label: name, link: source }] : [],
         }}
       />
-      <section className="overflow-hidden bg-white pt-[35px] pb-[60px] dark:bg-gray-800">
+      <section className="overflow-hidden bg-white pb-[60px] pt-[35px] dark:bg-gray-800">
         <div className="container">
           <div className="-mx-4 flex flex-wrap">
             <div className="w-full px-4">

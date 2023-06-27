@@ -1,6 +1,6 @@
 import SharePost from '@/components/Blog/SharePost';
 import parse from 'html-react-parser';
-import { notFound } from 'next/navigation';
+import { redirect } from 'next/navigation';
 // import { useMutation } from '@apollo/client';
 import React from 'react';
 import { apolloClient } from '../../api/apollo-client';
@@ -58,7 +58,6 @@ const getBlog = async (lng: string, slug: string): Promise<SingleBlog> => {
 const BlogDetailsPage = async ({ params }: SingleProps) => {
   const { lng, slug } = params;
   const blogAttrs = await getBlog(lng, slug);
-  console.log(blogAttrs?.coverImage);
   const content: string =
     blogAttrs?.content?.replaceAll(
       'src="',
@@ -70,8 +69,7 @@ const BlogDetailsPage = async ({ params }: SingleProps) => {
     : getStrapiURL(defaultBlogCoverImageURL);
 
   if (!blogAttrs || !blogAttrs?.content) {
-    notFound();
-    return null;
+    return redirect('/');
   }
   // await apolloClient.mutate({
   //   mutation: UPDATE_BLOG_POST_VIEWS,

@@ -1,6 +1,6 @@
 import SharePost from '@/components/Blog/SharePost';
 import parse from 'html-react-parser';
-import { notFound } from 'next/navigation';
+import { redirect } from 'next/navigation';
 import React from 'react';
 import { apolloClient } from '../../api/apollo-client';
 import { GET_CASE_STUDY } from '../../api/graphql/queries';
@@ -49,8 +49,7 @@ const CaseStudyDetailsPage = async ({ params }: SingleProps) => {
     ) || '';
 
   if (!caseStudyAttrs || !caseStudyAttrs?.content) {
-    notFound();
-    return null;
+    return redirect('/');
   }
 
   return (

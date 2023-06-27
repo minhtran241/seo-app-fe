@@ -11,15 +11,11 @@ const Brands = ({ data }) => {
         <SectionTitle title={title} paragraph={description} center={true} />
         <div className="slider -mx-4">
           <div className="slide-track">
-            {brands?.map((brand, i) => (
-              <SingleBrand key={i} brand={brand} />
-            ))}
-            {brands?.map((brand, i) => (
-              <SingleBrand key={i} brand={brand} />
-            ))}
-            {brands?.map((brand, i) => (
-              <SingleBrand key={i} brand={brand} />
-            ))}
+            {[...brands, ...brands, ...brands]?.map(
+              (brand, i) => (
+                <SingleBrand key={i} brand={brand} />
+              )
+            )}
           </div>
         </div>
       </div>
