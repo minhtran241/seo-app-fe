@@ -36,6 +36,11 @@ export default function RootLayout({
         head.js. Find out more at https://beta.nextjs.org/docs/api-reference/file-conventions/head
       */}
       <GoogleAnalytics trackPageViews />
+      <Script
+        async
+        src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5666414793664447"
+        crossOrigin="anonymous"
+      ></Script>
       <body className="bg-white dark:bg-black">
         <Script id="show-tawkio" type="text/javascript">
           {`var Tawk_API=Tawk_API||{}, Tawk_LoadStart=new Date();
